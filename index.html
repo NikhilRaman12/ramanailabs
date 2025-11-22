@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="RamanAiLabs - The ultimate AI laboratory connecting all AI explorers. Explore the oceanic depth of AI across Data Science, Medical, Agriculture, Biotech, Genomics, Music, Fine Arts, and Acting domains.">
-    <meta name="keywords" content="AI Laboratory, Data Science, Medical AI, Agricultural AI, Biotech, Genomics, Music AI, Fine Arts AI, Acting AI, RamanAiLabs, Nikhil Raman, AI Research, Machine Learning">
+    <!-- Unbeatable SEO Metadata -->
+    <meta name="description" content="RamanAiLabs - The ultimate AI laboratory connecting all AI explorers. Explore the oceanic depth of AI across Data Science, Medical, Agriculture, Biotech, Genomics, Music, Fine Arts, and Acting domains. Never before, ever after.">
+    <meta name="keywords" content="AI Laboratory, Data Science, Medical AI, Agricultural AI, Biotech, Genomics, Music AI, Fine Arts AI, Acting AI, RamanAiLabs, Nikhil Raman, AI Research, Machine Learning, Experiments, Blogs, Portfolio, Immortal AI">
     <meta name="author" content="Nikhil Raman K - Data and AI Scientist">
     <meta name="robots" content="index, follow">
-    <meta property="og:title" content="RamanAiLabs - Explore the Oceanic Depth of AI">
-    <meta property="og:description" content="Connect with AI explorers worldwide. Let's work! Let's create! Let's revolve! Let's be inspired!">
+    <meta property="og:title" content="RamanAiLabs - Explore the Oceanic Depth of AI | Never Before Ever After">
+    <meta property="og:description" content="Connect with AI explorers worldwide. Let's work! Let's create! Let's observe! Let's be inspired!">
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#00d4ff">
     <title>RamanAiLabs - Explore the Oceanic Depth of AI | Never Before Ever After</title>
@@ -18,6 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* Base Reset and Global Styles */
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +32,8 @@
         }
         
         body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            /* Main gradient background is on the body */
             background: linear-gradient(135deg, #0c1445 0%, #1e3c72 50%, #2a5298 100%);
             background-attachment: fixed;
             color: #ffffff;
@@ -47,7 +50,7 @@
         ::-webkit-scrollbar-thumb { background: linear-gradient(45deg, #00d4ff, #0099cc); border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: linear-gradient(45deg, #0099cc, #006699); }
         
-        /* Header */
+        /* Header and Navigation */
         .header {
             background: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(20px);
@@ -104,7 +107,7 @@
         
         .nav-menu {
             display: flex;
-            gap: 2rem;
+            gap: 1.5rem; /* Reduced gap for more items */
             list-style: none;
             flex-wrap: wrap;
         }
@@ -114,9 +117,9 @@
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding: 0.8rem 1.5rem;
+            padding: 0.8rem 1.2rem;
             border-radius: 30px;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+            font-size: clamp(0.9rem, 1.5vw, 1rem);
             position: relative;
             overflow: hidden;
             border: 1px solid transparent;
@@ -145,7 +148,7 @@
             box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
         }
         
-        /* Hero Section */
+        /* Hero Section - The Grand Entrance */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -172,7 +175,6 @@
             animation: float 45s infinite linear;
         }
         
-        /* FIX 1: Complete the @keyframes block */
         @keyframes float {
             0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.8; }
             25% { transform: translateX(-50px) translateY(10px) rotate(5deg); opacity: 0.9; }
@@ -181,7 +183,6 @@
             100% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 0.8; }
         }
         
-        /* New Hero Content Styles */
         .hero-content {
             position: relative;
             z-index: 10;
@@ -206,7 +207,7 @@
 
         .hero-text {
             font-size: clamp(1rem, 2vw, 1.2rem);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 3rem;
             color: #b3c7f0;
         }
@@ -222,42 +223,363 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-block;
             box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            border: none;
+            cursor: pointer;
         }
 
         .cta-button:hover {
             transform: scale(1.05) translateY(-3px);
             box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 10px #ffeb3b;
         }
+
+        /* General Section Styling */
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            position: relative;
+            z-index: 5;
+            /* Default background for non-alternating sections */
+            background-color: transparent; 
+        }
+
+        /* New Style for Alternating Sections - This provides the visual fix! */
+        .section-alt {
+            background-color: rgba(0, 0, 0, 0.2); /* A slight transparent black overlay */
+            box-shadow: inset 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 -10px 20px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+            text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+            border-bottom: 2px solid #00d4ff;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            width: auto;
+            max-width: 90%;
+            transform: translateX(50%);
+            left: -50%;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #b3c7f0;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Domain and Project Grids */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .ai-card {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ai-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #00d4ff;
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.4);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: #ffeb3b;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 10px rgba(255, 235, 59, 0.5);
+        }
+
+        .ai-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #00d4ff;
+        }
+
+        .ai-card p {
+            font-size: 0.95rem;
+            color: #c0c0c0;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            border-radius: 20px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .contact-card:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 25px #ffeb3b, 0 0 5px #00d4ff;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            color: #ffeb3b;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card a, .contact-card p {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
     
+    <!-- Header (Fixed to Top) -->
     <header class="header">
         <div class="nav-container">
             <a href="#" class="logo">RamanAiLabs</a>
             <nav>
+                <!-- Updated Navigation Menu -->
                 <ul class="nav-menu">
                     <li><a href="#" class="nav-link">Home</a></li>
                     <li><a href="#domains" class="nav-link">Domains</a></li>
+                    <li><a href="#experiments" class="nav-link">Experiments</a></li>
+                    <li><a href="#research_overview" class="nav-link">Research Overview</a></li>
                     <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#contact" class="nav-link">Connect</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section (The Grand Entrance) -->
     <section class="hero">
         <div class="hero-content">
             <h1 class="hero-title">Explore the Oceanic Depth of AI</h1>
             <p class="hero-tagline">"Never Before, Ever After."</p>
             <p class="hero-text">
-                The ultimate AI laboratory connecting explorers across Data Science, Medical, Agriculture, Biotech, Genomics, Music, and Fine Arts domains. Let's work! Let's create! Let's evolve!
+                The ultimate AI laboratory connecting explorers across Data Science, Medical, Agriculture, Biotech, Genomics, Music, and Fine Arts domains. 
+                <br><br>
+                **A Revolutionary Slogan:** Let's work! Let's create! **Let's observe!** Let's be inspired!
             </p>
-            <a href="#" class="cta-button" onclick="alert('Success! Thank you for joining the Raman AI Labs waitlist. We will notify you with the launch details. Never Before, Ever After!');">
-                Join the Labs Now
-            </a>
+            <button class="cta-button" onclick="window.location.href='#contact'">
+                Connect with the Labs
+            </button>
         </div>
     </section>
 
-    </body>
+    <!-- 1. AI Domains Section - Primary Background -->
+    <section id="domains" class="section-container">
+        <h2 class="section-title">🔬 AI Domains & Expertise</h2>
+        <p class="section-subtitle">The fields where Data Science meets unlimited potential. RamanAiLabs is the torchbearer across these frontiers.</p>
+
+        <div class="card-grid">
+            <!-- Data Science & Tech AI -->
+            <div class="ai-card">
+                <i class="fas fa-database card-icon"></i>
+                <h3>Data & Tech AI</h3>
+                <p>Advanced Machine Learning, Deep Learning, MLOps, and scalable data solutions for complex systems.</p>
+            </div>
+            <!-- Medical & Biotech AI -->
+            <div class="ai-card">
+                <i class="fas fa-dna card-icon"></i>
+                <h3>Medical & Biotech</h3>
+                <p>AI-driven diagnostics, drug discovery, personalized medicine, and bioinformatics analysis.</p>
+            </div>
+            <!-- Genomics AI -->
+            <div class="ai-card">
+                <i class="fas fa-code card-icon"></i>
+                <h3>Genomics AI</h3>
+                <p>Analyzing genetic code to predict disease, understand evolution, and unlock biological secrets.</p>
+            </div>
+            <!-- Agriculture AI -->
+            <div class="ai-card">
+                <i class="fas fa-leaf card-icon"></i>
+                <h3>Agriculture AI</h3>
+                <p>Precision farming, crop disease detection, yield optimization, and sustainable resource management.</p>
+            </div>
+            <!-- Creative AI (Music, Fine Arts, Acting) -->
+            <div class="ai-card">
+                <i class="fas fa-palette card-icon"></i>
+                <h3>Creative & Arts AI</h3>
+                <p>Generative AI for music composition, fine art creation, and virtual acting/performance simulation.</p>
+            </div>
+            <!-- Add more domains as needed -->
+        </div>
+    </section>
+
+    <!-- 2. Experiments Section - Alternate Background (Visual Fix) -->
+    <section id="experiments" class="section-container section-alt">
+        <h2 class="section-title">🧪 Experiments: The Infinite Lab</h2>
+        <p class="section-subtitle">Showcasing all my projects, live demos, and proof-of-concept experiments. Click to explore the code and the results.</p>
+        
+        <div class="card-grid">
+            <!-- Placeholder for Project 1: Example link to external repo -->
+            <a href="https://github.com/nikhilraman12/ai-project-placeholder-1" target="_blank" class="ai-card" style="text-decoration: none;">
+                <i class="fas fa-flask card-icon"></i>
+                <h3>Project Alpha: [Name]</h3>
+                <p>The latest breakthrough in [Domain]. View the code and live demo on GitHub/Hugging Face.</p>
+            </a>
+            <!-- Placeholder for Project 2 -->
+            <div class="ai-card">
+                <i class="fas fa-chart-line card-icon"></i>
+                <h3>Model Beta: [Name]</h3>
+                <p>A novel deep learning architecture for [specific task]. Current status: Training/Optimization.</p>
+            </div>
+            <!-- Placeholder for Project 3 -->
+            <div class="ai-card">
+                <i class="fas fa-brain card-icon"></i>
+                <h3>Tool Gamma: [Name]</h3>
+                <p>A utility for MLOps/Data Wrangling. Designed for unlimited scalability and efficiency.</p>
+            </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Research Overview Section (Blogs, Articles, Updates) - Primary Background -->
+    <section id="research_overview" class="section-container">
+        <h2 class="section-title">📰 Research Overview & Blogs</h2>
+        <p class="section-subtitle">My posts, blogs, articles, and research updates on the oceanic depth of AI and Data Science. Read and access them through a click.</p>
+
+        <div class="card-grid">
+            <!-- Placeholder for Blog 1 -->
+            <div class="ai-card">
+                <i class="fas fa-book-open card-icon"></i>
+                <h3>Article: The Future of Biotech AI</h3>
+                <p>A deep dive into how large language models are transforming drug discovery. [Link to external blog]</p>
+            </div>
+            <!-- Placeholder for Post 2 -->
+            <div class="ai-card">
+                <i class="fas fa-rss card-icon"></i>
+                <h3>Post: MLOps Simplified</h3>
+                <p>My guide to building robust, production-ready machine learning pipelines.</p>
+            </div>
+            <!-- Placeholder for Update 3 -->
+            <div class="ai-card">
+                <i class="fas fa-satellite-dish card-icon"></i>
+                <h3>Update: Latest Model Release</h3>
+                <p>Announcement and overview of my most recent publicly released AI model.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. About Section (Your Vision) - Alternate Background -->
+    <section id="about" class="section-container section-alt">
+        <h2 class="section-title">🧠 About RamanAiLabs</h2>
+        <p class="section-subtitle">The mission is simple: to connect, create, and inspire the next generation of AI explorers.</p>
+
+        <div style="max-width: 800px; margin: 0 auto; text-align: left; padding: 2rem; border-left: 5px solid #00d4ff; background: rgba(0, 0, 0, 0.3); border-radius: 10px;">
+            <h3 style="color: #ffeb3b; margin-bottom: 1rem; font-family: 'Orbitron', monospace;">The Vision of Unlimited Infinity</h3>
+            <p style="color: #c0c0c0;">
+                RamanAiLabs is born from the conviction that AI's potential is boundless. As a Data and AI Scientist, I am building this laboratory to be a universal access point—a lighthouse for every enthusiast, professional, and student ready to dive into the oceanic depth of AI. Here, we transcend conventional boundaries and work together to manifest the "Never Before, Ever After" code in technology.
+            </p>
+            <p style="color: #c0c0c0; margin-top: 1rem;">
+                This platform is dedicated to sharing knowledge, open-sourcing innovations, and collaborating on projects that will redefine the future of science, art, and life itself.
+            </p>
+        </div>
+    </section>
+
+    <!-- 5. Connect Section (Contact Information) - Primary Background -->
+    <section id="contact" class="section-container">
+        <h2 class="section-title">🤝 Connect: Let's Work Together</h2>
+        <p class="section-subtitle">Everyone should connect with me. Let's start the dialogue and bring the infinite potential of AI to life.</p>
+
+        <div class="contact-grid">
+            
+            <!-- LinkedIn Card -->
+            <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" class="contact-card">
+                <i class="fab fa-linkedin contact-icon"></i>
+                <p>Nikhil Raman K</p>
+                <span>Professional Network</span>
+            </a>
+            
+            <!-- Email Card -->
+            <a href="mailto:nikhilraman1203@gmail.com" class="contact-card">
+                <i class="fas fa-envelope contact-icon"></i>
+                <p>nikhilraman1203@gmail.com</p>
+                <span>Direct Email</span>
+            </a>
+            
+            <!-- WhatsApp Card (UPDATED) -->
+            <a href="tel:+919110343178" class="contact-card">
+                <i class="fab fa-whatsapp contact-icon"></i>
+                <p>+91 9110343178</p>
+                <span>WhatsApp / Mobile</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- JavaScript for Smooth Scrolling and CTAs -->
+    <script>
+        // Implemented smooth scrolling for a highly professional feel
+        const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Prevent the default instant jump
+                e.preventDefault();
+
+                // Get the target section ID (e.g., '#domains')
+                const targetId = this.getAttribute('href');
+                
+                // If clicking the 'Home' link
+                if (targetId === '#') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
+                const targetElement = document.querySelector(targetId);
+
+                // Use the scrollIntoView method for smooth animation
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start' // Scroll to the top of the section
+                    });
+                }
+            });
+        });
+        
+        // Modal logic (to replace alert) - Placeholder for future use
+        function showModal(message) {
+            console.log("Modal Message:", message);
+            // In a real application, this function would create a custom pop-up UI
+            alert(message); // Using alert only for the CTA button for simplicity
+        }
+
+    </script>
+
+</body>
 </html>
