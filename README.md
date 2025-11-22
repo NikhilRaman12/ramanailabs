@@ -1,4 +1,4 @@
-# RamanAiLabs 🧠  
+# RamanAiLabs 
 **Explore the Oceanic Depth of Artificial Intelligence**  
 *"Never Before, Ever After."*
 
@@ -35,14 +35,14 @@ At RamanAiLabs, AI is cultivated with purpose, passion, and responsibility towar
 **Nikhil Raman K**  
 Data and AI Scientist  
 
-- 💼 [LinkedIn – Nikhil Raman K](https://linkedin.com/in/nikhilramank)  
-- 📧 Email: nikhilraman1203@gmail.com  
-- 📱 WhatsApp: +91 9110343178  
+-  [LinkedIn – Nikhil Raman K](https://linkedin.com/in/nikhilramank)  
+-  Email: nikhilraman1203@gmail.com  
+-  WhatsApp: +91 9110343178  
 
 ---
 
 ## Website  
-🌐 Experience the full vision at **RamanAiLabs**
+ Experience the full vision at **RamanAiLabs**
 
 ---
 
