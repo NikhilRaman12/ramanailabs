@@ -1,217 +1,632 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>RamanAiLabs - Explore the Oceanic Depth of AI</title>
-<meta name="description" content="RamanAiLabs by Nikhil Raman K - AI Laboratory">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#000;color:#f5f5f7;min-height:100vh;line-height:1.6}
-:root{--a:#00d4ff;--g:linear-gradient(135deg,#667eea,#764ba2,#f093fb);--c:rgba(28,28,30,.9);--b:rgba(255,255,255,.1)}
-.bg{position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse at 20% 0%,rgba(102,126,234,.12),transparent 50%),radial-gradient(ellipse at 80% 100%,rgba(240,147,251,.08),transparent 50%),#000}
-header{position:fixed;top:0;width:100%;z-index:99;background:rgba(0,0,0,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
-nav{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:.7rem 1.2rem}
-.logo{font-size:1.3rem;font-weight:800;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
-.nav-links{display:flex;gap:.2rem;list-style:none}
-.nav-links a{color:#f5f5f7;text-decoration:none;font-size:.8rem;padding:.5rem .8rem;border-radius:99px;opacity:.8;transition:.2s}
-.nav-links a:hover{opacity:1;background:var(--b)}
-.menu-btn{display:none;background:0;border:0;color:#fff;font-size:1.3rem;cursor:pointer}
-.mobile-nav{position:fixed;inset:0;background:rgba(0,0,0,.98);z-index:100;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem}
-.mobile-nav.open{display:flex}
-.mobile-nav a{color:#fff;text-decoration:none;font-size:1.3rem;font-weight:600}
-.mobile-nav .close{position:absolute;top:1rem;right:1.2rem;font-size:1.8rem;background:0;border:0;color:#fff;cursor:pointer}
-.more{position:relative}
-.more-btn{background:var(--b);border:1px solid var(--b);color:#fff;padding:.4rem .8rem;border-radius:99px;font-size:.75rem;cursor:pointer}
-.dropdown{position:absolute;top:120%;right:0;background:var(--c);border:1px solid var(--b);border-radius:12px;min-width:140px;opacity:0;visibility:hidden;transition:.2s}
-.dropdown.open{opacity:1;visibility:visible}
-.dropdown a{display:block;padding:.6rem .9rem;color:#fff;text-decoration:none;font-size:.8rem}
-.dropdown a:hover{background:var(--b)}
-section{padding:5rem 1.2rem;max-width:1000px;margin:0 auto}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:6rem}
-.hero-content{max-width:750px}
-.badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--b);border:1px solid var(--b);padding:.3rem .8rem;border-radius:99px;font-size:.7rem;color:var(--a);margin-bottom:1.2rem}
-h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:.6rem}
-.tagline{font-size:clamp(1rem,2.5vw,1.4rem);font-weight:600;background:var(--g);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.8rem}
-.hero p{color:#86868b;font-size:clamp(.9rem,1.8vw,1.05rem);max-width:550px;margin:0 auto 1.8rem}
-.btns{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-.btn{padding:.75rem 1.5rem;border-radius:99px;font-size:.9rem;font-weight:600;text-decoration:none;border:none;cursor:pointer;transition:.2s}
-.btn-p{background:#0071e3;color:#fff}
-.btn-p:hover{background:#0077ed}
-.btn-s{background:0;color:var(--a);border:1px solid var(--a)}
-.btn-s:hover{background:rgba(0,212,255,.1)}
-.section-head{text-align:center;margin-bottom:2rem}
-.section-head span{font-size:.75rem;color:var(--a);text-transform:uppercase;letter-spacing:.1em}
-.section-head h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:1rem}
-.card{background:var(--c);border:1px solid var(--b);border-radius:16px;padding:1.2rem;transition:.3s;text-decoration:none;color:inherit}
-.card:hover{transform:translateY(-3px);border-color:var(--a);box-shadow:0 10px 30px rgba(0,212,255,.1)}
-.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.8rem;background:var(--g)}
-.card h3{font-size:.95rem;margin-bottom:.3rem}
-.card p{font-size:.8rem;color:#86868b}
-.card small{font-size:.65rem;color:#666;margin-top:.5rem;display:block}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
-.about-text h3{color:#f5a623;margin-bottom:.6rem}
-.about-text p{color:#86868b;margin-bottom:.6rem;font-size:.9rem}
-.about-img{width:100%;max-width:200px;aspect-ratio:1;background:var(--g);border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:4rem;margin:0 auto}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:1rem}
-.contact-card{background:var(--c);border:1px solid var(--b);border-radius:16px;padding:1.5rem;text-align:center;text-decoration:none;color:inherit;transition:.3s}
-.contact-card:hover{transform:scale(1.02)}
-.contact-card.li:hover{border-color:#0077b5;box-shadow:0 8px 25px rgba(0,119,181,.2)}
-.contact-card.em:hover{border-color:#ea4335;box-shadow:0 8px 25px rgba(234,67,53,.2)}
-.contact-card.wa:hover{border-color:#25d366;box-shadow:0 8px 25px rgba(37,211,102,.2)}
-.contact-card i{font-size:2rem;margin-bottom:.5rem}
-.contact-card.li i{color:#0077b5}
-.contact-card.em i{color:#ea4335}
-.contact-card.wa i{color:#25d366}
-.contact-card h3{font-size:.9rem}
-.contact-card p{font-size:.75rem;color:#86868b}
-footer{text-align:center;padding:2rem;border-top:1px solid var(--b);color:#666;font-size:.75rem}
-.admin-btn{position:fixed;bottom:.8rem;right:.8rem;width:40px;height:40px;background:var(--c);border:1px solid var(--b);border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:.2;transition:.3s;z-index:98}
-.admin-btn:hover{opacity:1}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;overflow-y:auto}
-.modal.open{display:flex}
-.modal-box{background:var(--c);border:1px solid var(--b);border-radius:16px;padding:1.5rem;width:100%;max-width:320px;text-align:center}
-.modal-box h3{margin-bottom:1rem}
-.modal-box input,.modal-box textarea,.modal-box select{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--b);border-radius:8px;padding:.6rem;color:#fff;font-size:.85rem;margin-bottom:.8rem}
-.modal-box textarea{min-height:70px;resize:vertical}
-.modal-box .err{color:#f44;font-size:.75rem;display:none;margin-bottom:.5rem}
-.add-btn{background:var(--g);color:#fff;border:0;padding:.7rem;border-radius:8px;width:100%;font-weight:600;cursor:pointer;margin-top:.3rem}
-.panel{position:fixed;inset:0;background:rgba(0,0,0,.97);z-index:201;display:none;overflow-y:auto;padding:1rem}
-.panel.open{display:block}
-.panel-head{display:flex;justify-content:space-between;align-items:center;max-width:600px;margin:0 auto 1rem}
-.panel-head h2{font-size:1.1rem}
-.panel-close{background:0;border:0;color:#fff;font-size:1.5rem;cursor:pointer}
-.panel-content{max-width:600px;margin:0 auto}
-.panel-section{background:var(--c);border:1px solid var(--b);border-radius:12px;padding:1rem;margin-bottom:1rem}
-.panel-section h4{margin-bottom:.8rem;font-size:.9rem;display:flex;align-items:center;gap:.4rem}
-.item{background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:8px;padding:.7rem;margin-top:.6rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
-.item-info h5{font-size:.8rem;margin-bottom:.1rem}
-.item-info p{font-size:.7rem;color:#666}
-.item-actions button{background:0;border:0;color:#888;cursor:pointer;padding:.2rem;font-size:.85rem}
-.item-actions button:hover{color:#fff}
-.item-actions .del:hover{color:#f44}
-@media(max-width:768px){.nav-links,.more{display:none}.menu-btn{display:block}.about-grid{grid-template-columns:1fr;text-align:center}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Social Sharing (Open Graph) -->
+    <title>RamanAilabs | Exploring the Oceanic Depth of AI</title>
+    <meta name="description" content="RamanAilabs: The torchbearer of intelligence. Converging Data, Genomics, Arts, and Technology. Join the revolution.">
+    <meta name="author" content="Raman">
+    <meta name="keywords" content="AI, Genomics, Art, Technology, Data Science, RamanAilabs, Deep Learning">
+    
+    <!-- Open Graph for LinkedIn/WhatsApp -->
+    <meta property="og:title" content="RamanAilabs | Exploring the Oceanic Depth of AI">
+    <meta property="og:description" content="Connect with the oceanic depth of AI. Exploring the convergence of Tech, Bio, and Arts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ramanailabs.ai">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"> <!-- Placeholder Abstract AI Image -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        deepOcean: '#020617',
+                        neonCyan: '#06b6d4',
+                        electricPurple: '#8b5cf6',
+                        bioGreen: '#10b981',
+                        surface: 'rgba(30, 41, 59, 0.7)'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Orbitron', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 3s ease-in-out infinite alternate',
+                        'spin-slow': 'spin 10s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 10px rgba(6, 182, 212, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(6, 182, 212, 0.6)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #020617;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Canvas Background */
+        #neural-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        }
+
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+            border-color: #06b6d4;
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #06b6d4, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #020617;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out;
+        }
+    </style>
 </head>
-<body>
-<div class="bg"></div>
-<header><nav>
-<a href="#" class="logo">RamanAiLabs</a>
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#research">Research</a></li>
-<li><a href="#contact">Connect</a></li>
-<li class="more"><button class="more-btn" id="moreBtn">More ▾</button>
-<div class="dropdown" id="dd"><a href="#domains">Domains</a><a href="#experiments">Experiments</a><a href="#blogs">Blogs</a></div></li>
-</ul>
-<button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
-</nav></header>
+<body class="antialiased selection:bg-neonCyan selection:text-black">
 
-<div class="mobile-nav" id="mNav">
-<button class="close" id="mClose"><i class="fas fa-times"></i></button>
-<a href="#home" class="m-link">Home</a><a href="#about" class="m-link">About</a><a href="#research" class="m-link">Research</a><a href="#contact" class="m-link">Connect</a><a href="#domains" class="m-link">Domains</a><a href="#experiments" class="m-link">Experiments</a><a href="#blogs" class="m-link">Blogs</a>
-</div>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="text-center">
+            <i class="fa-solid fa-atom text-6xl text-neonCyan animate-spin-slow mb-4"></i>
+            <h2 class="font-display text-xl tracking-widest text-white animate-pulse">INITIALIZING LAB...</h2>
+        </div>
+    </div>
 
-<section class="hero" id="home"><div class="hero-content">
-<div class="badge"><i class="fas fa-flask"></i> AI Laboratory</div>
-<h1>Explore the Oceanic Depth of AI</h1>
-<p class="tagline">"Never Before, Ever After."</p>
-<p>The ultimate AI laboratory bridging Data Science, Medical, Biotech, Genomics, Agriculture, Music & Fine Arts. Let's work! Let's create! Let's revolve! Let's be inspired!</p>
-<div class="btns"><a href="#contact" class="btn btn-p"><i class="fas fa-rocket"></i> Connect</a><a href="#about" class="btn btn-s">Learn More</a></div>
-</div></section>
+    <!-- Background Animation -->
+    <canvas id="neural-canvas"></canvas>
 
-<section id="about"><div class="section-head"><span>About</span><h2>Vision of Unlimited Infinity</h2></div>
-<div class="about-grid"><div class="about-text">
-<h3>Nikhil Raman K</h3>
-<p>Data & AI Scientist exploring the boundless potential of artificial intelligence.</p>
-<p>RamanAiLabs is a lighthouse for every enthusiast, professional, and student ready to dive into AI's oceanic depth.</p>
-<a href="#contact" class="btn btn-p" style="margin-top:.8rem"><i class="fas fa-handshake"></i> Collaborate</a>
-</div><div class="about-img">🧠</div></div></section>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 glass-panel transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <i class="fa-solid fa-atom text-neonCyan text-3xl animate-spin-slow group-hover:text-white transition-colors"></i>
+                    <span class="font-display font-bold text-2xl tracking-wider text-white">Raman<span class="text-neonCyan group-hover:text-white transition-colors">Ailabs</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#vision" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Vision</a>
+                        <a href="#projects" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Lab Updates</a>
+                        <a href="#connect" class="px-5 py-2 rounded-full bg-neonCyan/10 border border-neonCyan/50 text-neonCyan hover:bg-neonCyan hover:text-black transition-all duration-300 font-bold">Connect</a>
+                    </div>
+                </div>
 
-<section id="research"><div class="section-head"><span>Research</span><h2>Latest from Lab</h2></div><div class="grid" id="resGrid"></div></section>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-white hover:text-neonCyan focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<section id="contact"><div class="section-head"><span>Connect</span><h2>Let's Build Together</h2></div>
-<div class="contact-grid">
-<a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" rel="noopener" class="contact-card li"><i class="fab fa-linkedin"></i><h3>LinkedIn</h3><p>Nikhil Raman K</p></a>
-<a href="mailto:nikhilraman1203@gmail.com?subject=Hello%20from%20RamanAiLabs&body=Hi%20Nikhil," class="contact-card em"><i class="fas fa-envelope"></i><h3>Email</h3><p>nikhilraman1203@gmail.com</p></a>
-<a href="https://wa.me/919110343178?text=Hi%20Nikhil!%20From%20RamanAiLabs." target="_blank" rel="noopener" class="contact-card wa"><i class="fab fa-whatsapp"></i><h3>WhatsApp</h3><p>+91 9110343178</p></a>
-</div></section>
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
+                <a href="#home" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Home</a>
+                <a href="#vision" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Vision</a>
+                <a href="#projects" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Lab Updates</a>
+                <a href="#connect" class="block px-3 py-4 text-center w-full text-neonCyan font-bold">Connect Now</a>
+            </div>
+        </div>
+    </nav>
 
-<section id="domains"><div class="section-head"><span>Expertise</span><h2>AI Domains</h2></div>
-<div class="grid">
-<div class="card"><div class="card-icon">🔬</div><h3>Data & Tech AI</h3><p>ML, Deep Learning, MLOps</p></div>
-<div class="card"><div class="card-icon">🧬</div><h3>Medical & Biotech</h3><p>Diagnostics & drug discovery</p></div>
-<div class="card"><div class="card-icon">🧪</div><h3>Genomics AI</h3><p>Genetic analysis & insights</p></div>
-<div class="card"><div class="card-icon">🌱</div><h3>Agriculture AI</h3><p>Precision farming</p></div>
-<div class="card"><div class="card-icon">🎨</div><h3>Creative AI</h3><p>Music, arts & generative</p></div>
-</div></section>
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-4 reveal">
+        <div class="text-center z-10 max-w-5xl mx-auto">
+            <div class="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:border-neonCyan/50 transition-colors duration-300">
+                <span class="text-neonCyan text-sm font-display tracking-widest uppercase">Never Before • Ever After</span>
+            </div>
+            
+            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
+                Explore the <br>
+                <span class="text-gradient">Oceanic Depth</span> of AI
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto font-light">
+                The torchbearer of intelligence. Converging Data, Genomics, Arts, and Technology.
+            </p>
 
-<section id="experiments"><div class="section-head"><span>Lab Work</span><h2>Experiments</h2></div><div class="grid" id="expGrid"></div></section>
+            <div class="h-12 mb-12 flex justify-center items-center">
+                <span id="typewriter" class="text-2xl md:text-3xl font-display text-white"></span><span class="cursor-blink text-3xl text-neonCyan">|</span>
+            </div>
 
-<section id="blogs"><div class="section-head"><span>Insights</span><h2>Blogs & Posts</h2></div><div class="grid" id="blogGrid"></div></section>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#projects" class="group relative px-8 py-4 bg-white text-black font-bold rounded-none hover:scale-105 transition-transform duration-300 overflow-hidden">
+                    <div class="absolute inset-0 w-full h-full bg-neonCyan opacity-0 group-hover:opacity-20 transition-opacity"></div>
+                    <span class="relative z-10 flex items-center gap-2">Explore Lab <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
+                </a>
+                <a href="#connect" class="px-8 py-4 border border-white/30 text-white font-bold hover:bg-white/10 transition-all duration-300">
+                    Join the Revolution
+                </a>
+            </div>
+        </div>
+    </section>
 
-<footer>© 2025 RamanAiLabs • Nikhil Raman K • Explore the Oceanic Depth of AI</footer>
+    <!-- The Convergence / Vision Section -->
+    <section id="vision" class="py-24 relative reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <h2 class="font-display text-4xl font-bold mb-4">The Convergence Engine</h2>
+                <div class="h-1 w-24 bg-neonCyan mx-auto rounded-full"></div>
+                <p class="mt-4 text-gray-400">RamanAilabs operates at the intersection of humanity's most vital domains.</p>
+            </div>
 
-<div class="admin-btn" id="adminBtn"><i class="fas fa-cog"></i></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Domain Cards -->
+                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/40 transition-colors duration-500">
+                        <i class="fa-solid fa-dna text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Genomics & Biotech</h3>
+                    <p class="text-sm text-gray-400">Decoding the fabric of life with deep learning algorithms.</p>
+                </div>
 
-<div class="modal" id="loginModal"><div class="modal-box">
-<h3>🔐 Admin Access</h3><p class="err" id="err">Invalid code</p>
-<input type="password" id="code" placeholder="Secret code">
-<button class="add-btn" id="loginGo">Enter</button>
-</div></div>
+                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-500/40 transition-colors duration-500">
+                        <i class="fa-solid fa-wheat-awn text-3xl text-green-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Agriculture Tech</h3>
+                    <p class="text-sm text-gray-400">Revolutionizing sustainable farming through predictive AI.</p>
+                </div>
 
-<div class="panel" id="panel">
-<div class="panel-head"><h2>🧠 Admin Panel</h2><button class="panel-close" id="pClose">×</button></div>
-<div class="panel-content">
-<div class="panel-section"><h4><i class="fas fa-flask"></i> Experiments</h4>
-<input id="eT" placeholder="Title"><textarea id="eD" placeholder="Description"></textarea><input id="eL" placeholder="Link (optional)">
-<select id="eS"><option>Active</option><option>In Progress</option><option>Completed</option></select>
-<button class="add-btn" id="addE">Add Experiment</button><div id="eList"></div></div>
-<div class="panel-section"><h4><i class="fas fa-blog"></i> Blogs</h4>
-<input id="bT" placeholder="Title"><textarea id="bD" placeholder="Description"></textarea><input id="bL" placeholder="Link (optional)">
-<select id="bC"><option>Blog</option><option>Tutorial</option><option>Update</option></select>
-<button class="add-btn" id="addB">Add Blog</button><div id="bList"></div></div>
-<div class="panel-section"><h4><i class="fas fa-newspaper"></i> Research</h4>
-<input id="rT" placeholder="Title"><textarea id="rD" placeholder="Description"></textarea><input id="rL" placeholder="Link (optional)">
-<select id="rC"><option>Research</option><option>Paper</option><option>Guide</option></select>
-<button class="add-btn" id="addR">Add Research</button><div id="rList"></div></div>
-</div></div>
+                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto bg-purple-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-500/40 transition-colors duration-500">
+                        <i class="fa-solid fa-music text-3xl text-purple-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Music & Fine Arts</h3>
+                    <p class="text-sm text-gray-400">Harmonizing creativity with computational intelligence.</p>
+                </div>
 
-<script>
-const $=id=>document.getElementById(id),S='ramanailabs',K='beta';
-let D={e:[{i:1,t:'Project Alpha',d:'AI breakthrough on GitHub',l:'https://github.com/nikhilraman12',s:'Active'}],b:[{i:1,t:'AI in Healthcare',d:'Exploring AI in modern healthcare',l:'',c:'Blog'}],r:[{i:1,t:'Future of Biotech AI',d:'LLMs transforming drug discovery',l:'',c:'Research'},{i:2,t:'MLOps Simplified',d:'Production ML pipelines guide',l:'',c:'Guide'}]};
-try{const x=localStorage.getItem(S);if(x)D=JSON.parse(x)}catch(e){}
-const save=()=>{try{localStorage.setItem(S,JSON.stringify(D))}catch(e){}},
-ic={e:'🧪',b:'✍️',r:'📊',Research:'📊',Paper:'📄',Guide:'⚙️',Blog:'✍️',Tutorial:'📚',Update:'🚀'},
-render=()=>{
-$('expGrid').innerHTML=D.e.map(x=>`<${x.l?`a href="${x.l}" target="_blank"`:'div'} class="card"><div class="card-icon">${ic.e}</div><h3>${x.t}</h3><p>${x.d}</p><small>${x.s}</small></${x.l?'a':'div'}>`).join('')||'<p style="color:#666">No experiments yet</p>';
-$('blogGrid').innerHTML=D.b.map(x=>`<${x.l?`a href="${x.l}" target="_blank"`:'div'} class="card"><div class="card-icon">${ic[x.c]||ic.b}</div><h3>${x.t}</h3><p>${x.d}</p><small>${x.c}</small></${x.l?'a':'div'}>`).join('')||'<p style="color:#666">No blogs yet</p>';
-$('resGrid').innerHTML=D.r.map(x=>`<${x.l?`a href="${x.l}" target="_blank"`:'div'} class="card"><div class="card-icon">${ic[x.c]||ic.r}</div><h3>${x.t}</h3><p>${x.d}</p><small>${x.c}</small></${x.l?'a':'div'}>`).join('')||'<p style="color:#666">No research yet</p>';
-$('eList').innerHTML=D.e.map(x=>`<div class="item"><div class="item-info"><h5>${x.t}</h5><p>${x.d.slice(0,40)}...</p></div><div class="item-actions"><button onclick="delE(${x.i})" class="del"><i class="fas fa-trash"></i></button></div></div>`).join('');
-$('bList').innerHTML=D.b.map(x=>`<div class="item"><div class="item-info"><h5>${x.t}</h5><p>${x.d.slice(0,40)}...</p></div><div class="item-actions"><button onclick="delB(${x.i})" class="del"><i class="fas fa-trash"></i></button></div></div>`).join('');
-$('rList').innerHTML=D.r.map(x=>`<div class="item"><div class="item-info"><h5>${x.t}</h5><p>${x.d.slice(0,40)}...</p></div><div class="item-actions"><button onclick="delR(${x.i})" class="del"><i class="fas fa-trash"></i></button></div></div>`).join('');
-};
-window.delE=i=>{D.e=D.e.filter(x=>x.i!==i);save();render()};
-window.delB=i=>{D.b=D.b.filter(x=>x.i!==i);save();render()};
-window.delR=i=>{D.r=D.r.filter(x=>x.i!==i);save();render()};
-$('addE').onclick=()=>{const t=$('eT').value.trim(),d=$('eD').value.trim();if(!t||!d)return;D.e.push({i:Date.now(),t,d,l:$('eL').value.trim(),s:$('eS').value});$('eT').value=$('eD').value=$('eL').value='';save();render()};
-$('addB').onclick=()=>{const t=$('bT').value.trim(),d=$('bD').value.trim();if(!t||!d)return;D.b.push({i:Date.now(),t,d,l:$('bL').value.trim(),c:$('bC').value});$('bT').value=$('bD').value=$('bL').value='';save();render()};
-$('addR').onclick=()=>{const t=$('rT').value.trim(),d=$('rD').value.trim();if(!t||!d)return;D.r.push({i:Date.now(),t,d,l:$('rL').value.trim(),c:$('rC').value});$('rT').value=$('rD').value=$('rL').value='';save();render()};
-$('adminBtn').onclick=()=>$('loginModal').classList.add('open');
-$('loginGo').onclick=()=>{if($('code').value===K){$('loginModal').classList.remove('open');$('panel').classList.add('open');$('code').value='';$('err').style.display='none'}else{$('err').style.display='block'}};
-$('code').onkeydown=e=>{if(e.key==='Enter')$('loginGo').click()};
-$('pClose').onclick=()=>$('panel').classList.remove('open');
-$('moreBtn').onclick=()=>$('dd').classList.toggle('open');
-$('menuBtn').onclick=()=>$('mNav').classList.add('open');
-$('mClose').onclick=()=>$('mNav').classList.remove('open');
-document.querySelectorAll('.m-link').forEach(a=>a.onclick=()=>$('mNav').classList.remove('open'));
-document.onclick=e=>{if(!e.target.closest('.more'))$('dd').classList.remove('open')};
-render();
-</script>
+                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
+                    <div class="w-16 h-16 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-500/40 transition-colors duration-500">
+                        <i class="fa-solid fa-theater-masks text-3xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Acting & Media</h3>
+                    <p class="text-sm text-gray-400">Synthesizing digital personas and narrative generation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lab Projects / Posts Section -->
+    <section id="projects" class="py-24 bg-black/30 reveal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="font-display text-4xl font-bold">Lab Research & Updates</h2>
+                    <p class="text-gray-400 mt-2">Access the latest projects from Raman's desk.</p>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="w-full md:w-auto relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-search text-gray-500"></i>
+                    </div>
+                    <input type="text" id="project-search" placeholder="Search projects..." 
+                        class="glass-panel w-full md:w-64 pl-10 pr-4 py-2 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
+                </div>
+            </div>
+
+            <!-- Grid dynamically populated by JS -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                <!-- Javascript will load content here -->
+            </div>
+            
+            <div id="no-results" class="hidden text-center py-12">
+                <i class="fa-solid fa-robot text-4xl text-gray-600 mb-4"></i>
+                <p class="text-gray-400">No projects found matching your query.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Connection Section -->
+    <section id="connect" class="py-24 relative overflow-hidden reveal">
+        <!-- Decor element -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-neonCyan/5 blur-3xl rounded-full z-0"></div>
+
+        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
+            <h2 class="font-display text-5xl font-bold mb-8">Let's Revolve Together</h2>
+            <p class="text-xl text-gray-300 mb-12">
+                Ready to dive into the depths? Connect directly with Raman for collaboration, consulting, or inspiration.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                
+                <!-- LinkedIn -->
+                <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#0077b5]/20 group border-l-4 border-transparent hover:border-[#0077b5]">
+                    <div class="w-14 h-14 bg-[#0077b5] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-900/50 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg group-hover:text-[#0077b5] transition-colors">LinkedIn Profile</h3>
+                        <p class="text-sm text-gray-400">Professional Network</p>
+                    </div>
+                    <i class="fa-solid fa-external-link-alt ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
+                </a>
+
+                <!-- WhatsApp -->
+                <a href="https://wa.me/919110343178" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#25D366]/20 group border-l-4 border-transparent hover:border-[#25D366]">
+                    <div class="w-14 h-14 bg-[#25D366] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-green-900/50 group-hover:scale-110 transition-transform">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg group-hover:text-[#25D366] transition-colors">WhatsApp Chat</h3>
+                        <p class="text-sm text-gray-400">+91 9110343178</p>
+                    </div>
+                    <i class="fa-solid fa-message ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:nikhilraman1203@gmail.com" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-red-500/20 group border-l-4 border-transparent hover:border-red-500">
+                    <div class="w-14 h-14 bg-red-600 rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-red-900/50 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg group-hover:text-red-400 transition-colors">Email Me</h3>
+                        <p class="text-sm text-gray-400">nikhilraman1203@gmail.com</p>
+                    </div>
+                    <i class="fa-solid fa-paper-plane ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
+                </a>
+
+                <!-- Phone -->
+                <a href="tel:9110343178" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-neonCyan/20 group border-l-4 border-transparent hover:border-neonCyan">
+                    <div class="w-14 h-14 bg-neonCyan rounded-lg flex items-center justify-center text-black text-2xl shadow-lg shadow-cyan-900/50 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="text-left">
+                        <h3 class="font-bold text-lg group-hover:text-neonCyan transition-colors">Call Directly</h3>
+                        <p class="text-sm text-gray-400">+91 9110343178</p>
+                    </div>
+                    <i class="fa-solid fa-phone-flip ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="border-t border-white/10 py-12 bg-[#01040f]">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h2 class="font-display text-2xl font-bold mb-4">Raman<span class="text-neonCyan">Ailabs</span></h2>
+            <p class="text-gray-500 text-sm mb-6">&copy; 2025 RamanAilabs. The Torchbearer of Artificial Intelligence.</p>
+            <div class="flex justify-center gap-6">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // 0. Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            preloader.style.opacity = '0';
+            setTimeout(() => {
+                preloader.style.display = 'none';
+            }, 500);
+        });
+
+        // 1. Mobile Menu Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        });
+
+        // 2. Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 3. Data Object for Projects
+        const researchData = [
+            {
+                category: "AI & Genomics",
+                title: "Deep Sequence: DNA Prediction Model",
+                desc: "Using Transformers to predict gene expression levels in agricultural crops for higher yield.",
+                date: "Oct 2025",
+                color: "border-blue-500"
+            },
+            {
+                category: "AI & Arts",
+                title: "The Neural Symphony",
+                desc: "A generative adversarial network (GAN) composing classical music based on emotional prompts.",
+                date: "Sep 2025",
+                color: "border-purple-500"
+            },
+            {
+                category: "Medical Tech",
+                title: "RetinaScan Vision V2",
+                desc: "Early detection of diabetic retinopathy using lightweight CNNs deployable on mobile devices.",
+                date: "Aug 2025",
+                color: "border-green-500"
+            },
+            {
+                category: "Robotics",
+                title: "AgriBot Swarm Protocol",
+                desc: "Coordination algorithms for autonomous drone swarms in large-scale precision farming.",
+                date: "July 2025",
+                color: "border-yellow-500"
+            },
+            {
+                category: "Philosophy & AI",
+                title: "Ethics in the Black Box",
+                desc: "A research paper on interpretability in deep learning models for healthcare.",
+                date: "June 2025",
+                color: "border-pink-500"
+            },
+            {
+                category: "Data Science",
+                title: "Oceanic Climate Modeling",
+                desc: "Predicting sea temperature changes using historical satellite data and LSTM networks.",
+                date: "May 2025",
+                color: "border-cyan-500"
+            }
+        ];
+
+        // 4. Render & Search Projects
+        const grid = document.getElementById('projects-grid');
+        const searchInput = document.getElementById('project-search');
+        const noResults = document.getElementById('no-results');
+
+        function renderProjects(data) {
+            grid.innerHTML = '';
+            
+            if (data.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                data.forEach((item, index) => {
+                    const card = document.createElement('div');
+                    card.className = `glass-card p-6 rounded-xl flex flex-col justify-between h-full border-t-4 ${item.color} group cursor-pointer transform transition-all hover:-translate-y-2 duration-300 animate-fadeIn`;
+                    // Staggered animation delay for search results
+                    card.style.animationDelay = `${index * 100}ms`;
+                    
+                    card.innerHTML = `
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-700 px-2 py-1 rounded">${item.category}</span>
+                                <span class="text-xs text-gray-500">${item.date}</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 group-hover:text-neonCyan transition-colors">${item.title}</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
+                        </div>
+                        <div class="mt-6 pt-6 border-t border-white/5 flex items-center text-sm font-semibold text-neonCyan opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                            Read Case Study <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </div>
+                    `;
+                    card.onclick = () => {
+                        alert(`Opening research document for: ${item.title}`);
+                    };
+                    grid.appendChild(card);
+                });
+            }
+        }
+
+        // Search Listener
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = researchData.filter(item => 
+                item.title.toLowerCase().includes(searchTerm) || 
+                item.category.toLowerCase().includes(searchTerm) ||
+                item.desc.toLowerCase().includes(searchTerm)
+            );
+            renderProjects(filtered);
+        });
+
+        // Initial Render
+        renderProjects(researchData);
+
+        // 5. Typewriter Effect
+        const slogans = ["Let's Work!", "Let's Create!", "Let's Revolve!", "Let's be Inspired!"];
+        let sloganIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typeTarget = document.getElementById('typewriter');
+
+        function typeWriter() {
+            const currentText = slogans[sloganIndex];
+            
+            if (isDeleting) {
+                typeTarget.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typeTarget.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                sloganIndex = (sloganIndex + 1) % slogans.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+        document.addEventListener('DOMContentLoaded', typeWriter);
+
+        // 6. Neural Ocean Canvas Animation
+        const canvas = document.getElementById('neural-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2;
+                this.color = Math.random() > 0.5 ? 'rgba(6, 182, 212, ' : 'rgba(139, 92, 246, '; 
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                if (this.x < 0 || this.x > width) this.vx *= -1;
+                if (this.y < 0 || this.y > height) this.vy *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color + '0.5)';
+                ctx.fill();
+            }
+        }
+
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(window.innerWidth / 10, 100);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(6, 182, 212, ${1 - distance / 150})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        initParticles();
+        animate();
+    </script>
 </body>
 </html>
