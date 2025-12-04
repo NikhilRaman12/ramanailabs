@@ -1,1051 +1,137 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Oceanic Depth of AI</title>
-    <meta name="description" content="Raman AI Labs: Engineering intelligent systems and solutions for a secure, advanced, and sustainable future. Unbeatable performance, absolute security.">
-    
-    <!-- Core Dependencies -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Fonts: Inter (Content) & Orbitron (Display/Tech) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-
-    <!-- Firebase SDK Imports -->
-    <script type="module">
-        // Importing necessary Firebase modules for a secure, persistent application
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { 
-            getFirestore, doc, collection, onSnapshot, 
-            addDoc, updateDoc, deleteDoc, setDoc, 
-            Timestamp, setLogLevel, query 
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // IMPORTANT: Expose Firebase functions to the global scope for use in the main script block
-        window.firebase = {
-            initializeApp, getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signInWithEmailAndPassword,
-            getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, setDoc,
-            Timestamp, setLogLevel, query 
-        };
-    </script>
-
-    <script>
-        // --- Tailwind Custom Configuration for Ultimate Aesthetics ---
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        deepOcean: '#01040f', // Base background (professional dark)
-                        neonCyan: '#06b6d4', // Primary Accent
-                        electricPurple: '#8b5cf6', // Secondary Accent
-                        bioGreen: '#10b981', 
-                        surface: 'rgba(30, 41, 59, 0.7)',
-                        criticalRed: '#ef4444', 
-                        saturnGold: '#facc15' 
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Orbitron', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-neon': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    },
-                }
-            }
-        }
-    </script>
-
-    <style>
-        /* Core System Styles for Zero-Lag Rendering */
-        body {
-            background-color: #01040f;
-            color: white;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-        
-        /* Glassmorphism: Clean Aesthetic */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Unbeatable Card Hover Effect */
-        .glass-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .glass-card:hover {
-            transform: translateY(-3px) scale(1.005);
-            background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
-            border-color: #06b6d4;
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
-        }
-
-        .text-gradient {
-            background: linear-gradient(to right, #06b6d4, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Scroll Reveal for Smoothness (Mobile Optimized) */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Nav Bar Scroll Effect */
-        #navbar.scrolled {
-            background: rgba(1, 4, 15, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* Ensure smooth link clicks for mobile */
-        .mobile-nav-link:active {
-            opacity: 0.7;
-        }
-        
-        /* Custom Proportional Background for Hero */
-        .hero-bg-dots {
-            background-image: radial-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px);
-            background-size: 40px 40px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.2;
-            z-index: -1;
-        }
-    </style>
+    <title>Raman AI Labs | Explore the Oceanic Depth of AI</title>
+    <meta name="description" content="Pioneering the next generation of technology across Data, World Tech, Cyber Security, and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="/favicon.ico"> 
 </head>
-<body class="antialiased">
+<body>
 
-    <!-- *** NAVIGATION BAR (Flawless Responsiveness) *** -->
-    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-300 h-20 flex items-center" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex items-center justify-between">
-                <a href="#home" class="flex items-center gap-3 group">
-                    <i class="fa-solid fa-flask-vial text-neonCyan text-3xl animate-pulse group-hover:text-electricPurple transition-colors"></i>
-                    <span class="font-display font-bold text-2xl tracking-wider text-white">Raman<span class="text-neonCyan group-hover:text-white transition-colors">AI Labs</span></span>
-                </a>
-                
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-8">
-                        <a href="#home" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Home</a>
-                        <a href="#domains" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Domains</a>
-                        <a href="#experiments" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Manifest</a>
-                        
-                        <!-- Admin Button - Hidden by default, shown on successful high-privilege auth -->
-                        <button id="admin-btn" class="hidden px-4 py-2 rounded-full border border-electricPurple/50 text-electricPurple hover:bg-electricPurple/10 transition-all duration-300 font-bold text-sm">
-                            <i class="fa-solid fa-lock text-electricPurple"></i> Admin Console
-                        </button>
-                    </div>
+    <header class="header">
+        <div class="logo">Raman AI Labs<span class="logo-dot">.</span></div>
+        <nav class="nav-links">
+            <a href="#domains">Domains</a>
+            <a href="#experiments">Experiments</a>
+            <a href="#blogs">Insights</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <div class="contact-buttons">
+            <button class="icon-btn linkedin" aria-label="LinkedIn Profile"></button>
+            <button class="icon-btn email" aria-label="Send an Email"></button>
+            <button class="icon-btn whatsapp" aria-label="Send a WhatsApp Message"></button>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu"></button>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>**Pioneering Absolute Excellence.**</h1>
+                <p class="subtitle">Where **Human Ingenuity** meets **Hyper-Intelligent Systems** to solve the world's most complex challenges. Unbeatable in concept and execution.</p>
+                <a href="#experiments" class="cta-button">View Core Experiments &rarr;</a>
+            </div>
+            <div class="hero-visualization"></div> 
+        </section>
+
+        <section id="domains" class="domain-section">
+            <h2>Core Innovation Domains</h2>
+            <div class="domain-grid">
+                <div class="domain-card" data-domain="data-ai">
+                    <h3>Data & AI</h3>
+                    <p>Building foundational models and hyper-efficient data processing architectures for the next computing era.</p>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-white hover:text-neonCyan focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl" id="mobile-icon"></i>
-                    </button>
+                <div class="domain-card" data-domain="world-tech">
+                    <h3>World Tech</h3>
+                    <p>Large-scale system design and infrastructure for societal, governmental, and global impact.</p>
                 </div>
+                <div class="domain-card" data-domain="cyber-security">
+                    <h3>Cyber Security</h3>
+                    <p>Zero-trust architectures, quantum-resistant encryption, and autonomous threat response systems.</p>
+                </div>
+                <div class="domain-card" data-domain="agri-env">
+                    <h3>Agriculture & Environmental Science</h3>
+                    <p>AI-driven sustainable farming, climate modeling, and biosphere restoration technologies.</p>
+                </div>
+                <div class="domain-card" data-domain="biotech">
+                    <h3>Biotechnology & Biomedical</h3>
+                    <p>Personalized medicine, advanced genomics, and intelligent therapeutic discovery systems.</p>
+                </div>
+                <div class="domain-card" data-domain="fine-arts">
+                    <h3>Fine Arts, Content & Crafts</h3>
+                    <p>The intersection of advanced AI with creative fields—algorithmic generation, curation, and preservation.</p>
+                </div>
+                <div class="domain-card" data-domain="quantum">
+                    <h3>Quantum Computing & Simulation</h3>
+                    <p>Exploring and developing algorithms and hardware-agnostic models for post-classical computation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="content-section">
+            <h2>Current Experiments & Projects</h2>
+            <div id="experiment-list" class="content-list">
+                <article class="content-item">
+                    <span class="content-tag">Data & AI</span>
+                    <h3>Project Chronos: Real-time Hyper-Prediction Model</h3>
+                    <p>A zero-lag, asynchronous model deployed globally for critical infrastructure forecasting. **(Placeholder content)**</p>
+                </article>
+                <article class="content-item">
+                    <span class="content-tag">Cyber Security</span>
+                    <h3>Sentinel Shield: Autonomous Defense System</h3>
+                    <p>AI-powered system capable of self-healing and evolving defense perimeters. **(Placeholder content)**</p>
+                </article>
+            </div>
+            <a href="#" class="view-all-button">Explore All Experiments &rarr;</a>
+        </section>
+
+        <section id="blogs" class="content-section">
+            <h2>Latest Insights & Reports</h2>
+            <div id="blog-list" class="content-list">
+                <article class="content-item">
+                    <span class="content-tag">World Tech</span>
+                    <h3>The Ethics of Global AI Deployment v3.1</h3>
+                    <p>A detailed framework for ethical governance in cross-border AI systems. **(Placeholder content)**</p>
+                </article>
+                <article class="content-item">
+                    <span class="content-tag">Biotech</span>
+                    <h3>Accelerating Drug Discovery with Generative Chemistry</h3>
+                    <p>A report on cutting-edge techniques to shorten time-to-market for therapeutics. **(Placeholder content)**</p>
+                </article>
+            </div>
+            <a href="#" class="view-all-button">Read All Insights &rarr;</a>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="footer-grid">
+            <div class="footer-col-logo">
+                <div class="logo">Raman AI Labs<span class="logo-dot">.</span></div>
+                <p>Conceptualizing and engineering the future, today.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <a href="https://linkedin.com/in/raman_placeholder" target="_blank">LinkedIn</a>
+                <a href="mailto:raman@railabs.com">Email Direct</a>
+                <a href="https://wa.me/whatsapp_placeholder" target="_blank">WhatsApp</a>
+                <a href="/admin" class="admin-login-link">Admin Access</a> 
+            </div>
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <a href="#domains">Domains</a>
+                <a href="#experiments">Experiments</a>
+                <a href="#blogs">Insights</a>
             </div>
         </div>
-        <!-- Mobile Menu (Glass Panel) -->
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 absolute w-full top-20">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-                <a href="#home" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Home</a>
-                <a href="#domains" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Domains</a>
-                <a href="#experiments" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Manifest</a>
-                <button id="admin-btn-mobile" class="hidden mobile-nav-link block px-3 py-3 text-center w-full rounded-md text-base font-medium text-electricPurple font-bold">
-                    <i class="fa-solid fa-lock"></i> Admin Console
-                </button>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- *** MODALS (Admin/Login/View) *** -->
-    
-    <!-- Admin Management Modal (Secure Content Upload) -->
-    <div id="admin-modal" class="fixed top-0 left-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[60] hidden items-center justify-center opacity-0 transition-opacity">
-        <div class="glass-card p-6 md:p-8 rounded-2xl max-w-4xl w-11/12 border-neonCyan/50 border shadow-2xl shadow-neonCyan/20 overflow-auto max-h-[90vh]">
-            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-                <h2 class="font-display text-3xl font-bold text-neonCyan flex items-center gap-3">
-                    <i class="fa-solid fa-terminal text-electricPurple"></i> Secure Content Management System
-                </h2>
-                <button id="close-admin-modal" class="text-gray-400 hover:text-white transition-colors text-2xl">
-                    <i class="fa-solid fa-times"></i>
-                </button>
-            </div>
-
-            <!-- Add/Edit Form -->
-            <div class="mb-8">
-                <h3 class="text-xl font-bold mb-4 text-bioGreen" id="form-title">Add/Edit Content Manifest</h3>
-                <form id="content-form" class="space-y-4">
-                    <input type="hidden" id="content-id">
-                    
-                    <input type="text" id="content-title" placeholder="Title of Experiment/Blog" required
-                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
-                    
-                    <textarea id="content-desc" placeholder="A concise summary (max 2 lines for card display)" rows="2" required
-                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all"></textarea>
-                    
-                    <select id="content-domain" required
-                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all appearance-none">
-                        <option value="" disabled selected>Select Research Domain</option>
-                        <option value="Data & AI">Data & AI</option>
-                        <option value="World Tech">World Tech</option>
-                        <option value="Cyber Security">Cyber Security</option>
-                        <option value="Agriculture & Environmental Science">Agriculture & Environmental Science</option>
-                        <option value="Biotechnology & Biomedical">Biotechnology & Biomedical</option>
-                        <option value="Fine Arts, Content & Crafts">Fine Arts, Content & Crafts</option>
-                    </select>
-                    
-                    <textarea id="content-body" placeholder="Full Content/Details (Markdown compatible)" rows="8" required
-                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all"></textarea>
-                    
-                    <div class="flex items-center gap-4">
-                        <label for="content-visible" class="text-sm font-medium text-gray-300">Publish/Visible:</label>
-                        <input type="checkbox" id="content-visible" checked
-                               class="h-5 w-5 rounded border-gray-300 text-neonCyan focus:ring-neonCyan bg-white/10">
-                    </div>
-
-                    <button type="submit" id="save-content-btn" class="w-full px-8 py-3 bg-bioGreen hover:bg-bioGreen/80 text-black font-bold rounded-lg transition-all duration-300 shadow-lg shadow-bioGreen/30">
-                        <i class="fa-solid fa-save mr-2"></i> Save to Private Manifest
-                    </button>
-                    <button type="button" id="cancel-edit-btn" class="w-full px-8 py-3 mt-2 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-lg transition-all duration-300 hidden">
-                        Cancel Edit
-                    </button>
-                </form>
-            </div>
-
-            <!-- Existing Content List (Real-Time Display) -->
-            <div>
-                <h3 class="text-xl font-bold mb-4 text-saturnGold">Current Manifests (<span id="manifest-count">0</span>)</h3>
-                <div id="admin-manifest-list" class="space-y-3">
-                    <p class="text-gray-500 text-center py-4" id="loading-manifest">Loading secure manifest...</p>
-                    <!-- Content items will be listed here -->
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Content View Modal -->
-    <div id="content-view-modal" class="fixed inset-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[61] hidden items-center justify-center opacity-0 transition-opacity">
-        <div class="glass-card p-6 md:p-10 rounded-2xl max-w-3xl w-11/12 border-electricPurple/50 border shadow-2xl shadow-electricPurple/20 overflow-auto max-h-[90vh] relative">
-            <button id="close-content-view" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors text-2xl">
-                <i class="fa-solid fa-times"></i>
-            </button>
-            <span id="content-view-domain" class="inline-block text-sm font-display uppercase tracking-wider mb-2"></span>
-            <h3 id="content-view-title" class="font-display text-4xl font-bold mb-4"></h3>
-            <p id="content-view-date" class="text-sm text-gray-500 mb-6"></p>
-            <div id="content-view-body" class="prose prose-invert max-w-none text-gray-300">
-                <!-- Full content goes here -->
-            </div>
-        </div>
-    </div>
-    
-    <!-- Login Modal -->
-    <div id="login-modal" class="fixed inset-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[62] hidden items-center justify-center opacity-0 transition-opacity">
-        <div class="glass-card p-8 rounded-2xl max-w-md w-11/12 border-electricPurple/50 border shadow-2xl shadow-electricPurple/20">
-            <h2 class="font-display text-2xl font-bold text-electricPurple mb-6 text-center">Raman Access Security Protocol</h2>
-            <form id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="Raman's Registered Email" required
-                    class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
-                <input type="password" id="login-password" placeholder="Secure Key Passcode" required
-                    class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
-                <p id="login-error" class="text-criticalRed text-sm hidden">Authentication Failed. Protocol Violation.</p>
-                <button type="submit" class="w-full px-8 py-3 bg-electricPurple hover:bg-electricPurple/80 text-white font-bold rounded-lg transition-all duration-300 shadow-lg shadow-electricPurple/30">
-                    <i class="fa-solid fa-unlock mr-2"></i> Initiate Secure Login
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- *** MAIN CONTENT SECTIONS *** -->
-
-    <!-- 1. HOME/HERO SECTION -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-16 px-4">
-        <div class="hero-bg-dots"></div>
-        <div class="text-center z-10 max-w-5xl mx-auto reveal">
-            <div class="inline-block px-4 py-1 mb-6 rounded-full border border-saturnGold/50 bg-saturnGold/5 backdrop-blur-sm transition-colors duration-300">
-                <span class="text-saturnGold text-sm font-display tracking-widest uppercase">The Standard of Absolute Excellence</span>
-            </div>
-            
-            <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
-                <span class="text-gradient">Raman AI Labs</span><br>
-                Oceanic Depth of AI
-            </h1>
-            
-            <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto font-light">
-                Engineering intelligent systems and solutions for a secure, advanced, and sustainable future.
-            </p>
-
-            <!-- Connection Options (Modern, Aesthetic, Responsive) -->
-            <div id="connection-options" class="flex justify-center gap-4 reveal">
-                <a href="https://linkedin.com/in/raman_placeholder" target="_blank" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-500 transition-all duration-300" title="Connect on LinkedIn">
-                    <i class="fab fa-linkedin-in text-xl text-white"></i>
-                </a>
-                <a href="mailto:raman.ailabs@example.com" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-green-600 hover:border-green-500 transition-all duration-300" title="Send Email">
-                    <i class="fa-solid fa-envelope text-xl text-white"></i>
-                </a>
-                <a href="https://wa.me/1234567890" target="_blank" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-teal-600 hover:border-teal-500 transition-all duration-300" title="Quick Message via WhatsApp">
-                    <i class="fab fa-whatsapp text-xl text-white"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. DOMAIN SCOPE SECTION -->
-    <section id="domains" class="py-24 relative bg-black/30">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="mb-16 text-center reveal">
-                <h2 class="font-display text-4xl font-bold mb-4">Core Research Domains</h2>
-                <div class="h-1 w-24 bg-neonCyan mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-400">Our focused areas defining the future of technology, science, and creativity.</p>
-            </div>
-
-            <!-- Reduced and Finalized Domain List -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Data & AI -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-neonCyan hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-brain text-4xl text-neonCyan mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">Data & AI</h3>
-                    <p class="text-gray-400 text-sm">Designing intelligent systems for predictive modeling and automated decision-making.</p>
-                </div>
-                <!-- Cyber Security -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-criticalRed hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-shield-halved text-4xl text-criticalRed mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">Cyber Security</h3>
-                    <p class="text-gray-400 text-sm">Building zero-trust architectures and quantum-resistant encryption protocols.</p>
-                </div>
-                <!-- Biotechnology & Biomedical -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-blue-500 hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-dna text-4xl text-blue-500 mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">Biotechnology & Biomedical</h3>
-                    <p class="text-gray-400 text-sm">Developing AI-driven diagnostics, drug discovery, and regenerative medicine research.</p>
-                </div>
-                <!-- World Tech -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-yellow-500 hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-robot text-4xl text-yellow-500 mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">World Tech</h3>
-                    <p class="text-gray-400 text-sm">Advanced robotics, sustainable infrastructure, and global technological acceleration.</p>
-                </div>
-                <!-- Agri & Env Sci -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-bioGreen hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-leaf text-4xl text-bioGreen mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">Agriculture & Environmental Science</h3>
-                    <p class="text-gray-400 text-sm">Precision agriculture, climate modeling, and smart resource management systems.</p>
-                </div>
-                <!-- Fine Arts, Content & Crafts -->
-                <div class="glass-card p-6 rounded-xl group border-l-4 border-pink-500 hover:-translate-y-1 reveal">
-                    <i class="fa-solid fa-palette text-4xl text-pink-500 mb-3"></i>
-                    <h3 class="text-xl font-bold mb-1">Fine Arts, Content & Crafts</h3>
-                    <p class="text-gray-400 text-sm">Generative AI for creative industries, digital sculpting, and multimedia innovation.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. EXPERIMENTS/BLOGS SECTION (Real-time content feed) -->
-    <section id="experiments" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6 reveal">
-                <div>
-                    <h2 class="font-display text-4xl font-bold">Research Manifest</h2>
-                    <p class="text-gray-400 mt-2">Experiments, blogs, and notes powered by Raman's secure manifest.</p>
-                </div>
-                
-                <div class="w-full md:w-80 relative">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <i class="fa-solid fa-search text-gray-500"></i>
-                    </div>
-                    <input type="text" id="project-search" placeholder="Search title, domain, or keywords..." 
-                        class="glass-panel w-full pl-10 pr-4 py-2 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
-                </div>
-            </div>
-
-            <!-- Domain Filtering Tabs -->
-            <div id="domain-tabs" class="flex flex-wrap gap-2 md:gap-4 mb-10 border-b border-white/10 pb-4 reveal">
-                <button data-filter="All" class="tab-button active px-4 py-2 rounded-lg text-sm font-semibold text-white/80 border border-neonCyan bg-neonCyan/20 transition-colors">
-                    <i class="fa-solid fa-globe"></i> All
-                </button>
-            </div>
-
-            <div class="text-center py-16" id="loading-spinner">
-                <i class="fa-solid fa-spinner fa-spin text-4xl text-neonCyan mb-4"></i>
-                <p class="text-gray-400">Initializing secure content stream...</p>
-            </div>
-
-            <!-- Content Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                <!-- Project cards rendered here by JavaScript -->
-            </div>
-            
-            <div id="no-results" class="hidden text-center py-12">
-                <i class="fa-solid fa-robot text-4xl text-gray-600 mb-4"></i>
-                <p class="text-gray-400">No matching content found in the Manifest.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. FOOTER -->
-    <footer class="border-t border-white/10 py-12 bg-[#01040f]/50 reveal">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="font-display text-2xl font-bold mb-4">Raman<span class="text-neonCyan">AI Labs</span></h2>
-            <p class="text-gray-500 text-sm mb-6">&copy; 2025 Raman AI Labs. The standard of absolute excellence.</p>
-            <p class="text-sm text-electricPurple font-medium">Built to an UNBEATABLE, future-proof standard.</p>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Raman AI Labs. All Rights Reserved. | Absolute Excellence.</p>
         </div>
     </footer>
 
-
-    <script>
-        // --- CORE UNBEATABLE ARCHITECTURE (JavaScript) ---
-        
-        // Ensure firebase object is available from the module import above
-        const {
-            initializeApp, getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged, signInWithEmailAndPassword,
-            getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, setDoc,
-            Timestamp, setLogLevel, query 
-        } = window.firebase;
-
-        // --- GLOBAL CONSTANTS & INITIALIZATION ---
-        const contentDomains = [
-            "Data & AI", 
-            "World Tech", 
-            "Cyber Security", 
-            "Agriculture & Environmental Science", 
-            "Biotechnology & Biomedical", 
-            "Fine Arts, Content & Crafts"
-        ];
-        
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-raman-labs-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-
-        let app, db, auth;
-        let userId = null;
-        let isAdmin = false;
-
-        // UI Elements
-        const adminBtn = document.getElementById('admin-btn');
-        const adminBtnMobile = document.getElementById('admin-btn-mobile');
-        const adminModal = document.getElementById('admin-modal');
-        const closeAdminModal = document.getElementById('close-admin-modal');
-        const loginModal = document.getElementById('login-modal');
-        const loginForm = document.getElementById('login-form');
-        const loginError = document.getElementById('login-error');
-        const projectsGrid = document.getElementById('projects-grid');
-        const adminManifestList = document.getElementById('admin-manifest-list');
-        const contentForm = document.getElementById('content-form');
-        const contentViewModal = document.getElementById('content-view-modal');
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const domainTabsContainer = document.getElementById('domain-tabs');
-        const loadingSpinner = document.getElementById('loading-spinner');
-        const projectSearch = document.getElementById('project-search');
-
-        // --- UTILITY FUNCTIONS ---
-
-        // Exponential backoff for Firebase API calls
-        const withExponentialBackoff = async (fn, retries = 5, delay = 1000) => {
-            for (let i = 0; i < retries; i++) {
-                try {
-                    return await fn();
-                } catch (error) {
-                    if (i === retries - 1) throw error;
-                    // console.warn(`Retry attempt ${i + 1} failed. Retrying in ${delay}ms.`, error.message);
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2; // Exponential backoff
-                }
-            }
-        };
-
-        const markdownToHtml = (markdown) => {
-            // Very basic markdown to HTML for security and simplicity (prose compatibility)
-            let html = markdown
-                .replace(/^### (.*$)/gim, '<h3>$1</h3>')
-                .replace(/^## (.*$)/gim, '<h2>$1</h2>')
-                .replace(/^# (.*$)/gim, '<h1>$1</h1>')
-                .replace(/^\* (.*$)/gim, '<li>$1</li>')
-                .replace(/^\- (.*$)/gim, '<li>$1</li>')
-                .replace(/(\*\*|__)(.*?)\1/gim, '<strong>$2</strong>')
-                .replace(/(\*|_)(.*?)\1/gim, '<em>$2</em>');
-            
-            // Convert list items to ul/ol blocks if necessary (requires more complex regex for perfection, keeping simple here)
-            if (html.includes('<li>')) {
-                 html = `<ul>${html}</ul>`.replace(/<\/ul><li>/g, '<li>').replace(/<li><\/ul>/g, '</li></ul>');
-            }
-            
-            // Convert newlines to paragraphs
-            html = html.split('\n').map(p => p.trim() ? `<p>${p}</p>` : '').join('');
-            
-            return html;
-        };
-
-        const getPublicCollectionPath = () => `/artifacts/${appId}/public/data/manifest`;
-        const getPrivateCollectionPath = (uid) => `/artifacts/${appId}/users/${uid}/admin_content`;
-        
-        // --- UI RENDERING FUNCTIONS ---
-
-        const renderDomainTabs = () => {
-            domainTabsContainer.innerHTML = '';
-            
-            // All Button (mandatory)
-            const allButton = document.createElement('button');
-            allButton.className = 'tab-button px-4 py-2 rounded-lg text-sm font-semibold transition-colors border-neonCyan bg-neonCyan/20 text-white active';
-            allButton.setAttribute('data-filter', 'All');
-            allButton.innerHTML = '<i class="fa-solid fa-globe mr-1"></i> All';
-            domainTabsContainer.appendChild(allButton);
-
-            // Domain Buttons
-            contentDomains.forEach(domain => {
-                const button = document.createElement('button');
-                button.className = 'tab-button px-4 py-2 rounded-lg text-sm font-semibold text-gray-400 hover:text-white transition-colors border border-white/10 hover:border-neonCyan hover:bg-white/5';
-                button.setAttribute('data-filter', domain);
-                button.textContent = domain;
-                domainTabsContainer.appendChild(button);
-            });
-        };
-
-        const renderProjects = (projects) => {
-            projectsGrid.innerHTML = '';
-            loadingSpinner.classList.add('hidden');
-            document.getElementById('no-results').classList.toggle('hidden', projects.length > 0);
-
-            if (projects.length === 0) return;
-
-            projects.forEach(project => {
-                const card = document.createElement('div');
-                card.className = 'glass-card p-6 rounded-xl cursor-pointer hover:shadow-neonCyan/40 relative';
-                card.setAttribute('data-domain', project.domain);
-                card.onclick = () => showContentViewModal(project);
-
-                const domainColor = getDomainColor(project.domain);
-
-                card.innerHTML = `
-                    <div class="absolute top-0 left-0 w-1 h-full rounded-l-xl" style="background-color: ${domainColor};"></div>
-                    <span class="text-xs font-display uppercase tracking-wider ${domainColor === '#06b6d4' ? 'text-neonCyan' : 'text-white/80'}" style="color: ${domainColor};">${project.domain}</span>
-                    <h4 class="text-xl font-bold mt-2 mb-2 hover:text-neonCyan transition-colors">${project.title}</h4>
-                    <p class="text-gray-400 text-sm mb-4 line-clamp-2">${project.description}</p>
-                    <div class="flex items-center justify-between text-xs text-gray-500">
-                        <span><i class="fa-solid fa-calendar-alt mr-1"></i> ${new Date(project.timestamp.seconds * 1000).toLocaleDateString()}</span>
-                        <span class="text-electricPurple font-medium hover:underline">Read Manifest <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                    </div>
-                `;
-                projectsGrid.appendChild(card);
-            });
-            // Trigger scroll reveal after content is rendered
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight) {
-                    el.classList.add('active');
-                }
-            });
-        };
-        
-        const renderAdminManifest = (manifest) => {
-            adminManifestList.innerHTML = '';
-            document.getElementById('manifest-count').textContent = manifest.length;
-
-            if (manifest.length === 0) {
-                adminManifestList.innerHTML = '<p class="text-gray-500 text-center py-4">No content found. Start uploading your first experiment!</p>';
-                return;
-            }
-
-            manifest.forEach(item => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'glass-panel p-4 rounded-lg flex justify-between items-center';
-                const statusColor = item.visible ? 'bioGreen' : 'criticalRed';
-
-                itemDiv.innerHTML = `
-                    <div>
-                        <h4 class="text-lg font-bold">${item.title}</h4>
-                        <p class="text-xs text-gray-400">${item.domain} | <span class="text-${statusColor} font-medium">${item.visible ? 'Public' : 'Hidden'}</span></p>
-                    </div>
-                    <div class="flex space-x-2">
-                        <button data-id="${item.id}" class="edit-btn px-3 py-1 bg-neonCyan/20 text-neonCyan rounded text-xs hover:bg-neonCyan/40 transition-colors">
-                            <i class="fa-solid fa-edit"></i> Edit
-                        </button>
-                        <button data-id="${item.id}" class="delete-btn px-3 py-1 bg-criticalRed/20 text-criticalRed rounded text-xs hover:bg-criticalRed/40 transition-colors">
-                            <i class="fa-solid fa-trash"></i> Delete
-                        </button>
-                    </div>
-                `;
-                adminManifestList.appendChild(itemDiv);
-            });
-            
-            // Reattach event listeners to new buttons
-            document.querySelectorAll('.edit-btn').forEach(btn => btn.addEventListener('click', handleEdit));
-            document.querySelectorAll('.delete-btn').forEach(btn => btn.addEventListener('click', handleDelete));
-        };
-        
-        const getDomainColor = (domain) => {
-            switch (domain) {
-                case "Data & AI": return '#06b6d4'; // neonCyan
-                case "Cyber Security": return '#ef4444'; // criticalRed
-                case "Biotechnology & Biomedical": return '#3b82f6'; // blue
-                case "World Tech": return '#facc15'; // saturnGold
-                case "Agriculture & Environmental Science": return '#10b981'; // bioGreen
-                case "Fine Arts, Content & Crafts": return '#ec4899'; // pink
-                default: return '#8b5cf6'; // electricPurple (fallback)
-            }
-        }
-        
-        // --- MODAL HANDLERS ---
-        
-        const showLoginModal = () => {
-            loginModal.classList.remove('hidden');
-            loginModal.classList.add('flex', 'opacity-0');
-            setTimeout(() => loginModal.classList.add('opacity-100'), 10);
-        };
-        
-        const hideLoginModal = () => {
-            loginModal.classList.remove('opacity-100');
-            setTimeout(() => loginModal.classList.remove('flex', 'opacity-0', 'flex'), 300);
-            setTimeout(() => loginModal.classList.add('hidden'), 300);
-            loginForm.reset();
-            loginError.classList.add('hidden');
-        };
-
-        const showAdminModal = () => {
-            adminModal.classList.remove('hidden');
-            adminModal.classList.add('flex', 'opacity-0');
-            setTimeout(() => adminModal.classList.add('opacity-100'), 10);
-        };
-        
-        const hideAdminModal = () => {
-            adminModal.classList.remove('opacity-100');
-            setTimeout(() => adminModal.classList.remove('flex', 'opacity-0', 'flex'), 300);
-            setTimeout(() => adminModal.classList.add('hidden'), 300);
-            resetContentForm();
-        };
-
-        const showContentViewModal = (project) => {
-            document.getElementById('content-view-title').textContent = project.title;
-            document.getElementById('content-view-date').textContent = `Published: ${new Date(project.timestamp.seconds * 1000).toLocaleDateString()}`;
-            document.getElementById('content-view-domain').textContent = project.domain;
-            const domainColor = getDomainColor(project.domain);
-            document.getElementById('content-view-domain').style.color = domainColor;
-            
-            document.getElementById('content-view-body').innerHTML = markdownToHtml(project.body);
-
-            contentViewModal.classList.remove('hidden');
-            contentViewModal.classList.add('flex', 'opacity-0');
-            setTimeout(() => contentViewModal.classList.add('opacity-100'), 10);
-        };
-        
-        const hideContentViewModal = () => {
-            contentViewModal.classList.remove('opacity-100');
-            setTimeout(() => contentViewModal.classList.remove('flex', 'opacity-0', 'flex'), 300);
-            setTimeout(() => contentViewModal.classList.add('hidden'), 300);
-        };
-
-        // --- FIREBASE AND AUTHENTICATION LOGIC ---
-
-        const initializeFirebase = async () => {
-            try {
-                if (Object.keys(firebaseConfig).length === 0) {
-                    // console.error("Firebase config is empty. Cannot initialize.");
-                    return;
-                }
-                
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                
-                // Set Firestore logging to debug
-                setLogLevel('error');
-                
-                // Secure Authentication Flow
-                const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-                
-                if (initialAuthToken) {
-                    await withExponentialBackoff(() => signInWithCustomToken(auth, initialAuthToken));
-                } else {
-                    await withExponentialBackoff(() => signInAnonymously(auth));
-                }
-                
-            } catch (error) {
-                console.error("Firebase Initialization or Auth Failed:", error);
-            }
-        };
-
-        const setupAuthListener = () => {
-            onAuthStateChanged(auth, (user) => {
-                if (user) {
-                    userId = user.uid;
-                    // Raman's specific, highly privileged UID check for Admin role.
-                    // THIS IS ONLY FOR UI, server-side rules (not shown) enforce security.
-                    // For this environment, we'll assume a specific UID or email check (if we had access to the full list). 
-                    // Since we can't check a specific email/UID directly without exposing it, we rely on the
-                    // `onAuthStateChanged` handler being the only time we check. 
-                    // Let's use a dummy check for "Raman" access.
-                    // In a real app, this would be a secure check against an ACL in Firestore.
-                    
-                    // The standard Canvas auth token gives a consistent UID. We will use a dedicated external login for 'Admin'.
-                    // For demo purposes, the admin state will be toggled manually after the dedicated login.
-                    
-                    // Start listening to public data immediately upon auth readiness
-                    setupPublicContentListener();
-                } else {
-                    userId = null;
-                }
-            });
-        };
-        
-        // --- DATA LISTENERS ---
-
-        const setupPublicContentListener = () => {
-            if (!db) return;
-            
-            const q = query(collection(db, getPublicCollectionPath()));
-            
-            onSnapshot(q, (snapshot) => {
-                const projects = [];
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    // Only show items marked visible
-                    if (data.visible) {
-                        projects.push({ id: doc.id, ...data });
-                    }
-                });
-                // Sort by latest timestamp
-                projects.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
-                renderProjects(projects);
-                setupFiltering(projects); // Setup search and filtering based on initial load
-            }, (error) => {
-                console.error("Error listening to public manifest:", error);
-                loadingSpinner.innerHTML = '<p class="text-criticalRed">Failed to load content manifest. Check console for details.</p>';
-            });
-        };
-        
-        const setupAdminContentListener = () => {
-             if (!db || !userId) return;
-             
-             // The admin data is stored in the specific user's private path
-             const adminCollectionPath = getPrivateCollectionPath(userId);
-             const q = query(collection(db, adminCollectionPath));
-
-             onSnapshot(q, (snapshot) => {
-                const manifest = [];
-                snapshot.forEach(doc => {
-                    manifest.push({ id: doc.id, ...doc.data() });
-                });
-                manifest.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
-                renderAdminManifest(manifest);
-            }, (error) => {
-                console.error("Error listening to admin manifest:", error);
-                document.getElementById('loading-manifest').textContent = 'Error loading admin manifest.';
-            });
-        };
-
-
-        // --- CRUD OPERATIONS (Admin Only) ---
-        
-        let currentEditingItem = null;
-
-        const resetContentForm = () => {
-            contentForm.reset();
-            document.getElementById('content-id').value = '';
-            document.getElementById('form-title').textContent = 'Add New Content Manifest';
-            document.getElementById('save-content-btn').innerHTML = '<i class="fa-solid fa-save mr-2"></i> Save to Private Manifest';
-            document.getElementById('cancel-edit-btn').classList.add('hidden');
-            currentEditingItem = null;
-        };
-
-        const handleContentSave = async (e) => {
-            e.preventDefault();
-            
-            if (!isAdmin || !userId) {
-                alert('Access Denied: Admin privileges required.');
-                return;
-            }
-
-            const title = document.getElementById('content-title').value;
-            const description = document.getElementById('content-desc').value;
-            const domain = document.getElementById('content-domain').value;
-            const body = document.getElementById('content-body').value;
-            const visible = document.getElementById('content-visible').checked;
-            const contentId = document.getElementById('content-id').value;
-            
-            if (!title || !description || !domain || !body) return;
-
-            const contentData = {
-                title,
-                description,
-                domain,
-                body,
-                visible,
-                timestamp: Timestamp.now(),
-                authorId: userId
-            };
-            
-            const adminCollectionRef = collection(db, getPrivateCollectionPath(userId));
-            
-            try {
-                if (contentId) {
-                    // Update operation
-                    await withExponentialBackoff(() => updateDoc(doc(adminCollectionRef, contentId), contentData));
-                } else {
-                    // Add operation
-                    await withExponentialBackoff(() => addDoc(adminCollectionRef, contentData));
-                }
-                
-                // Content synchronization:
-                // For a truly secure, production setup, a Cloud Function/backend trigger would handle moving the data from the private 
-                // (admin) collection to the public collection upon save and visibility approval.
-                // For this single-file environment, we update the public document immediately after the private one.
-                
-                const publicDocRef = doc(db, getPublicCollectionPath(), contentId || (await withExponentialBackoff(() => addDoc(adminCollectionRef, contentData))).id);
-                await withExponentialBackoff(() => setDoc(publicDocRef, contentData, { merge: true }));
-                
-                resetContentForm();
-                // Custom confirmation message box instead of alert
-                // (No time to implement full custom modal, console confirmation used for now to meet no-alert rule)
-                console.log(`Content ${contentId ? 'updated' : 'added'} successfully and synchronized to public manifest.`);
-
-            } catch (error) {
-                console.error(`Error saving content:`, error);
-                alert(`Error saving content: ${error.message}`); // Use custom modal in real life
-            }
-        };
-
-        const handleEdit = (e) => {
-            const id = e.currentTarget.getAttribute('data-id');
-            const item = Array.from(adminManifestList.querySelectorAll('.edit-btn')).find(btn => btn.getAttribute('data-id') === id);
-            
-            if (item) {
-                // Find the item data from the manifest listener (requires better state management, but for single-file, we'll rely on the form for current data)
-                // In a real app, you would fetch the doc by ID or retrieve it from an in-memory state array.
-                // Since we can't reliably get the full data from the list, we assume the user fills it out again or we pre-load it:
-                
-                // Let's perform a direct read (slower, but safer in this stateless environment)
-                const adminDocRef = doc(db, getPrivateCollectionPath(userId), id);
-                withExponentialBackoff(() => firebase.getDoc(adminDocRef)).then(docSnap => {
-                    if (docSnap.exists()) {
-                        const data = docSnap.data();
-                        document.getElementById('content-id').value = id;
-                        document.getElementById('content-title').value = data.title;
-                        document.getElementById('content-desc').value = data.description;
-                        document.getElementById('content-domain').value = data.domain;
-                        document.getElementById('content-body').value = data.body;
-                        document.getElementById('content-visible').checked = data.visible;
-
-                        document.getElementById('form-title').textContent = `Editing: ${data.title}`;
-                        document.getElementById('save-content-btn').innerHTML = '<i class="fa-solid fa-sync-alt mr-2"></i> Update Manifest';
-                        document.getElementById('cancel-edit-btn').classList.remove('hidden');
-                    } else {
-                        console.error("Document not found for editing.");
-                    }
-                }).catch(e => console.error("Error fetching document for edit:", e));
-            }
-        };
-
-        const handleDelete = async (e) => {
-            if (!isAdmin || !userId) {
-                alert('Access Denied: Admin privileges required.');
-                return;
-            }
-            
-            // Custom confirmation required (No alert/confirm)
-            if (!window.confirm('Are you sure you want to permanently delete this content? This action is irreversible.')) return; 
-
-            const id = e.currentTarget.getAttribute('data-id');
-            const adminDocRef = doc(db, getPrivateCollectionPath(userId), id);
-            const publicDocRef = doc(db, getPublicCollectionPath(), id);
-
-            try {
-                // Delete from Admin (Private) collection
-                await withExponentialBackoff(() => deleteDoc(adminDocRef));
-                // Delete from Public collection for sync
-                await withExponentialBackoff(() => deleteDoc(publicDocRef));
-                
-                console.log(`Content ID ${id} deleted successfully from both manifests.`);
-            } catch (error) {
-                console.error("Error deleting content:", error);
-                alert(`Error deleting content: ${error.message}`); // Use custom modal in real life
-            }
-        };
-        
-        // --- FILTERING AND SEARCH ---
-        
-        const setupFiltering = (allProjects) => {
-            let currentFilter = 'All';
-            let currentSearchTerm = '';
-            
-            const filterAndRender = () => {
-                let filtered = allProjects;
-                
-                // 1. Domain Filter
-                if (currentFilter !== 'All') {
-                    filtered = filtered.filter(p => p.domain === currentFilter);
-                }
-                
-                // 2. Search Filter
-                if (currentSearchTerm) {
-                    const searchLower = currentSearchTerm.toLowerCase();
-                    filtered = filtered.filter(p => 
-                        p.title.toLowerCase().includes(searchLower) ||
-                        p.description.toLowerCase().includes(searchLower) ||
-                        p.domain.toLowerCase().includes(searchLower) ||
-                        p.body.toLowerCase().includes(searchLower)
-                    );
-                }
-                
-                renderProjects(filtered);
-            };
-
-            // Event Listener for Tabs
-            document.querySelectorAll('.tab-button').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    document.querySelectorAll('.tab-button').forEach(btn => {
-                        btn.classList.remove('active', 'bg-neonCyan/20', 'text-white');
-                        btn.classList.add('text-gray-400', 'hover:text-white', 'border-white/10', 'hover:border-neonCyan', 'hover:bg-white/5');
-                    });
-                    
-                    e.currentTarget.classList.add('active', 'bg-neonCyan/20', 'text-white');
-                    e.currentTarget.classList.remove('text-gray-400', 'border-white/10', 'hover:border-neonCyan', 'hover:bg-white/5');
-
-                    currentFilter = e.currentTarget.getAttribute('data-filter');
-                    filterAndRender();
-                });
-            });
-            
-            // Event Listener for Search
-            projectSearch.addEventListener('input', (e) => {
-                currentSearchTerm = e.target.value.trim();
-                filterAndRender();
-            });
-            
-            // Initial filter call (shows all)
-            filterAndRender(); 
-        };
-        
-
-        // --- GENERAL EVENT LISTENERS ---
-        
-        // Admin Access Trigger (requires login)
-        adminBtn.addEventListener('click', showLoginModal);
-        adminBtnMobile.addEventListener('click', showLoginModal);
-        
-        // Close Modals
-        closeAdminModal.addEventListener('click', hideAdminModal);
-        document.getElementById('close-content-view').addEventListener('click', hideContentViewModal);
-        document.getElementById('cancel-edit-btn').addEventListener('click', resetContentForm);
-        
-        // Form Submit Handlers
-        contentForm.addEventListener('submit', handleContentSave);
-        
-        // Login Handler (SECURE - Raman Only)
-        loginForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const email = document.getElementById('login-email').value.trim();
-            const password = document.getElementById('login-password').value.trim();
-            loginError.classList.add('hidden');
-
-            // Hardcoded "Raman" Auth Check (In a real app, this would be a secure, hashed credential check)
-            // For the secure intent, we'll use a placeholder secret check.
-            const RAMAN_EMAIL = "raman@ailabs.ai"; // Placeholder for Raman's exclusive email
-            const RAMAN_SECRET = "UnbeatableAccessKey"; // Placeholder for Raman's secret
-
-            if (email === RAMAN_EMAIL && password === RAMAN_SECRET) {
-                // Successful Auth for Demo: Toggle Admin State
-                isAdmin = true; 
-                adminBtn.classList.remove('hidden');
-                adminBtnMobile.classList.remove('hidden');
-                hideLoginModal();
-                showAdminModal();
-                setupAdminContentListener(); // Start listening to admin data
-                console.log("Admin Access Granted.");
-                return;
-            }
-            
-            // Attempt Firebase Auth (if the user set up email/pass via console)
-            try {
-                // NOTE: We wrap the standard auth attempt but we prioritize the special, hidden check above for the "Raman Only" access goal.
-                // Standard Firebase login for other admins (if applicable)
-                const userCredential = await withExponentialBackoff(() => signInWithEmailAndPassword(auth, email, password));
-                
-                // If standard login succeeds:
-                isAdmin = true; 
-                adminBtn.classList.remove('hidden');
-                adminBtnMobile.classList.remove('hidden');
-                hideLoginModal();
-                showAdminModal();
-                setupAdminContentListener();
-                
-            } catch (error) {
-                loginError.textContent = "Authentication Failed. Protocol Violation.";
-                loginError.classList.remove('hidden');
-                console.error("Admin login failed:", error);
-            }
-        });
-
-        // Mobile Menu Toggle
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = document.getElementById('mobile-icon');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            }
-        });
-        document.querySelectorAll('.mobile-nav-link').forEach(link => {
-             link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-        });
-
-
-        // Global Scroll/Reveal Effects
-        const handleScroll = () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            
-            document.querySelectorAll('.reveal').forEach(el => {
-                if (el.getBoundingClientRect().top < window.innerHeight - 100) {
-                    el.classList.add('active');
-                }
-            });
-        };
-        
-        // --- INITIALIZATION ---
-        window.addEventListener('scroll', handleScroll);
-        
-        window.onload = async () => {
-            // Initial render of tabs
-            renderDomainTabs();
-            // Start Auth flow
-            await initializeFirebase();
-            setupAuthListener();
-            handleScroll(); // Check for reveal on load
-        };
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
