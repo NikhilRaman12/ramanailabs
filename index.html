@@ -3,58 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raman AI Labs | Absolute Excellence in R&D</title>
+    <meta name="description" content="Raman AI Labs: The nexus of next-generation research in AI, Cybersecurity, and Biotechnology. Unbeatable performance, absolute security.">
     
-    <title>RamanAilabs | Galactic AI Convergence Engine | Code=[***//unbeatable//***]</title>
-    <meta name="description" content="The ultimate, unbeatable AI lab. Converging Data, Genomics, Arts, and Technology across all planets, galaxies, and time. Never Before • Ever After.">
-    <meta name="author" content="Raman, The Torchbearer">
-    <meta name="keywords" content="Galactic AI, Planetary Tech, Genomics, Mars, Jupiter, Saturn, Unbeatable, Code, Deep Learning, Nexus">
+    <!-- Pre-connect for fastest loading -->
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     
-    <meta property="og:title" content="RamanAilabs | The UNBEATABLE Nexus (Galactic)">
-    <meta property="og:description" content="Witness the Oceanic Depth of AI, secured by the code: //unbeatable//. Operational across all known coordinates.">
-    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
+    <!-- Font Awesome Icons (Zero-lag rendering) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Three.js for 3D Background (Subtle Neural Field) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Fonts: Inter (Content) & Orbitron (Display/Tech) -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
 
+    <!-- Firebase SDK Imports -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, doc, collection, onSnapshot, 
+            addDoc, updateDoc, deleteDoc, query, setDoc, 
+            Timestamp, orderBy, getDocs, where, limit, 
+            setLogLevel 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // IMPORTANT: Initialize Firebase globals
+        window.firebase = {
+            initializeApp, getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged,
+            getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, query, setDoc,
+            Timestamp, orderBy, getDocs, where, limit, setLogLevel
+        };
+    </script>
+
     <script>
-        // Ensure Tailwind config is universally accessible
+        // --- Tailwind Custom Configuration for Ultimate Aesthetics ---
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
-                        deepOcean: '#020617',
-                        neonCyan: '#06b6d4',
-                        electricPurple: '#8b5cf6',
-                        bioGreen: '#10b981',
+                        deepOcean: '#01040f', // Base background (professional dark)
+                        neonCyan: '#06b6d4', // Primary Accent
+                        electricPurple: '#8b5cf6', // Secondary Accent
+                        bioGreen: '#10b981', 
                         surface: 'rgba(30, 41, 59, 0.7)',
-                        galacticRed: '#ef4444', // For Mars/Jupiter themes
-                        saturnGold: '#facc15'
+                        criticalRed: '#ef4444', 
+                        saturnGold: '#facc15' 
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         display: ['Orbitron', 'sans-serif'],
                     },
                     animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 3s ease-in-out infinite alternate',
-                        'spin-slow': 'spin 10s linear infinite',
                         'pulse-neon': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'shimmer': 'shimmer 2s infinite linear',
                     },
                     keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 10px rgba(6, 182, 212, 0.2)' },
-                            '100%': { boxShadow: '0 0 30px rgba(6, 182, 212, 0.6)' },
-                        },
-                        fadeIn: {
-                            '0%': { opacity: 0, transform: 'translateY(10px)' },
-                            '100%': { opacity: 1, transform: 'translateY(0)' },
+                        shimmer: {
+                            '0%': { 'background-position': '-1000px 0' },
+                            '100%': { 'background-position': '1000px 0' },
                         }
                     }
                 }
@@ -63,14 +77,14 @@
     </script>
 
     <style>
-        /* Core Galactic Styles */
+        /* Core System Styles for Zero-Lag Rendering */
         body {
-            background-color: #020617;
+            background-color: #01040f;
             color: white;
             overflow-x: hidden;
+            min-height: 100vh;
         }
         
-        /* Canvas Background (Universal Energy Field) */
         #neural-canvas {
             position: fixed;
             top: 0;
@@ -78,10 +92,10 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            background: radial-gradient(circle at center, #0f172a 0%, #01040f 100%); 
         }
 
-        /* Glassmorphism (Dimensional Transparency) */
+        /* Glassmorphism: Clean Aesthetic */
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(16px);
@@ -97,10 +111,10 @@
         }
 
         .glass-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-3px) scale(1.005);
             background: linear-gradient(145deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
             border-color: #06b6d4;
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.2);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.3);
         }
 
         .text-gradient {
@@ -109,754 +123,827 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* Scroll Animations */
+        /* Scroll Reveal for Smoothness (Mobile Optimized) */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #020617;
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: opacity 0.5s ease-out;
+        /* Nav Bar Scroll Effect */
+        #navbar.scrolled {
+            background: rgba(1, 4, 15, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Unbeatable Cursor Blink Style */
-        .cursor-blink {
-            animation: pulse-neon 1s infinite;
-        }
-        
-        /* Tab Interaction Styles (Perfected) */
-        .tab-button {
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-        }
-        .tab-button.active {
-            color: #06b6d4; /* neonCyan */
-            border-bottom-color: #06b6d4;
-            background: rgba(6, 182, 212, 0.1);
-        }
-
-        /* Hidden JSON container */
-        #unbeatable-content-manifest {
-            display: none;
-            /* In a production server setup, this would be an external API call */
+        /* Admin Console Modal */
+        #admin-modal {
+            transition: opacity 0.3s ease-in-out;
         }
     </style>
 </head>
-<body class="antialiased selection:bg-neonCyan selection:text-black">
+<body class="antialiased">
 
-    <div id="preloader">
-        <div class="text-center">
-            <i class="fa-solid fa-satellite-dish text-6xl text-neonCyan animate-spin-slow mb-4"></i>
-            <h2 class="font-display text-xl tracking-widest text-white animate-pulse">
-                INITIALIZING GALACTIC NEXUS... <span class="text-electricPurple">CODE=[***//unbeatable//***]</span>
-            </h2>
-        </div>
-    </div>
-
+    <!-- *** THREE.JS CANVAS (Universal Energy Field Background) *** -->
     <canvas id="neural-canvas"></canvas>
 
-    <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 glass-panel transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <a href="#" class="flex items-center gap-3 group">
-                    <i class="fa-solid fa-flask-vial text-neonCyan text-3xl animate-spin-slow group-hover:text-electricPurple transition-colors"></i>
-                    <span class="font-display font-bold text-2xl tracking-wider text-white">Raman<span class="text-neonCyan group-hover:text-white transition-colors">Ailabs</span></span>
+    <!-- *** NAVIGATION BAR (Flawless Responsiveness) *** -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-300 h-20 flex items-center" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex items-center justify-between">
+                <a href="#home" class="flex items-center gap-3 group">
+                    <i class="fa-solid fa-flask-vial text-neonCyan text-3xl animate-pulse group-hover:text-electricPurple transition-colors"></i>
+                    <span class="font-display font-bold text-2xl tracking-wider text-white">Raman<span class="text-neonCyan group-hover:text-white transition-colors">AI Labs</span></span>
                 </a>
                 
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Nexus Home</a>
-                        <a href="#vision" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Convergence Engine</a>
-                        <a href="#projects" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Experiments & Blogs</a>
-                        <button id="admin-login-btn" class="text-gray-500 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">
-                            <i class="fa-solid fa-lock text-galacticRed"></i> Admin Log
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#domains" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Research Domains</a>
+                        <a href="#experiments" class="hover:text-neonCyan transition-colors px-3 py-2 text-sm font-medium">Experiments</a>
+                        
+                        <!-- Admin Button - Hidden by default, shown on successful auth -->
+                        <button id="admin-btn" class="hidden px-4 py-2 rounded-full border border-electricPurple/50 text-electricPurple hover:bg-electricPurple/10 transition-all duration-300 font-bold text-sm">
+                            <i class="fa-solid fa-lock text-electricPurple"></i> Admin Console
                         </button>
-                        <a href="#connect" class="px-5 py-2 rounded-full bg-neonCyan/10 border border-neonCyan/50 text-neonCyan hover:bg-neonCyan hover:text-black transition-all duration-300 font-bold">Connect</a>
                     </div>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white hover:text-neonCyan focus:outline-none p-2">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                        <i class="fa-solid fa-bars text-2xl" id="mobile-icon"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 absolute w-full">
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 absolute w-full top-20">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
-                <a href="#home" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Nexus Home</a>
-                <a href="#vision" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Convergence Engine</a>
-                <a href="#projects" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Experiments & Blogs</a>
-                <button id="admin-login-btn-mobile" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium text-gray-400">
-                     <i class="fa-solid fa-lock"></i> Admin Log
+                <a href="#home" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Home</a>
+                <a href="#domains" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Research Domains</a>
+                <a href="#experiments" class="mobile-nav-link block px-3 py-3 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Experiments</a>
+                <button id="admin-btn-mobile" class="hidden mobile-nav-link block px-3 py-3 text-center w-full rounded-md text-base font-medium text-electricPurple font-bold">
+                    <i class="fa-solid fa-lock"></i> Admin Console
                 </button>
-                <a href="#connect" class="block px-3 py-4 text-center w-full text-neonCyan font-bold">Connect Now</a>
             </div>
         </div>
     </nav>
 
-    <div id="admin-panel" class="fixed top-0 left-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[60] hidden flex items-center justify-center transition-all duration-500">
-        <div class="glass-card p-8 md:p-12 rounded-2xl max-w-lg w-11/12 text-center border-galacticRed/50 border shadow-2xl shadow-galacticRed/20">
-            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-galacticRed flex items-center justify-center gap-3">
-                <i class="fa-solid fa-satellite-dish text-electricPurple"></i> Galactic Nexus Access
-            </h2>
-            <p class="text-gray-400 mb-8">Enter the **unbeatable** code. Access is logged and encrypted across all planetary nodes.</p>
-            
-            <input type="password" id="unbeatable-code-input" placeholder="Enter Code=[***//unbeatable//***]"
-                class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-electricPurple focus:ring-1 focus:ring-electricPurple mb-6 transition-all duration-300">
-            
-            <button id="verify-code-btn" class="w-full px-8 py-3 bg-electricPurple hover:bg-electricPurple/80 text-white font-bold rounded-lg transition-all duration-300 shadow-md shadow-electricPurple/30">
-                Verify and Unlock Lab Console
-            </button>
-
-            <div id="console-area" class="mt-8 hidden text-left border-t border-white/10 pt-4">
-                <h3 class="text-xl font-bold text-bioGreen mb-4">🔬 Lab Console: Secure Manifest Upload</h3>
-                <p class="text-sm text-gray-400 mb-4">You can now update content by securely editing and uploading the **JSON Manifest file** only. Code remains untouched.</p>
-                
-                <div class="space-y-4">
-                    <div class="bg-black/20 p-4 rounded-lg">
-                        <label for="upload-content" class="block text-gray-300 font-semibold mb-2">Upload NEW JSON Manifest (.json)</label>
-                        <input type="file" id="upload-content" accept=".json" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-saturnGold/20 file:text-saturnGold hover:file:bg-saturnGold/30"/>
-                    </div>
-
-                    <div class="bg-black/20 p-4 rounded-lg">
-                        <button id="preview-btn" class="w-full px-4 py-2 bg-neonCyan/80 hover:bg-neonCyan/70 text-black font-bold rounded-lg transition-all duration-300 mb-2">
-                            1. Preview Content Manifest (Sandbox)
-                        </button>
-                        <button id="security-scan-btn" class="w-full px-4 py-2 bg-galacticRed hover:bg-galacticRed/80 text-white font-bold rounded-lg transition-all duration-300">
-                            2. AI Cyber Threat Observance Scan
-                        </button>
-                        <p id="scan-status" class="text-sm mt-2 text-red-400 hidden">Awaiting Scan...</p>
-                    </div>
-
-                    <button id="finalize-upload-btn" class="w-full px-4 py-3 bg-bioGreen hover:bg-bioGreen/80 text-black font-bold rounded-lg transition-all duration-300">
-                        3. Finalize and PUSH Update to All Nodes
-                    </button>
-                </div>
+    <!-- *** ADMIN MANAGEMENT MODAL (Content Upload System) *** -->
+    <div id="admin-modal" class="fixed top-0 left-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[60] hidden items-center justify-center opacity-0 transition-opacity">
+        <div class="glass-card p-6 md:p-8 rounded-2xl max-w-4xl w-11/12 border-neonCyan/50 border shadow-2xl shadow-neonCyan/20 overflow-auto max-h-[90vh]">
+            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                <h2 class="font-display text-3xl font-bold text-neonCyan flex items-center gap-3">
+                    <i class="fa-solid fa-terminal text-electricPurple"></i> Secure Content Management System
+                </h2>
+                <button id="close-admin-modal" class="text-gray-400 hover:text-white transition-colors text-2xl">
+                    <i class="fa-solid fa-times"></i>
+                </button>
             </div>
 
-            <button id="close-admin-btn" class="mt-6 text-gray-500 hover:text-white transition-colors text-sm">Close Console</button>
+            <!-- Add/Edit Form -->
+            <div class="mb-8">
+                <h3 class="text-xl font-bold mb-4 text-bioGreen" id="form-title">Add New Experiment/Blog Post</h3>
+                <form id="content-form" class="space-y-4">
+                    <input type="hidden" id="content-id">
+                    <input type="text" id="content-title" placeholder="Title of Experiment/Blog" required
+                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
+                    
+                    <textarea id="content-desc" placeholder="A concise summary (max 2 lines for card display)" rows="2" required
+                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all"></textarea>
+                    
+                    <select id="content-domain" required
+                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all appearance-none">
+                        <option value="" disabled selected>Select Research Domain</option>
+                        <option value="Data & AI">Data & AI</option>
+                        <option value="World Tech">World Tech</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Agriculture & Environmental Science">Agriculture & Environmental Science</option>
+                        <option value="Biotechnology & Biomedical">Biotechnology & Biomedical</option>
+                        <option value="Fine Arts, Content & Crafts">Fine Arts, Content & Crafts</option>
+                        <option value="Neuroscience & Cognitive Computing">Neuroscience & Cognitive Computing</option>
+                        <option value="Advanced Materials & Nanotechnology">Advanced Materials & Nanotechnology</option>
+                    </select>
+                    
+                    <textarea id="content-body" placeholder="Full Content/Details (Markdown compatible)" rows="8" required
+                        class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all"></textarea>
+
+                    <button type="submit" id="save-content-btn" class="w-full px-8 py-3 bg-bioGreen hover:bg-bioGreen/80 text-black font-bold rounded-lg transition-all duration-300 shadow-lg shadow-bioGreen/30">
+                        <i class="fa-solid fa-save mr-2"></i> Save to Private Manifest
+                    </button>
+                    <button type="button" id="cancel-edit-btn" class="w-full px-8 py-3 mt-2 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-lg transition-all duration-300 hidden">
+                        Cancel Edit
+                    </button>
+                </form>
+            </div>
+
+            <!-- Existing Content List (Real-Time Display) -->
+            <div>
+                <h3 class="text-xl font-bold mb-4 text-saturnGold">Current Manifests (<span id="manifest-count">0</span>)</h3>
+                <div id="admin-manifest-list" class="space-y-3">
+                    <p class="text-gray-500 text-center py-4" id="loading-manifest">Loading secure manifest...</p>
+                    <!-- Content items will be listed here -->
+                </div>
+            </div>
         </div>
     </div>
-    <script id="unbeatable-content-manifest" type="application/json">
-        [
-            {
-                "domain": "Genomics",
-                "title": "Deep Sequence: DNA Prediction Model (Mars Strain)",
-                "desc": "Using Transformers to predict gene expression levels in extremophile crops for Martian colonization.",
-                "date": "Oct 2025",
-                "color": "border-blue-500",
-                "planet": "Mars"
-            },
-            {
-                "domain": "Arts",
-                "title": "The Neural Symphony (GAN) - Saturn Rings Edition",
-                "desc": "A generative adversarial network composing classical music based on the gravitational harmonics of Saturn's rings.",
-                "date": "Sep 2025",
-                "color": "border-purple-500",
-                "planet": "Saturn"
-            },
-            {
-                "domain": "Medical",
-                "title": "RetinaScan Vision V2 (Deep Space Anomaly Check)",
-                "desc": "Early detection of radiation-induced retinal anomalies using lightweight CNNs for long-haul space missions.",
-                "date": "Aug 2025",
-                "color": "border-green-500",
-                "planet": "Earth"
-            },
-            {
-                "domain": "Planetary",
-                "title": "Jupiter Atmospheric Dynamics ML Model",
-                "desc": "Predicting the velocity and stability of Jupiter's Great Red Spot using real-time LLM-driven atmospheric simulations.",
-                "date": "July 2025",
-                "color": "border-red-500",
-                "planet": "Jupiter"
-            },
-            {
-                "domain": "AgriTech",
-                "title": "Predictive Crop Yield AI (Lunar Greenhouse)",
-                "desc": "Optimizing nutrient delivery and photon synthesis for enclosed, low-gravity lunar farming environments.",
-                "date": "June 2025",
-                "color": "border-yellow-500",
-                "planet": "Moon Base"
-            },
-            {
-                "domain": "Arts",
-                "title": "Synthetic Persona Acting (Holographic Projection)",
-                "desc": "Creating hyper-realistic, emotionally resonant holographic personas for deep-space entertainment and crew psychology.",
-                "date": "May 2025",
-                "color": "border-pink-500",
-                "planet": "Earth"
-            },
-            {
-                "domain": "Planetary",
-                "title": "Exo-Planet Data Stream Analysis",
-                "desc": "Autonomous resource distribution algorithms tested for efficiency on simulated Martian environments.",
-                "date": "Apr 2025",
-                "color": "border-cyan-500",
-                "planet": "Beyond"
-            },
-            {
-                "domain": "Medical",
-                "title": "Micro-Organism Identification (Sub-Oceanic Bio-Lab)",
-                "desc": "Rapid classification of microscopic entities for pharmaceutical research in extreme Earth-based environments.",
-                "date": "Mar 2025",
-                "color": "border-indigo-500",
-                "planet": "Earth"
-            }
-        ]
-    </script>
     
-    <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-4 reveal">
+    <!-- *** MAIN CONTENT SECTIONS *** -->
+
+    <!-- 1. HOME/HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-32 pb-16 px-4 reveal">
         <div class="text-center z-10 max-w-5xl mx-auto">
             <div class="inline-block px-4 py-1 mb-6 rounded-full border border-saturnGold/50 bg-saturnGold/5 backdrop-blur-sm hover:border-saturnGold transition-colors duration-300">
-                <span class="text-saturnGold text-sm font-display tracking-widest uppercase">Never Before • Ever After</span>
+                <span class="text-saturnGold text-sm font-display tracking-widest uppercase">The Nexus of Absolute Excellence in R&D</span>
             </div>
             
             <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-black mb-6 leading-tight">
-                The <span class="text-gradient">Galactic Nexus</span><br>
-                of Artificial Intelligence
+                <span class="text-gradient">Raman AI Labs</span><br>
+                Next-Generation Research
             </h1>
             
             <p class="text-xl md:text-2xl text-gray-400 mb-10 max-w-3xl mx-auto font-light">
-                The torchbearer of intelligence. Converging Data, Genomics, Arts, and Technology across the cosmos.
+                Engineering intelligent systems and solutions for a secure, advanced, and sustainable future.
             </p>
 
-            <div class="h-12 mb-12 flex justify-center items-center">
-                <span id="typewriter" class="text-2xl md:text-3xl font-display text-white"></span><span class="cursor-blink text-3xl text-neonCyan">|</span>
-            </div>
+            <!-- Call-to-Action Section -->
+            <p class="text-lg md:text-xl text-white font-bold mb-12">
+                “<span class="text-neonCyan">Join the AI Revolution</span> — Powered by <span class="text-electricPurple">Raman AI Labs</span>”
+            </p>
 
-            <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="#projects" class="group relative px-8 py-4 bg-white text-black font-bold rounded-none hover:scale-105 transition-transform duration-300 overflow-hidden">
-                    <div class="absolute inset-0 w-full h-full bg-neonCyan opacity-0 group-hover:opacity-20 transition-opacity"></div>
-                    <span class="relative z-10 flex items-center gap-2">Explore Interstellar Lab <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i></span>
+            <!-- Connection Options -->
+            <div id="connection-options" class="flex justify-center gap-4">
+                <a href="https://linkedin.com/in/raman" target="_blank" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-blue-600 hover:border-blue-500 transition-all duration-300" title="Connect on LinkedIn">
+                    <i class="fab fa-linkedin-in text-xl text-white"></i>
                 </a>
-                <a href="#connect" class="px-8 py-4 border border-white/30 text-white font-bold hover:bg-white/10 transition-all duration-300">
-                    Join the Convergence
+                <a href="mailto:raman@example.com" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-green-600 hover:border-green-500 transition-all duration-300" title="Send Email">
+                    <i class="fa-solid fa-envelope text-xl text-white"></i>
+                </a>
+                <a href="https://wa.me/1234567890" target="_blank" class="w-14 h-14 glass-card flex items-center justify-center rounded-full hover:bg-teal-600 hover:border-teal-500 transition-all duration-300" title="Quick Message via WhatsApp">
+                    <i class="fab fa-whatsapp text-xl text-white"></i>
                 </a>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="vision" class="py-24 relative reveal">
+    <!-- 2. DOMAIN SCOPE SECTION -->
+    <section id="domains" class="py-24 relative reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
-                <h2 class="font-display text-4xl font-bold mb-4">The Convergence Engine (Planetary Scope)</h2>
+                <h2 class="font-display text-4xl font-bold mb-4">Core Research Domains</h2>
                 <div class="h-1 w-24 bg-neonCyan mx-auto rounded-full"></div>
-                <p class="mt-4 text-gray-400">RamanAilabs operates at the intersection of reality's most vital domains, transcending terrestrial limits.</p>
+                <p class="mt-4 text-gray-400">Our focus areas define the future of technology, science, and creativity.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/40 transition-colors duration-500">
-                        <i class="fa-solid fa-dna text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Genomics & Biotech</h3>
-                    <p class="text-sm text-gray-400">Decoding life's fabric across Earth and newly terraformed worlds (Mars).</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
+                <!-- Data & AI -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-neonCyan hover:-translate-y-1">
+                    <i class="fa-solid fa-brain text-3xl text-neonCyan mb-3"></i>
+                    <h3 class="text-sm font-bold">Data & AI</h3>
                 </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto bg-green-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-500/40 transition-colors duration-500">
-                        <i class="fa-solid fa-seedling text-3xl text-green-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">AgriTech & Sustainability</h3>
-                    <p class="text-sm text-gray-400">Revolutionizing crop yields and resource management (Lunar Greenhouses).</p>
+                <!-- Cyber Security -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-criticalRed hover:-translate-y-1">
+                    <i class="fa-solid fa-shield-halved text-3xl text-criticalRed mb-3"></i>
+                    <h3 class="text-sm font-bold">Cyber Security</h3>
                 </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto bg-purple-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-500/40 transition-colors duration-500">
-                        <i class="fa-solid fa-meteor text-3xl text-purple-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Astro/Planetary Data</h3>
-                    <p class="text-sm text-gray-400">Harmonizing creativity with computational intelligence (Jupiter Storms).</p>
+                <!-- Biotechnology & Biomedical -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-blue-500 hover:-translate-y-1">
+                    <i class="fa-solid fa-dna text-3xl text-blue-500 mb-3"></i>
+                    <h3 class="text-sm font-bold">Biotechnology & Biomedical</h3>
                 </div>
-
-                <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
-                    <div class="w-16 h-16 mx-auto bg-pink-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-pink-500/40 transition-colors duration-500">
-                        <i class="fa-solid fa-masks-theater text-3xl text-pink-400 group-hover:scale-110 transition-transform"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-2">Arts, Media & Synthesis</h3>
-                    <p class="text-sm text-gray-400">Synthesizing digital personas and narrative generation (Saturn Harmonics).</p>
+                <!-- Neuroscience & Cognitive Computing -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-electricPurple hover:-translate-y-1">
+                    <i class="fa-solid fa-microchip text-3xl text-electricPurple mb-3"></i>
+                    <h3 class="text-sm font-bold">Neuroscience & Cognitive Computing</h3>
+                </div>
+                 <!-- World Tech -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-yellow-500 hover:-translate-y-1">
+                    <i class="fa-solid fa-robot text-3xl text-yellow-500 mb-3"></i>
+                    <h3 class="text-sm font-bold">World Tech</h3>
+                </div>
+                <!-- Agri & Env Sci -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-bioGreen hover:-translate-y-1">
+                    <i class="fa-solid fa-leaf text-3xl text-bioGreen mb-3"></i>
+                    <h3 class="text-sm font-bold">Agriculture & Environmental Science</h3>
+                </div>
+                <!-- Fine Arts, Content & Crafts -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-pink-500 hover:-translate-y-1">
+                    <i class="fa-solid fa-palette text-3xl text-pink-500 mb-3"></i>
+                    <h3 class="text-sm font-bold">Fine Arts, Content & Crafts</h3>
+                </div>
+                <!-- Advanced Materials & Nanotechnology -->
+                <div class="glass-card p-6 rounded-xl text-center group border-l-4 border-gray-400 hover:-translate-y-1">
+                    <i class="fa-solid fa-atom text-3xl text-gray-400 mb-3"></i>
+                    <h3 class="text-sm font-bold">Advanced Materials & Nanotech</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="projects" class="py-24 bg-black/30 reveal">
+    <!-- 3. EXPERIMENTS/BLOGS SECTION -->
+    <section id="experiments" class="py-24 bg-black/30 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                 <div>
-                    <h2 class="font-display text-4xl font-bold">Experiments & Blogs Manifest</h2>
-                    <p class="text-gray-400 mt-2">Access the latest projects from Raman's cosmic desk, filtered by domain.</p>
+                    <h2 class="font-display text-4xl font-bold">Experiments & Blog Manifest</h2>
+                    <p class="text-gray-400 mt-2">Real-time content feed powered by Raman's secure private manifest.</p>
                 </div>
                 
                 <div class="w-full md:w-auto relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fa-solid fa-search text-gray-500"></i>
                     </div>
-                    <input type="text" id="project-search" placeholder="Search experiments..." 
-                        class="glass-panel w-full md:w-64 pl-10 pr-4 py-2 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
+                    <input type="text" id="project-search" placeholder="Search title, domain, or keywords..." 
+                        class="glass-panel w-full md:w-80 pl-10 pr-4 py-2 rounded-lg text-sm text-white placeholder-gray-500 focus:outline-none focus:border-neonCyan focus:ring-1 focus:ring-neonCyan transition-all">
                 </div>
             </div>
 
             <div id="domain-tabs" class="flex flex-wrap gap-2 md:gap-4 mb-10 border-b border-white/10 pb-4">
-                <button data-filter="All" class="tab-button active px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-globe"></i> All Domains
+                <!-- Filters will be rendered here -->
+                <button data-filter="All" class="tab-button active px-4 py-2 rounded-lg text-sm font-semibold text-white/80 border border-white/10 bg-white/5 hover:border-neonCyan transition-colors">
+                    <i class="fa-solid fa-globe"></i> All
                 </button>
-                <button data-filter="Genomics" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-dna"></i> Genomics
-                </button>
-                <button data-filter="AgriTech" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-seedling"></i> AgriTech
-                </button>
-                <button data-filter="Arts" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-masks-theater"></i> Arts & Media
-                </button>
-                <button data-filter="Planetary" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-meteor"></i> Planetary & Data
-                </button>
-                <button data-filter="Medical" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-neonCyan">
-                    <i class="fa-solid fa-stethoscope"></i> Medical Tech
-                </button>
-                <button data-filter="Mars" class="tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 hover:text-galacticRed">
-                    <i class="fa-solid fa-user-astronaut text-galacticRed"></i> MARS / JUPITER
-                </button>
+            </div>
+
+            <div class="text-center py-16" id="loading-spinner">
+                <i class="fa-solid fa-spinner fa-spin text-4xl text-neonCyan mb-4"></i>
+                <p class="text-gray-400">Initializing secure content stream...</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                </div>
+                <!-- Project cards rendered here by JavaScript -->
+            </div>
             
             <div id="no-results" class="hidden text-center py-12">
                 <i class="fa-solid fa-robot text-4xl text-gray-600 mb-4"></i>
-                <p class="text-gray-400">No projects found matching the selected domain or query in the Nexus Manifest.</p>
+                <p class="text-gray-400">No matching content found in the Manifest.</p>
             </div>
         </div>
     </section>
 
-    ---
-
-    <section id="connect" class="py-24 relative overflow-hidden reveal">
-        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-neonCyan/5 blur-3xl rounded-full z-0"></div>
-
-        <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
-            <h2 class="font-display text-5xl font-bold mb-8">Initiate Inter-Galactic Comms</h2>
-            <p class="text-xl text-gray-300 mb-12">
-                Ready to dive into the cosmic depths? Connect directly with Raman for collaboration, consulting, or inspiration across all known coordinates.
-            </p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                
-                <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#0077b5]/20 group border-l-4 border-transparent hover:border-[#0077b5]">
-                    <div class="w-14 h-14 bg-[#0077b5] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-900/50 group-hover:scale-110 transition-transform">
-                        <i class="fa-brands fa-linkedin-in"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-lg group-hover:text-[#0077b5] transition-colors">Galactic Network (LinkedIn)</h3>
-                        <p class="text-sm text-gray-400">Professional Node Access</p>
-                    </div>
-                    <i class="fa-solid fa-external-link-alt ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
-                </a>
-
-                <a href="https://wa.me/919110343178" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#25D366]/20 group border-l-4 border-transparent hover:border-[#25D366]">
-                    <div class="w-14 h-14 bg-[#25D366] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-green-900/50 group-hover:scale-110 transition-transform">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-lg group-hover:text-[#25D366] transition-colors">Primary Comms (WhatsApp)</h3>
-                        <p class="text-sm text-gray-400">+91 9110343178</p>
-                    </div>
-                    <i class="fa-solid fa-message ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
-                </a>
-
-                <a href="mailto:nikhilraman1203@gmail.com" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-red-500/20 group border-l-4 border-transparent hover:border-red-500">
-                    <div class="w-14 h-14 bg-red-600 rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-red-900/50 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-lg group-hover:text-red-400 transition-colors">Encrypted Data Transfer (Email)</h3>
-                        <p class="text-sm text-gray-400">nikhilraman1203@gmail.com</p>
-                    </div>
-                    <i class="fa-solid fa-paper-plane ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
-                </a>
-
-                <a href="tel:9110343178" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-neonCyan/20 group border-l-4 border-transparent hover:border-neonCyan">
-                    <div class="w-14 h-14 bg-neonCyan rounded-lg flex items-center justify-center text-black text-2xl shadow-lg shadow-cyan-900/50 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-phone"></i>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="font-bold text-lg group-hover:text-neonCyan transition-colors">Urgent Terrestrial Link (Phone)</h3>
-                        <p class="text-sm text-gray-400">+91 9110343178</p>
-                    </div>
-                    <i class="fa-solid fa-phone-flip ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
-                </a>
-
-            </div>
-        </div>
-    </section>
-
+    <!-- 4. FOOTER -->
     <footer class="border-t border-white/10 py-12 bg-[#01040f]">
         <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="font-display text-2xl font-bold mb-4">Raman<span class="text-neonCyan">Ailabs</span></h2>
-            <p class="text-gray-500 text-sm mb-6">&copy; 2025 RamanAilabs. The Torchbearer of Galactic Artificial Intelligence. CODE: [***//unbeatable//***]</p>
-            <div class="flex justify-center gap-6">
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-github text-xl"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-twitter text-xl"></i></a>
-                <a href="#" class="text-gray-500 hover:text-white transition-colors"><i class="fa-brands fa-instagram text-xl"></i></a>
-            </div>
+            <h2 class="font-display text-2xl font-bold mb-4">Raman<span class="text-neonCyan">AI Labs</span></h2>
+            <p class="text-gray-500 text-sm mb-6">&copy; 2025 Raman AI Labs. The standard of absolute excellence.</p>
+            <p class="text-sm text-electricPurple font-medium">Built to an UNBEATABLE, future-proof standard.</p>
         </div>
     </footer>
 
-    <script>
-        
-        // ** HYPOTHESIS & SECURITY CHECK **
-        // 1. CONFIDENTIALITY: The code 'never before ever after' is NEVER stored in the client-side script for actual comparison.
-        //    The check is a SIMULATION for the user experience, but it is architecturally sound.
-        // 2. DATA LEAKAGE: All content is stored in a structured JSON object. The rendering uses `textContent` (implicit in the JS structure) 
-        //    to prevent Cross-Site Scripting (XSS) and data leakage via malicious script injection.
-        // 3. UNBEATABLE: The architecture is intentionally simple (static HTML/JS) which is fast, secure against server-side injection,
-        //    and universally deployable (Earth, Mars base, etc.) on any basic server/CDN.
-        
-        const SECRET_CODE = 'never before ever after'; // For internal reference/simulation only
-        const ADMIN_PANEL = document.getElementById('admin-panel');
-        const CODE_INPUT = document.getElementById('unbeatable-code-input');
-        const VERIFY_BTN = document.getElementById('verify-code-btn');
-        const CONSOLE_AREA = document.getElementById('console-area');
-        const SCAN_STATUS = document.getElementById('scan-status');
-        const CONTENT_MANIFEST_EL = document.getElementById('unbeatable-content-manifest');
-        
-        // 1. Initial Data Load (Securely parse the JSON manifest from the hidden script tag)
-        let researchData = [];
-        try {
-            researchData = JSON.parse(CONTENT_MANIFEST_EL.textContent);
-        } catch (e) {
-            console.error("Manifest Load Error: Failed to parse the JSON manifest. Check JSON syntax.", e);
-            // Fallback for ultimate resilience
-            researchData = []; 
-        }
+    <!-- ** Full Content View Modal ** -->
+    <div id="content-view-modal" class="fixed inset-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[61] hidden items-center justify-center opacity-0 transition-opacity">
+        <div class="glass-card p-6 md:p-10 rounded-2xl max-w-3xl w-11/12 border-electricPurple/50 border shadow-2xl shadow-electricPurple/20 overflow-auto max-h-[90vh] relative">
+            <button id="close-content-view" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors text-2xl">
+                <i class="fa-solid fa-times"></i>
+            </button>
+            <span id="content-view-domain" class="inline-block text-sm font-display uppercase tracking-wider mb-2"></span>
+            <h3 id="content-view-title" class="font-display text-4xl font-bold mb-4"></h3>
+            <p id="content-view-date" class="text-sm text-gray-500 mb-6"></p>
+            <div id="content-view-body" class="prose prose-invert max-w-none text-gray-300">
+                <!-- Full content goes here -->
+            </div>
+        </div>
+    </div>
 
-        // Admin Panel Logic (Functionality Check: ALL BUTTONS WORKING)
-        function toggleAdminPanel(show) {
-            if (show) {
-                ADMIN_PANEL.classList.remove('hidden');
-                setTimeout(() => ADMIN_PANEL.style.opacity = '1', 10);
-                CODE_INPUT.focus();
-            } else {
-                ADMIN_PANEL.style.opacity = '0';
-                setTimeout(() => ADMIN_PANEL.classList.add('hidden'), 500);
+
+    <script type="module">
+        // Ensure firebase object is available
+        const {
+            initializeApp, getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged,
+            getFirestore, doc, collection, onSnapshot, addDoc, updateDoc, deleteDoc, query, setDoc,
+            Timestamp, setLogLevel
+        } = window.firebase;
+
+        // Set Firebase Log Level to Debug for development/testing
+        // setLogLevel('debug'); 
+
+        class RamanAILabsApp {
+            constructor() {
+                // Global Vars from Canvas Environment
+                this.appId = typeof __app_id !== 'undefined' ? __app_id : 'default-raman-app';
+                this.firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+                this.authToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                
+                // Initialize Firebase
+                this.app = initializeApp(this.firebaseConfig);
+                this.auth = getAuth(this.app);
+                this.db = getFirestore(this.app);
+                
+                // State
+                this.userId = null;
+                this.isAuthenticated = false;
+                this.allContent = [];
+                this.currentFilter = 'All';
+                
+                // DOM Elements
+                this.NAVBAR = document.getElementById('navbar');
+                this.MOBILE_MENU = document.getElementById('mobile-menu');
+                this.PROJECTS_GRID = document.getElementById('projects-grid');
+                this.DOMAIN_TABS = document.getElementById('domain-tabs');
+                this.PROJECT_SEARCH = document.getElementById('project-search');
+                this.NO_RESULTS = document.getElementById('no-results');
+                this.LOADING_SPINNER = document.getElementById('loading-spinner');
+                
+                // Admin DOM Elements
+                this.ADMIN_BTN = document.getElementById('admin-btn');
+                this.ADMIN_BTN_MOBILE = document.getElementById('admin-btn-mobile');
+                this.ADMIN_MODAL = document.getElementById('admin-modal');
+                this.ADMIN_MANIFEST_LIST = document.getElementById('admin-manifest-list');
+                this.MANIFEST_COUNT = document.getElementById('manifest-count');
+                this.CONTENT_FORM = document.getElementById('content-form');
+                this.CONTENT_ID = document.getElementById('content-id');
+                this.FORM_TITLE = document.getElementById('form-title');
+                this.SAVE_BTN = document.getElementById('save-content-btn');
+                this.CANCEL_BTN = document.getElementById('cancel-edit-btn');
+                
+                // Content View Modal
+                this.VIEW_MODAL = document.getElementById('content-view-modal');
+                
+                // Domain Mappings for filter creation
+                this.DOMAIN_CONFIG = {
+                    "Data & AI": { icon: 'fa-brain', color: 'border-neonCyan', text_color: 'text-neonCyan' },
+                    "World Tech": { icon: 'fa-robot', color: 'border-yellow-500', text_color: 'text-yellow-500' },
+                    "Cyber Security": { icon: 'fa-shield-halved', color: 'border-criticalRed', text_color: 'text-criticalRed' },
+                    "Agriculture & Environmental Science": { icon: 'fa-leaf', color: 'border-bioGreen', text_color: 'text-bioGreen' },
+                    "Biotechnology & Biomedical": { icon: 'fa-dna', color: 'border-blue-500', text_color: 'text-blue-500' },
+                    "Fine Arts, Content & Crafts": { icon: 'fa-palette', color: 'border-pink-500', text_color: 'text-pink-500' },
+                    "Neuroscience & Cognitive Computing": { icon: 'fa-microchip', color: 'border-electricPurple', text_color: 'text-electricPurple' },
+                    "Advanced Materials & Nanotechnology": { icon: 'fa-atom', color: 'border-gray-400', text_color: 'text-gray-400' }
+                };
+                
+                this.init = this.init.bind(this);
+                this.setupAuth = this.setupAuth.bind(this);
+                this.setupFirestoreListener = this.setupFirestoreListener.bind(this);
+                this.filterContent = this.filterContent.bind(this);
             }
-        }
-        document.getElementById('admin-login-btn').addEventListener('click', () => toggleAdminPanel(true));
-        document.getElementById('admin-login-btn-mobile').addEventListener('click', () => {
-            toggleAdminPanel(true);
-            document.getElementById('mobile-menu').classList.add('hidden');
-        });
-        document.getElementById('close-admin-btn').addEventListener('click', () => toggleAdminPanel(false));
-        
-        VERIFY_BTN.addEventListener('click', () => {
-            const enteredCode = CODE_INPUT.value.toLowerCase().trim();
-            const isCodeValid = (enteredCode.length > 0 && enteredCode.toLowerCase() === SECRET_CODE); 
-
-            if (isCodeValid) { 
-                // Access Granted UX
-                CODE_INPUT.classList.remove('border-galacticRed', 'focus:ring-galacticRed');
-                CODE_INPUT.classList.add('border-bioGreen', 'focus:ring-bioGreen');
-                VERIFY_BTN.textContent = 'ACCESS GRANTED: [***//unbeatable//***]';
-                VERIFY_BTN.classList.replace('bg-electricPurple', 'bg-bioGreen');
-                CODE_INPUT.disabled = true;
-                setTimeout(() => {
-                    CONSOLE_AREA.classList.remove('hidden');
-                }, 500);
-            } else {
-                // Access Denied UX (Cyber Threat Observance)
-                CODE_INPUT.classList.add('border-galacticRed', 'focus:ring-galacticRed');
-                CODE_INPUT.value = '';
-                CODE_INPUT.placeholder = 'INVALID: Intrusion Attempt Logged.';
-                VERIFY_BTN.textContent = 'Verification Failed. Cyber Anomaly Detected.';
-                setTimeout(() => {
-                    VERIFY_BTN.textContent = 'Verify and Unlock Lab Console';
-                    CODE_INPUT.placeholder = 'Enter Code=[***//unbeatable//***]';
-                }, 3000);
-            }
-        });
-
-        // Placeholder for security scan/preview logic (CYBER THREAT OBSERVANCE)
-        document.getElementById('security-scan-btn').addEventListener('click', () => {
-            SCAN_STATUS.classList.remove('hidden');
-            SCAN_STATUS.textContent = '🛡️ Running Multi-Galactic Cyber Threat Observance Scan... Analyzing Data Packet Integrity...';
-            SCAN_STATUS.classList.remove('text-bioGreen', 'text-red-400');
-            SCAN_STATUS.classList.add('text-neonCyan', 'animate-pulse');
             
-            // Simulate deep scan process
-            setTimeout(() => {
-                SCAN_STATUS.textContent = '✅ Scan Complete: All nodes clear. Data Integrity: UNBEATABLE';
-                SCAN_STATUS.classList.remove('animate-pulse', 'text-neonCyan');
-                SCAN_STATUS.classList.add('text-bioGreen');
-                // Enable final push button after scan
-                document.getElementById('finalize-upload-btn').disabled = false;
-            }, 3000); 
-        });
+            // --- A. INITIALIZATION & SETUP ---
 
-        // The final upload button is a front-end simulation for the *process* of pushing the data.
-        document.getElementById('finalize-upload-btn').addEventListener('click', () => {
-            alert("UPLOAD COMPLETE: The new JSON Manifest has been PUSHED to the Galactic Nexus CDN and content is now LIVE. CODE: [***//unbeatable//***]");
-            toggleAdminPanel(false);
-            // In a real system, you would refresh the page or dynamically reload the new JSON.
-        });
-
-
-        // 0. Preloader Logic
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-            }, 500);
-        });
-
-        // 1. Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
+            init() {
+                this.initThreeJS();
+                this.setupScrollEffects();
+                this.setupEventListeners();
+                this.setupAuth();
             }
-        });
 
-        // 2. Scroll Animation 
-        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); 
+            async setupAuth() {
+                try {
+                    if (this.authToken) {
+                        await signInWithCustomToken(this.auth, this.authToken);
+                        console.log("Firebase: Signed in with custom token (Raman Access).");
+                    } else {
+                        await signInAnonymously(this.auth);
+                        console.log("Firebase: Signed in anonymously.");
+                    }
+                } catch (error) {
+                    console.error("Firebase Auth Error:", error);
+                    // Fallback to anonymous if custom token fails
+                    try {
+                        await signInAnonymously(this.auth);
+                    } catch (e) {
+                        console.error("Firebase: Anonymous sign-in failed.", e);
+                    }
                 }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 4. Render, Search, and FILTER Projects
-        const grid = document.getElementById('projects-grid');
-        const searchInput = document.getElementById('project-search');
-        const noResults = document.getElementById('no-results');
-        const tabButtons = document.querySelectorAll('.tab-button');
-        let currentFilter = 'All';
-        let currentSearchTerm = '';
-
-
-        function renderProjects(data) {
-            grid.innerHTML = '';
-            
-            // Filter by selected tab (domain or planet)
-            let filteredData = data.filter(item => 
-                currentFilter === 'All' || 
-                item.domain === currentFilter ||
-                item.planet === currentFilter // Allow filtering by the new planet field
-            );
-
-            // Filter by search input
-            if (currentSearchTerm) {
-                 filteredData = filteredData.filter(item => 
-                    item.title.toLowerCase().includes(currentSearchTerm) || 
-                    item.domain.toLowerCase().includes(currentSearchTerm) ||
-                    item.desc.toLowerCase().includes(currentSearchTerm) ||
-                    item.planet.toLowerCase().includes(currentSearchTerm)
-                );
-            }
-
-            if (filteredData.length === 0) {
-                noResults.classList.remove('hidden');
-            } else {
-                noResults.classList.add('hidden');
-                filteredData.forEach((item, index) => {
-                    const card = document.createElement('div');
-                    card.className = `glass-card p-6 rounded-xl flex flex-col justify-between h-full border-t-4 ${item.color} group cursor-pointer transform transition-all hover:-translate-y-2 duration-300 animate-fadeIn`;
-                    card.style.animationDelay = `${index * 100}ms`;
-                    
-                    // Note: textContent is not used here because we are building a structured string, but all user-provided data (title, desc) 
-                    // should be sanitized if coming from an external, untrusted source to prevent XSS. For this static setup, it is safe.
-                    card.innerHTML = `
-                        <div>
-                            <div class="flex justify-between items-start mb-4">
-                                <span class="text-xs font-bold uppercase tracking-wider text-gray-400 border border-gray-700 px-2 py-1 rounded">${item.domain}</span>
-                                <span class="text-xs text-saturnGold flex items-center gap-1">${item.planet} <i class="fa-solid fa-satellite"></i></span>
-                            </div>
-                            <h3 class="text-xl font-bold mb-3 group-hover:text-neonCyan transition-colors">${item.title}</h3>
-                            <p class="text-gray-400 text-sm leading-relaxed">${item.desc}</p>
-                        </div>
-                        <div class="mt-6 pt-6 border-t border-white/5 flex items-center text-sm font-semibold text-neonCyan opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
-                            Read Interstellar Log <i class="fa-solid fa-arrow-right ml-2"></i>
-                        </div>
-                    `;
-                    card.onclick = () => {
-                        // Secure alert
-                        alert(`Opening secure log for: ${item.title}`);
-                    };
-                    grid.appendChild(card);
+                onAuthStateChanged(this.auth, (user) => {
+                    if (user) {
+                        this.userId = user.uid;
+                        // Assuming any user signed in with the custom token or anonymously is allowed to view data.
+                        // For the Admin UI, we must verify Raman's specific email if possible, but since we rely on __initial_auth_token, we'll assume the token grants the necessary high-privilege UID.
+                        this.isAuthenticated = !!this.authToken || user.isAnonymous === false; 
+                        
+                        if (this.authToken && !user.isAnonymous) {
+                             // This is Raman's high-privilege login via token
+                            this.ADMIN_BTN.classList.remove('hidden');
+                            this.ADMIN_BTN_MOBILE.classList.remove('hidden');
+                            console.log("Admin UI unlocked for UID:", this.userId);
+                        } else {
+                            console.log("User is viewing publicly (UID:", this.userId, ")");
+                        }
+                        
+                        this.setupFirestoreListener();
+                        this.setupAdminListener();
+                    } else {
+                        this.userId = null;
+                        this.isAuthenticated = false;
+                        this.LOADING_SPINNER.innerHTML = `<i class="fa-solid fa-cloud-sun-rain text-4xl text-criticalRed mb-4"></i><p class="text-gray-400">Authentication failed. Cannot load manifest.</p>`;
+                        console.log("Firebase: User signed out/not authenticated.");
+                    }
                 });
             }
-        }
 
-        // Tab Filtering Logic
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+            get contentCollectionRef() {
+                if (!this.userId) return null;
+                // Secure path: Data is stored in Raman's private user path
+                return collection(this.db, `artifacts/${this.appId}/users/${this.userId}/content_manifest`);
+            }
+
+            setupFirestoreListener() {
+                const ref = this.contentCollectionRef;
+                if (!ref) return;
+
+                // Listen for real-time updates (Real-time content system)
+                onSnapshot(ref, (snapshot) => {
+                    this.allContent = [];
+                    snapshot.forEach(doc => {
+                        this.allContent.push({ id: doc.id, ...doc.data() });
+                    });
+                    // Sort by date/timestamp (newest first). Since we don't use orderBy in Firestore, we sort client-side.
+                    this.allContent.sort((a, b) => b.createdAt.toDate() - a.createdAt.toDate()); 
+                    
+                    this.MANIFEST_COUNT.textContent = this.allContent.length;
+                    this.renderContent(this.allContent);
+                    this.LOADING_SPINNER.classList.add('hidden');
+                    console.log('Manifest updated in real-time. Total items:', this.allContent.length);
+                }, (error) => {
+                    console.error("Firestore Listener Error:", error);
+                    this.LOADING_SPINNER.innerHTML = `<i class="fa-solid fa-exclamation-triangle text-4xl text-criticalRed mb-4"></i><p class="text-gray-400">Failed to load content manifest. Check permissions.</p>`;
+                });
+            }
+
+            // --- B. UI/AESTHETICS (Optimized for Zero-Lag) ---
+
+            initThreeJS() {
+                // Subtle Three.js background for a professional, futuristic field effect
+                let camera, scene, renderer, particles;
+                const canvas = document.getElementById('neural-canvas');
                 
-                currentFilter = button.getAttribute('data-filter');
+                const updateSize = () => {
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+                    renderer.setSize(width, height);
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+                };
 
-                // If the user uploads a new manifest, we need to re-read it.
-                // For this static version, we just re-render.
-                renderProjects(researchData);
-            });
-        });
+                scene = new THREE.Scene();
+                camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
+                camera.position.z = 150;
 
+                renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+                renderer.setClearColor(0x000000, 0); 
+                updateSize();
 
-        // Search Listener
-        searchInput.addEventListener('input', (e) => {
-            currentSearchTerm = e.target.value.toLowerCase();
-            renderProjects(researchData);
-        });
+                const particleCount = 500;
+                const geometry = new THREE.BufferGeometry();
+                const positions = new Float32Array(particleCount * 3);
+                
+                for (let i = 0; i < particleCount; i++) {
+                    positions[i * 3 + 0] = (Math.random() * 2 - 1) * 800;
+                    positions[i * 3 + 1] = (Math.random() * 2 - 1) * 800;
+                    positions[i * 3 + 2] = (Math.random() * 2 - 1) * 800;
+                }
 
-        // Initial Render
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProjects(researchData);
-        });
+                geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                
+                const pMaterial = new THREE.PointsMaterial({
+                    color: 0x06b6d4, // neonCyan
+                    size: 0.5,
+                    blending: THREE.AdditiveBlending,
+                    transparent: true,
+                    opacity: 0.7,
+                    sizeAttenuation: true
+                });
 
+                particles = new THREE.Points(geometry, pMaterial);
+                scene.add(particles);
 
-        // 5. Typewriter Effect (Unchanged)
-        const slogans = ["Let's Work!", "Let's Create!", "Let's Revolve!", "Lets be Inspired!"];
-        let sloganIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        const typeTarget = document.getElementById('typewriter');
+                const animate = () => {
+                    requestAnimationFrame(animate);
+                    particles.rotation.x += 0.0001;
+                    particles.rotation.y += 0.0002;
+                    renderer.render(scene, camera);
+                };
 
-        function typeWriter() {
-            const currentText = slogans[sloganIndex];
-            if (isDeleting) {
-                typeTarget.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typeTarget.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            let typeSpeed = isDeleting ? 50 : 100;
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                sloganIndex = (sloganIndex + 1) % slogans.length;
-                typeSpeed = 500;
-            }
-            setTimeout(typeWriter, typeSpeed);
-        }
-        document.addEventListener('DOMContentLoaded', typeWriter);
-
-        // 6. Neural Ocean Canvas Animation (Unchanged for visual stability)
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resize);
-        resize();
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2;
-                this.color = Math.random() > 0.5 ? 'rgba(6, 182, 212, ' : 'rgba(139, 92, 246, '; 
+                window.addEventListener('resize', updateSize);
+                animate();
             }
 
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
+            setupScrollEffects() {
+                window.addEventListener('scroll', () => {
+                    this.NAVBAR.classList.toggle('scrolled', window.scrollY > 50);
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('active');
+                            observer.unobserve(entry.target); 
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             }
 
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = this.color + '0.5)';
-                ctx.fill();
+            toggleMobileMenu() {
+                const isHidden = this.MOBILE_MENU.classList.toggle('hidden');
+                const icon = document.getElementById('mobile-icon');
+                if (isHidden) {
+                    icon.classList.replace('fa-times', 'fa-bars');
+                } else {
+                    icon.classList.replace('fa-bars', 'fa-times');
+                }
             }
-        }
-
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 100);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(2, 6, 23, 0.1)'; 
-            ctx.fillRect(0, 0, width, height);
             
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+            // --- C. CONTENT DISPLAY & FILTERING ---
 
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(6, 182, 212, ${1 - distance / 150})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
+            createContentCard(content) {
+                const config = this.DOMAIN_CONFIG[content.domain] || this.DOMAIN_CONFIG["Data & AI"];
+                const dateString = content.createdAt ? content.createdAt.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : 'N/A';
+
+                return `
+                    <div data-domain="${content.domain}" data-search="${(content.title + ' ' + content.desc + ' ' + content.domain).toLowerCase()}" 
+                         class="project-card glass-card p-6 rounded-xl border-l-4 ${config.color} transition-all duration-500 cursor-pointer"
+                         data-id="${content.id}">
+                        
+                        <span class="inline-block text-xs font-semibold text-gray-500 mb-2 uppercase tracking-wider">${dateString}</span>
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="font-bold text-xl my-2">${content.title}</h3>
+                                <p class="text-gray-400 text-sm mb-4 line-clamp-2">${content.desc}</p>
+                            </div>
+                            <i class="fa-solid ${config.icon} text-3xl ${config.text_color} opacity-50 ml-4"></i>
+                        </div>
+                        <span class="text-xs font-display ${config.text_color} uppercase">${content.domain}</span>
+                    </div>
+                `;
+            }
+
+            renderContent(contentList) {
+                // Render filters first
+                this.renderFilters();
+                
+                // Render cards
+                requestAnimationFrame(() => {
+                    this.PROJECTS_GRID.innerHTML = contentList.map(this.createContentCard.bind(this)).join('');
+                    this.NO_RESULTS.classList.toggle('hidden', contentList.length > 0);
+                    
+                    // Re-attach listeners to dynamically created cards
+                    document.querySelectorAll('.project-card').forEach(card => {
+                        card.addEventListener('click', (e) => {
+                            // Only trigger view if not clicking on admin buttons (handled in admin list)
+                            if (!e.target.closest('.admin-action')) {
+                                this.showContentView(card.dataset.id);
+                            }
+                        });
+                    });
+                });
+            }
+
+            renderFilters() {
+                const existingButtons = this.DOMAIN_TABS.querySelectorAll('.tab-button:not([data-filter="All"])');
+                if (existingButtons.length > 0) return; // Prevent re-rendering filter buttons
+                
+                const domains = Object.keys(this.DOMAIN_CONFIG);
+                
+                domains.forEach(d => {
+                    const config = this.DOMAIN_CONFIG[d];
+                    const button = document.createElement('button');
+                    button.className = 'tab-button px-4 py-2 rounded-lg text-sm font-semibold text-white/80 border border-white/10 bg-white/5 hover:border-neonCyan transition-colors';
+                    button.setAttribute('data-filter', d);
+                    button.innerHTML = `<i class="fa-solid ${config.icon} ${config.text_color}"></i> ${d}`;
+                    this.DOMAIN_TABS.appendChild(button);
+                });
+            }
+
+            filterContent(filter, searchTerm) {
+                let filtered = this.allContent;
+                
+                if (filter !== 'All') {
+                    filtered = filtered.filter(p => p.domain === filter);
+                }
+                
+                if (searchTerm) {
+                    const term = searchTerm.toLowerCase();
+                    filtered = filtered.filter(p => p.title.toLowerCase().includes(term) || p.desc.toLowerCase().includes(term));
+                }
+                
+                this.renderContent(filtered);
+            }
+            
+            showContentView(contentId) {
+                const content = this.allContent.find(c => c.id === contentId);
+                if (!content) return;
+
+                const config = this.DOMAIN_CONFIG[content.domain] || this.DOMAIN_CONFIG["Data & AI"];
+                const dateString = content.createdAt ? content.createdAt.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'N/A';
+
+                document.getElementById('content-view-domain').textContent = content.domain;
+                document.getElementById('content-view-domain').className = `inline-block text-sm font-display uppercase tracking-wider mb-2 ${config.text_color}`;
+                document.getElementById('content-view-title').textContent = content.title;
+                document.getElementById('content-view-date').textContent = `Published: ${dateString}`;
+                document.getElementById('content-view-body').innerHTML = content.body.replace(/\n/g, '<br>'); // Simple Markdown-like line breaks
+
+                this.VIEW_MODAL.classList.replace('hidden', 'flex');
+                setTimeout(() => this.VIEW_MODAL.style.opacity = '1', 10);
+            }
+
+            // --- D. ADMIN ARCHITECTURE (SECURE & PERSISTENT) ---
+            
+            showAdminModal() {
+                if (!this.isAuthenticated) {
+                    console.warn("Unauthorized attempt to access Admin Console.");
+                    return;
+                }
+                this.ADMIN_MODAL.classList.replace('hidden', 'flex');
+                setTimeout(() => this.ADMIN_MODAL.style.opacity = '1', 10);
+                this.renderAdminManifest();
+            }
+
+            hideAdminModal() {
+                this.ADMIN_MODAL.style.opacity = '0';
+                setTimeout(() => this.ADMIN_MODAL.classList.replace('flex', 'hidden'), 300);
+                this.resetForm();
+            }
+
+            setupAdminListener() {
+                 const ref = this.contentCollectionRef;
+                if (!ref) return;
+
+                // Separate listener for the Admin list (to ensure it only runs if the user has access)
+                onSnapshot(ref, (snapshot) => {
+                    const adminContent = [];
+                    snapshot.forEach(doc => {
+                        adminContent.push({ id: doc.id, ...doc.data() });
+                    });
+                    adminContent.sort((a, b) => b.createdAt.toDate() - a.createdAt.toDate()); 
+                    this.renderAdminManifest(adminContent);
+                }, (error) => {
+                    console.error("Admin Listener Error:", error);
+                    document.getElementById('loading-manifest').textContent = "Failed to load admin list.";
+                });
+
+                this.CONTENT_FORM.addEventListener('submit', this.handleSaveContent.bind(this));
+            }
+
+            renderAdminManifest(contentList = this.allContent) {
+                const list = contentList.map(content => {
+                    const dateString = content.createdAt ? content.createdAt.toDate().toLocaleDateString('en-US', { year: 'numeric', month: 'numeric', day: 'numeric' }) : 'N/A';
+                    return `
+                        <div class="glass-panel p-4 rounded-lg flex justify-between items-center border-l-4 border-neonCyan/50">
+                            <div>
+                                <p class="font-bold text-sm">${content.title}</p>
+                                <p class="text-xs text-gray-500">${content.domain} | ${dateString}</p>
+                            </div>
+                            <div class="flex gap-2">
+                                <button data-id="${content.id}" class="admin-action px-3 py-1 bg-electricPurple/20 text-electricPurple text-xs rounded-full hover:bg-electricPurple/40" onclick="window.app.editContent('${content.id}')">
+                                    <i class="fa-solid fa-pen"></i> Edit
+                                </button>
+                                <button data-id="${content.id}" class="admin-action px-3 py-1 bg-criticalRed/20 text-criticalRed text-xs rounded-full hover:bg-criticalRed/40" onclick="window.app.deleteContent('${content.id}')">
+                                    <i class="fa-solid fa-trash"></i> Delete
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+                this.ADMIN_MANIFEST_LIST.innerHTML = list || `<p class="text-gray-500 text-center py-4">No content has been added yet. Start by creating a new entry above.</p>`;
+                document.getElementById('loading-manifest').classList.add('hidden');
+                this.MANIFEST_COUNT.textContent = contentList.length;
+            }
+
+            resetForm() {
+                this.CONTENT_FORM.reset();
+                this.CONTENT_ID.value = '';
+                this.FORM_TITLE.textContent = 'Add New Experiment/Blog Post';
+                this.SAVE_BTN.textContent = 'Save to Private Manifest';
+                this.CANCEL_BTN.classList.add('hidden');
+            }
+
+            editContent(contentId) {
+                const content = this.allContent.find(c => c.id === contentId);
+                if (!content) return;
+
+                document.getElementById('content-id').value = content.id;
+                document.getElementById('content-title').value = content.title;
+                document.getElementById('content-desc').value = content.desc;
+                document.getElementById('content-domain').value = content.domain;
+                document.getElementById('content-body').value = content.body;
+
+                this.FORM_TITLE.textContent = `Editing: ${content.title}`;
+                this.SAVE_BTN.textContent = 'Update Manifest Entry';
+                this.CANCEL_BTN.classList.remove('hidden');
+
+                // Scroll to top of the modal to see the form
+                this.ADMIN_MODAL.querySelector('div').scrollTop = 0;
+            }
+
+            async handleSaveContent(e) {
+                e.preventDefault();
+                const contentId = this.CONTENT_ID.value;
+                
+                const data = {
+                    title: document.getElementById('content-title').value,
+                    desc: document.getElementById('content-desc').value,
+                    domain: document.getElementById('content-domain').value,
+                    body: document.getElementById('content-body').value,
+                };
+
+                try {
+                    this.SAVE_BTN.textContent = 'Processing...';
+                    this.SAVE_BTN.disabled = true;
+
+                    if (contentId) {
+                        // Update existing document
+                        const docRef = doc(this.contentCollectionRef, contentId);
+                        await updateDoc(docRef, data);
+                        console.log("Document updated successfully:", contentId);
+                    } else {
+                        // Add new document
+                        await addDoc(this.contentCollectionRef, {
+                            ...data,
+                            createdAt: Timestamp.now()
+                        });
+                        console.log("Document added successfully.");
+                    }
+                    
+                    this.resetForm();
+                    alert(`Content ${contentId ? 'Updated' : 'Created'} Successfully!`);
+                } catch (error) {
+                    console.error("Error saving document:", error);
+                    alert("Error saving content. Check console for details.");
+                } finally {
+                    this.SAVE_BTN.textContent = contentId ? 'Update Manifest Entry' : 'Save to Private Manifest';
+                    this.SAVE_BTN.disabled = false;
+                }
+            }
+
+            async deleteContent(contentId) {
+                if (window.confirm("CONFIDENTIAL: Are you absolutely sure you want to delete this content? This action cannot be undone.")) {
+                    try {
+                        const docRef = doc(this.contentCollectionRef, contentId);
+                        await deleteDoc(docRef);
+                        console.log("Document deleted successfully:", contentId);
+                    } catch (error) {
+                        console.error("Error deleting document:", error);
+                        alert("Error deleting content. Check console for details.");
                     }
                 }
             }
 
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
+            // --- E. EVENT LISTENERS ---
 
-            requestAnimationFrame(animate);
+            setupEventListeners() {
+                document.getElementById('mobile-menu-btn').addEventListener('click', () => this.toggleMobileMenu());
+                
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        if (!this.MOBILE_MENU.classList.contains('hidden')) {
+                            this.toggleMobileMenu();
+                        }
+                    });
+                });
+
+                // Admin Button Handlers
+                this.ADMIN_BTN.addEventListener('click', () => this.showAdminModal());
+                this.ADMIN_BTN_MOBILE.addEventListener('click', () => this.showAdminModal());
+                document.getElementById('close-admin-modal').addEventListener('click', () => this.hideAdminModal());
+                this.CANCEL_BTN.addEventListener('click', () => this.resetForm());
+                document.getElementById('close-content-view').addEventListener('click', () => {
+                    this.VIEW_MODAL.style.opacity = '0';
+                    setTimeout(() => this.VIEW_MODAL.classList.replace('flex', 'hidden'), 300);
+                });
+
+
+                // Filter Tabs
+                this.DOMAIN_TABS.addEventListener('click', (e) => {
+                    const btn = e.target.closest('.tab-button');
+                    if (btn) {
+                        document.querySelectorAll('.tab-button').forEach(b => {
+                            b.classList.remove('active', 'bg-neonCyan/20', 'border-neonCyan');
+                            b.classList.add('border-white/10', 'bg-white/5');
+                        });
+                        
+                        btn.classList.add('active', 'bg-neonCyan/20', 'border-neonCyan');
+                        btn.classList.remove('border-white/10', 'bg-white/5');
+                        
+                        this.currentFilter = btn.dataset.filter;
+                        this.filterContent(this.currentFilter, this.PROJECT_SEARCH.value);
+                    }
+                });
+
+                // Search Input
+                let searchTimeout;
+                this.PROJECT_SEARCH.addEventListener('input', (e) => {
+                    clearTimeout(searchTimeout);
+                    searchTimeout = setTimeout(() => {
+                        this.filterContent(this.currentFilter, e.target.value);
+                    }, 200); // Debounce for zero-lag feeling
+                });
+            }
         }
+        
+        // --- Global Activation (Zero-lag Onload) ---
+        window.app = new RamanAILabsApp();
+        window.onload = () => {
+            window.app.init();
+        };
 
-        initParticles();
-        animate();
     </script>
 </body>
 </html>
