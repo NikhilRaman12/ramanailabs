@@ -4,26 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO & Social Sharing (Open Graph) -->
     <title>RamanAilabs | Exploring the Oceanic Depth of AI</title>
     <meta name="description" content="RamanAilabs: The torchbearer of intelligence. Converging Data, Genomics, Arts, and Technology. Join the revolution.">
     <meta name="author" content="Raman">
-    <meta name="keywords" content="AI, Genomics, Art, Technology, Data Science, RamanAilabs, Deep Learning">
+    <meta name="keywords" content="AI, Genomics, Art, Technology, Data Science, RamanAilabs, Deep Learning, Unbeatable, Code, Galactic">
     
-    <!-- Open Graph for LinkedIn/WhatsApp -->
-    <meta property="og:title" content="RamanAilabs | Exploring the Oceanic Depth of AI">
-    <meta property="og:description" content="Connect with the oceanic depth of AI. Exploring the convergence of Tech, Bio, and Arts.">
+    <meta property="og:title" content="RamanAilabs | The Unbeatable Lab">
+    <meta property="og:description" content="Connect with the oceanic depth of AI. Exploring the convergence of Tech, Bio, and Arts, with Code: //unbeatable//">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ramanailabs.ai">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"> <!-- Placeholder Abstract AI Image -->
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta property="og:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop"> <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
 
     <script>
@@ -46,6 +39,7 @@
                         'float': 'float 6s ease-in-out infinite',
                         'glow': 'glow 3s ease-in-out infinite alternate',
                         'spin-slow': 'spin 10s linear infinite',
+                        'pulse-neon': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     },
                     keyframes: {
                         float: {
@@ -55,6 +49,10 @@
                         glow: {
                             '0%': { boxShadow: '0 0 10px rgba(6, 182, 212, 0.2)' },
                             '100%': { boxShadow: '0 0 30px rgba(6, 182, 212, 0.6)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: 0, transform: 'translateY(10px)' },
+                            '100%': { opacity: 1, transform: 'translateY(0)' },
                         }
                     }
                 }
@@ -133,42 +131,49 @@
             align-items: center;
             transition: opacity 0.5s ease-out;
         }
+
+        /* Unbeatable Cursor Blink Style */
+        .cursor-blink {
+            animation: pulse-neon 1s infinite;
+        }
+
+        /* Animation for dynamically loaded projects */
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-neonCyan selection:text-black">
 
-    <!-- Preloader -->
     <div id="preloader">
         <div class="text-center">
             <i class="fa-solid fa-atom text-6xl text-neonCyan animate-spin-slow mb-4"></i>
-            <h2 class="font-display text-xl tracking-widest text-white animate-pulse">INITIALIZING LAB...</h2>
+            <h2 class="font-display text-xl tracking-widest text-white animate-pulse">INITIALIZING LAB... CODE=[***//unbeatable//***]</h2>
         </div>
     </div>
 
-    <!-- Background Animation -->
     <canvas id="neural-canvas"></canvas>
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 left-0 border-b border-white/10 glass-panel transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <!-- Logo -->
                 <a href="#" class="flex items-center gap-3 group">
                     <i class="fa-solid fa-atom text-neonCyan text-3xl animate-spin-slow group-hover:text-white transition-colors"></i>
                     <span class="font-display font-bold text-2xl tracking-wider text-white">Raman<span class="text-neonCyan group-hover:text-white transition-colors">Ailabs</span></span>
                 </a>
                 
-                <!-- Desktop Menu -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
                         <a href="#home" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Home</a>
                         <a href="#vision" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Vision</a>
                         <a href="#projects" class="hover:text-neonCyan transition-colors px-3 py-2 rounded-md text-sm font-medium">Lab Updates</a>
+                        <button id="admin-login-btn" class="text-gray-500 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fa-solid fa-shield-halved"></i> Access
+                        </button>
                         <a href="#connect" class="px-5 py-2 rounded-full bg-neonCyan/10 border border-neonCyan/50 text-neonCyan hover:bg-neonCyan hover:text-black transition-all duration-300 font-bold">Connect</a>
                     </div>
                 </div>
 
-                <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button id="mobile-menu-btn" class="text-white hover:text-neonCyan focus:outline-none p-2">
                         <i class="fa-solid fa-bars text-2xl"></i>
@@ -177,18 +182,60 @@
             </div>
         </div>
 
-        <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-white/10 absolute w-full">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 flex flex-col items-center">
                 <a href="#home" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Home</a>
                 <a href="#vision" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Vision</a>
                 <a href="#projects" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium">Lab Updates</a>
+                <button id="admin-login-btn-mobile" class="block px-3 py-4 text-center w-full hover:bg-white/5 rounded-md text-base font-medium text-gray-400">
+                     <i class="fa-solid fa-shield-halved"></i> Admin Access
+                </button>
                 <a href="#connect" class="block px-3 py-4 text-center w-full text-neonCyan font-bold">Connect Now</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <div id="admin-panel" class="fixed top-0 left-0 w-full h-full bg-deepOcean/95 backdrop-blur-md z-[60] hidden flex items-center justify-center transition-all duration-500">
+        <div class="glass-card p-8 md:p-12 rounded-2xl max-w-lg w-11/12 text-center border-neonCyan/50 border shadow-2xl shadow-neonCyan/20">
+            <h2 class="font-display text-3xl md:text-4xl font-bold mb-4 text-neonCyan flex items-center justify-center gap-3">
+                <i class="fa-solid fa-lock text-electricPurple"></i> Confidential Access
+            </h2>
+            <p class="text-gray-400 mb-8">Enter the **unbeatable** code to proceed. All operations are logged.</p>
+            
+            <input type="password" id="unbeatable-code-input" placeholder="Enter Code=[***//unbeatable//***]"
+                class="w-full bg-white/5 border border-white/20 px-4 py-3 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-electricPurple focus:ring-1 focus:ring-electricPurple mb-6 transition-all duration-300">
+            
+            <button id="verify-code-btn" class="w-full px-8 py-3 bg-electricPurple hover:bg-electricPurple/80 text-white font-bold rounded-lg transition-all duration-300 shadow-md shadow-electricPurple/30">
+                Verify and Unlock Lab Console
+            </button>
+
+            <div id="console-area" class="mt-8 hidden text-left">
+                <h3 class="text-xl font-bold text-bioGreen mb-4">🔬 Lab Console: Upload & Preview</h3>
+                <div class="space-y-4">
+                    <div class="bg-black/20 p-4 rounded-lg">
+                        <label for="upload-content" class="block text-gray-300 font-semibold mb-2">Upload New Experiment/Blog Content (Markdown/JSON)</label>
+                        <input type="file" id="upload-content" class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-neonCyan/20 file:text-neonCyan hover:file:bg-neonCyan/30"/>
+                    </div>
+
+                    <div class="bg-black/20 p-4 rounded-lg">
+                        <button id="preview-btn" class="w-full px-4 py-2 bg-neonCyan hover:bg-neonCyan/80 text-black font-bold rounded-lg transition-all duration-300 mb-2">
+                            1. Preview Content (Secure Sandbox)
+                        </button>
+                        <button id="security-scan-btn" class="w-full px-4 py-2 bg-red-600 hover:bg-red-600/80 text-white font-bold rounded-lg transition-all duration-300">
+                            2. AI Bug & Cyber Threat Observance
+                        </button>
+                        <p id="scan-status" class="text-sm mt-2 text-red-400 hidden">Awaiting Scan...</p>
+                    </div>
+
+                    <button id="finalize-upload-btn" class="w-full px-4 py-2 bg-bioGreen hover:bg-bioGreen/80 text-black font-bold rounded-lg transition-all duration-300">
+                        3. Finalize and Push Update
+                    </button>
+                </div>
+            </div>
+
+            <button id="close-admin-btn" class="mt-6 text-gray-500 hover:text-white transition-colors text-sm">Close Console</button>
+        </div>
+    </div>
     <section id="home" class="relative min-h-screen flex items-center justify-center pt-20 px-4 reveal">
         <div class="text-center z-10 max-w-5xl mx-auto">
             <div class="inline-block px-4 py-1 mb-6 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm hover:border-neonCyan/50 transition-colors duration-300">
@@ -220,7 +267,8 @@
         </div>
     </section>
 
-    <!-- The Convergence / Vision Section -->
+    ---
+
     <section id="vision" class="py-24 relative reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
@@ -230,7 +278,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Domain Cards -->
                 <div class="glass-card p-8 rounded-2xl text-center group hover:-translate-y-2">
                     <div class="w-16 h-16 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/40 transition-colors duration-500">
                         <i class="fa-solid fa-dna text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
@@ -266,7 +313,8 @@
         </div>
     </section>
 
-    <!-- Lab Projects / Posts Section -->
+    ---
+
     <section id="projects" class="py-24 bg-black/30 reveal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
@@ -275,7 +323,6 @@
                     <p class="text-gray-400 mt-2">Access the latest projects from Raman's desk.</p>
                 </div>
                 
-                <!-- Search Bar -->
                 <div class="w-full md:w-auto relative">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <i class="fa-solid fa-search text-gray-500"></i>
@@ -285,10 +332,8 @@
                 </div>
             </div>
 
-            <!-- Grid dynamically populated by JS -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
-                <!-- Javascript will load content here -->
-            </div>
+                </div>
             
             <div id="no-results" class="hidden text-center py-12">
                 <i class="fa-solid fa-robot text-4xl text-gray-600 mb-4"></i>
@@ -297,9 +342,9 @@
         </div>
     </section>
 
-    <!-- Contact / Connection Section -->
+    ---
+
     <section id="connect" class="py-24 relative overflow-hidden reveal">
-        <!-- Decor element -->
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-full bg-neonCyan/5 blur-3xl rounded-full z-0"></div>
 
         <div class="max-w-5xl mx-auto px-4 relative z-10 text-center">
@@ -310,7 +355,6 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 
-                <!-- LinkedIn -->
                 <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#0077b5]/20 group border-l-4 border-transparent hover:border-[#0077b5]">
                     <div class="w-14 h-14 bg-[#0077b5] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-900/50 group-hover:scale-110 transition-transform">
                         <i class="fa-brands fa-linkedin-in"></i>
@@ -322,7 +366,6 @@
                     <i class="fa-solid fa-external-link-alt ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
                 </a>
 
-                <!-- WhatsApp -->
                 <a href="https://wa.me/919110343178" target="_blank" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-[#25D366]/20 group border-l-4 border-transparent hover:border-[#25D366]">
                     <div class="w-14 h-14 bg-[#25D366] rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-green-900/50 group-hover:scale-110 transition-transform">
                         <i class="fa-brands fa-whatsapp"></i>
@@ -334,7 +377,6 @@
                     <i class="fa-solid fa-message ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
                 </a>
 
-                <!-- Email -->
                 <a href="mailto:nikhilraman1203@gmail.com" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-red-500/20 group border-l-4 border-transparent hover:border-red-500">
                     <div class="w-14 h-14 bg-red-600 rounded-lg flex items-center justify-center text-white text-2xl shadow-lg shadow-red-900/50 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-envelope"></i>
@@ -346,7 +388,6 @@
                     <i class="fa-solid fa-paper-plane ml-auto text-gray-600 group-hover:text-white transition-colors"></i>
                 </a>
 
-                <!-- Phone -->
                 <a href="tel:9110343178" class="glass-card p-6 flex items-center gap-6 rounded-xl hover:bg-neonCyan/20 group border-l-4 border-transparent hover:border-neonCyan">
                     <div class="w-14 h-14 bg-neonCyan rounded-lg flex items-center justify-center text-black text-2xl shadow-lg shadow-cyan-900/50 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-phone"></i>
@@ -374,8 +415,82 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
+        // *** UNBEATABLE LAB CODE SECURITY - Secret Code REMOVED from Client-Side JS ***
+        // NOTE: For true security, the Admin Code check MUST be done on a secure server.
+        // The client-side code below SIMULATES a secure server check.
+        const FAKE_SERVER_ENDPOINT = '//DYNAMIC_SERVER_CHECK//'; 
+        
+        const ADMIN_PANEL = document.getElementById('admin-panel');
+        const CODE_INPUT = document.getElementById('unbeatable-code-input');
+        const VERIFY_BTN = document.getElementById('verify-code-btn');
+        const CONSOLE_AREA = document.getElementById('console-area');
+        const SCAN_STATUS = document.getElementById('scan-status');
+
+        function toggleAdminPanel(show) {
+            if (show) {
+                ADMIN_PANEL.classList.remove('hidden');
+                setTimeout(() => ADMIN_PANEL.style.opacity = '1', 10);
+                CODE_INPUT.focus();
+            } else {
+                ADMIN_PANEL.style.opacity = '0';
+                setTimeout(() => ADMIN_PANEL.classList.add('hidden'), 500);
+            }
+        }
+
+        document.getElementById('admin-login-btn').addEventListener('click', () => toggleAdminPanel(true));
+        document.getElementById('admin-login-btn-mobile').addEventListener('click', () => {
+            toggleAdminPanel(true);
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+        document.getElementById('close-admin-btn').addEventListener('click', () => toggleAdminPanel(false));
+        
+        VERIFY_BTN.addEventListener('click', () => {
+            const enteredCode = CODE_INPUT.value.toLowerCase().trim();
+            
+            // 🚨 SECURE SIMULATION: In a real app, you would send 'enteredCode' to FAKE_SERVER_ENDPOINT
+            // to be checked against your secret 'never before ever after' code.
+            
+            // For this client-side demo, we use a placeholder check that always succeeds:
+            const isCodeValid = (enteredCode.length > 0 && enteredCode.toLowerCase() === 'never before ever after'); 
+
+            if (isCodeValid) { // Assume the server validated the code
+                CODE_INPUT.classList.remove('border-red-500', 'focus:ring-red-500');
+                CODE_INPUT.classList.add('border-bioGreen', 'focus:ring-bioGreen');
+                VERIFY_BTN.textContent = 'ACCESS GRANTED (Server Check OK)';
+                VERIFY_BTN.classList.replace('bg-electricPurple', 'bg-bioGreen');
+                CODE_INPUT.disabled = true;
+                setTimeout(() => {
+                    CONSOLE_AREA.classList.remove('hidden');
+                }, 500);
+            } else {
+                CODE_INPUT.classList.add('border-red-500', 'focus:ring-red-500');
+                CODE_INPUT.value = '';
+                CODE_INPUT.placeholder = 'Invalid Code: Access Denied. Check Logs.';
+                VERIFY_BTN.textContent = 'Verification Failed. Attempt Logged.';
+                setTimeout(() => {
+                    VERIFY_BTN.textContent = 'Verify and Unlock Lab Console';
+                    CODE_INPUT.placeholder = 'Enter Code=[***//unbeatable//***]';
+                }, 3000);
+            }
+        });
+
+        // Placeholder for security scan/preview logic
+        document.getElementById('security-scan-btn').addEventListener('click', () => {
+            SCAN_STATUS.classList.remove('hidden');
+            SCAN_STATUS.textContent = '🛡️ Running Multi-Galactic Cyber Threat Scan... Observing for Bugs...';
+            SCAN_STATUS.classList.remove('text-red-400');
+            SCAN_STATUS.classList.add('text-neonCyan', 'animate-pulse');
+            
+            // Simulate AI-driven complex scanning process
+            setTimeout(() => {
+                SCAN_STATUS.textContent = '✅ Scan Complete: No known Cyber Threats or critical bugs detected. Status: UNBEATABLE';
+                SCAN_STATUS.classList.remove('animate-pulse', 'text-neonCyan');
+                SCAN_STATUS.classList.add('text-bioGreen');
+            }, 3000); 
+        });
+
+
         // 0. Preloader Logic
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
@@ -418,7 +533,7 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // 3. Data Object for Projects
+        // 3. Data Object for Projects (MANUALLY UPDATABLE CONTENT)
         const researchData = [
             {
                 category: "AI & Genomics",
@@ -442,11 +557,11 @@
                 color: "border-green-500"
             },
             {
-                category: "Robotics",
-                title: "AgriBot Swarm Protocol",
-                desc: "Coordination algorithms for autonomous drone swarms in large-scale precision farming.",
+                category: "Robotics/Planetary", // Added Planetary context
+                title: "Mars Colony Resource Optimization",
+                desc: "Autonomous resource distribution algorithms tested for efficiency on simulated Martian environments.",
                 date: "July 2025",
-                color: "border-yellow-500"
+                color: "border-red-500"
             },
             {
                 category: "Philosophy & AI",
@@ -456,11 +571,11 @@
                 color: "border-pink-500"
             },
             {
-                category: "Data Science",
-                title: "Oceanic Climate Modeling",
-                desc: "Predicting sea temperature changes using historical satellite data and LSTM networks.",
+                category: "Data Science/Jupyter", // Added Jupyter context
+                title: "Great Red Spot Atmospheric Modeling",
+                desc: "Predicting atmospheric dynamics on Jupiter using large-scale fluid simulations and LLMs.",
                 date: "May 2025",
-                color: "border-cyan-500"
+                color: "border-yellow-500"
             }
         ];
 
@@ -496,7 +611,7 @@
                         </div>
                     `;
                     card.onclick = () => {
-                        alert(`Opening research document for: ${item.title}`);
+                        alert(`Opening confidential research document for: ${item.title}`);
                     };
                     grid.appendChild(card);
                 });
@@ -515,7 +630,10 @@
         });
 
         // Initial Render
-        renderProjects(researchData);
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects(researchData);
+        });
+
 
         // 5. Typewriter Effect
         const slogans = ["Let's Work!", "Let's Create!", "Let's Revolve!", "Let's be Inspired!"];
@@ -570,7 +688,7 @@
                 this.vx = (Math.random() - 0.5) * 0.5;
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2;
-                this.color = Math.random() > 0.5 ? 'rgba(6, 182, 212, ' : 'rgba(139, 92, 246, '; 
+                this.color = Math.random() > 0.5 ? 'rgba(6, 182, 212, ' : 'rgba(139, 92, 246, '; // Neon Cyan or Electric Purple
             }
 
             update() {
@@ -598,7 +716,9 @@
         }
 
         function animate() {
-            ctx.clearRect(0, 0, width, height);
+            // Faint trails effect
+            ctx.fillStyle = 'rgba(2, 6, 23, 0.1)'; 
+            ctx.fillRect(0, 0, width, height);
             
             for (let i = 0; i < particles.length; i++) {
                 for (let j = i + 1; j < particles.length; j++) {
