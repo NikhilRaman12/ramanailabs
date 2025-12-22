@@ -3,467 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Explore the oceanic depth of AI Never Before. Ever After.</title>
-    <meta name="description" content="Raman AI Labs: The singularity of excellence in pioneering hyper-intelligent systems, deep research, and future-forward domains.">
-    <meta name="robots" content="index, follow"> 
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="/favicon.ico"> 
+    <title>Raman AI Labs | Digital Ecosystem</title>
+    
+    <!-- SYSTEM FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- GLOBAL CDN STACK (Reliable & Fast) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <!-- LUCIDE ICONS (Fixed Import) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- DESIGN SYSTEM CONFIG -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        obsidian: '#050505',
+                        charcoal: '#0F0F0F',
+                        ocean: '#0077B6',
+                        oceanLight: '#00B4D8',
+                        glass: 'rgba(255, 255, 255, 0.03)'
+                    },
+                    backgroundImage: {
+                        'glow': 'radial-gradient(circle at center, rgba(0, 180, 216, 0.15) 0%, rgba(5, 5, 5, 0) 70%)',
+                        'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
-        /* -------------------------------------------------------------------------- */
-        /* CORE & RESET: KINETIC UI BASE */
-        /* -------------------------------------------------------------------------- */
-        :root {
-            --color-primary: #00e0ff; /* Electric Blue */
-            --color-secondary: #00ff88; /* Data Green */
-            --color-bg-dark: #000000; /* Absolute Black */
-            --color-bg-medium: #0f0f15;
-            --color-text-light: #ffffff;
-            --color-text-muted: #99aab5;
-            --color-border: #1a202c;
-
-            --max-width: 1400px;
-            --spacing-unit: 1.5rem;
-            --font-family-primary: 'Space Grotesk', sans-serif;
-            --transition-speed-fast: 0.15s;
-            --border-radius-lg: 8px;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            will-change: transform, opacity; /* Force GPU acceleration for smooth motion */
+        body { 
+            background-color: #050505; 
+            color: #ffffff; 
+            overflow-x: hidden; 
             -webkit-font-smoothing: antialiased;
         }
+        
+        /* Glassmorphism Engine */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
 
+        /* Scrollbar aesthetics */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00B4D8; }
+
+        /* Smooth Anchor Scrolling */
         html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-family-primary);
-            background-color: var(--color-bg-dark);
-            color: var(--color-text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        h1, h2, h3 { font-weight: 700; line-height: 1.1; color: var(--color-text-light); }
-        h1 { font-size: clamp(3rem, 8vw, 6rem); }
-        h2 { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 3rem; text-align: center; }
-        h3 { font-size: 1.6rem; }
-
-        a { color: var(--color-primary); text-decoration: none; transition: color var(--transition-speed-fast); }
-        a:hover { color: var(--color-secondary); }
-        p { color: var(--color-text-muted); }
-
-        section {
-            padding: 8rem var(--spacing-unit);
-            max-width: var(--max-width);
-            margin: 0 auto;
-            position: relative;
-        }
-
-        /* -------------------------------------------------------------------------- */
-        /* HEADER: ZERO-FRICTION NAVIGATION */
-        /* -------------------------------------------------------------------------- */
-
-        .header {
-            background-color: rgba(0, 0, 0, 0.95);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem var(--spacing-unit);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(15px); 
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -1.5px;
-            cursor: pointer;
-            color: var(--color-text-light);
-            text-shadow: 0 0 5px rgba(0, 224, 255, 0.5);
-        }
-
-        .logo-dot { color: var(--color-secondary); font-size: 1.2em; }
-
-        .nav-links a {
-            margin-left: 2.5rem;
-            font-weight: 400;
-            position: relative;
-            padding-bottom: 4px;
-            transition: color var(--transition-speed-fast);
-            text-transform: uppercase;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Kinetic Hover Effect */
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-primary);
-            transition: width 0.3s ease-out, left 0.3s ease-out;
-        }
-        .nav-links a:hover::after {
-            width: 100%;
-            left: 0;
-        }
-
-        .contact-buttons { display: flex; gap: 0.6rem; }
-
-        .icon-btn {
-            width: 44px; height: 44px; border: 1px solid var(--color-border); border-radius: 50%;
-            background-color: transparent; cursor: pointer; transition: all 0.2s ease-out;
-            background-size: 50%; background-position: center; background-repeat: no-repeat;
-        }
-
-        .icon-btn:hover {
-            transform: scale(1.15) rotate(5deg);
-            background-color: var(--color-bg-medium);
-            box-shadow: 0 0 10px var(--color-primary);
-            border-color: var(--color-primary);
-        }
-        
-        /* SVG Icons with Primary Color Fill */
-        .linkedin { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e0ff"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.542-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>'); }
-        .email { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e0ff"><path d="M12 12.713l-11.75 6.786 11.75 6.786 11.75-6.786-11.75-6.786zm0-1.426l10.25-5.914-10.25-5.914-10.25 5.914 10.25 5.914z"/></svg>'); }
-        .whatsapp { background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%2300e0ff"><path d="M12.031 2.016c-5.518 0-9.965 4.484-9.965 10s4.447 10 9.965 10c1.789 0 3.454-.484 4.887-1.359l.065.039c.928.535 2.016.828 3.125.828.601 0 1.207-.152 1.766-.449l.049.023c.338-.172.637-.41.879-.691l.035.039.062-.055c.343-.371.609-.797.777-1.258l-.055.059.043-.047c.227-.585.347-1.207.347-1.836 0-2.316-1.566-4.289-3.707-5.016l-.043.023c-.344-.113-.672-.215-.98-.313l-.062.039.049-.039c-.199-.074-.395-.148-.582-.219l-.049.039-.02-.02c-.227-.086-.441-.168-.652-.246l-.027.027c-.203-.074-.403-.146-.598-.215l-.039.031.02-.02c-.2-.074-.395-.143-.586-.207l-.031.023.016-.016c-.184-.067-.367-.13-.547-.184l-.031.02c.012-.008.027-.016.039-.023zM12.031 4.016c-4.445 0-8 3.555-8 8s3.555 8 8 8c.559 0 1.109-.07 1.637-.203l.039-.012c.16-.035.316-.074.473-.117l.027.012.035-.008c.156-.035.305-.074.453-.117l.031.012.023-.008c.137-.035.266-.074.391-.113l.02.008c.125-.035.242-.067.359-.102l.023.008.016-.008c.109-.031.215-.062.316-.094l.02-.004.004-.004c.094-.027.184-.055.273-.082l.02-.004c.086-.027.168-.052.25-.074l.016-.004.004-.004c.07-.02.137-.043.203-.062l.016-.004c.059-.016.113-.031.168-.043l.012-.004.004-.004c.047-.012.094-.023.141-.031l.008-.004c.035-.008.07-.012.105-.02l.008-.004c.027-.008.055-.012.082-.016l.004-.004c.016-.004.031-.004.047-.004l.004-.004c.012 0 .023-.004.035-.004l.008-.004c.004 0 .008 0 .012 0 .031 0 .062 0 .094 0h.016c.012 0 .023 0 .035 0 .016 0 .031 0 .047 0 .012 0 .023 0 .035 0 .004 0 .008 0 .012 0 .016 0 .031 0 .047 0 .008 0 .016 0 .023 0 .035 0 .067 0 .102 0h.016c4.445 0 8-3.555 8-8s-3.555-8-8-8zM17.75 12.016c0 1.25-.402 2.422-1.152 3.422l-.195.234c-2.484 2.922-6.523 3.344-9.398 1.219l-.234-.176c-1.398-1.055-2.227-2.672-2.227-4.469 0-3.328 2.68-6 6-6 1.797 0 3.414.828 4.469 2.227l.176.234c2.125 2.875 1.703 6.914-.805 9.172l.148-.117c.562-.437 1.016-.969 1.344-1.547l-.023.031c.215-.367.324-.773.324-1.18 0-.969-.781-1.75-1.75-1.75s-1.75.781-1.75 1.75c0 .039 0 .078.004.117l.004.02c.004.047.008.094.008.141 0 .965-.781 1.75-1.75 1.75s-1.75-.785-1.75-1.75v-.016c0-1.25.402-2.422 1.152-3.422l.195-.234c2.484-2.922 6.523-3.344 9.398-1.219l.234.176c1.398 1.055 2.227 2.672 2.227 4.469 0 3.328-2.68 6-6 6z"/></svg>'); }
-        
-        /* -------------------------------------------------------------------------- */
-        /* HERO SECTION: THE NEURAL CORE */
-        /* -------------------------------------------------------------------------- */
-
-        .hero-section {
-            min-height: 100vh; /* Full screen on desktop */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 900px;
-            animation: fadeIn 1.5s ease-out;
-        }
-
-        .hero-content h1 {
-            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-            letter-spacing: -3px;
-            text-shadow: 0 0 15px rgba(0, 224, 255, 0.4);
-        }
-
-        .subtitle {
-            font-size: 1.6rem;
-            color: var(--color-text-light);
-            margin-bottom: 4rem;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        }
-        
-        .cta-button {
-            display: inline-flex; align-items: center; gap: 1rem; padding: 1.2rem 3rem; 
-            background: var(--color-primary); color: var(--color-bg-dark); border: none; 
-            border-radius: var(--border-radius-lg); font-size: 1.1rem; font-weight: 700; 
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 10px 30px rgba(0, 224, 255, 0.5);
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: var(--color-secondary);
-            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.8);
-        }
-
-        /* The Unbeatable Visualization: Subtle, constant energy */
-        .hero-visualization {
-            position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1;
-            opacity: 0.1;
-            background: radial-gradient(circle at 50% 50%, rgba(0, 224, 255, 0.1), transparent 80%),
-                        radial-gradient(circle at 20% 70%, rgba(0, 255, 136, 0.05), transparent 70%);
-            animation: pulse 15s infinite alternate;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.1; }
-            100% { transform: scale(1.05); opacity: 0.15; }
-        }
-
-        /* -------------------------------------------------------------------------- */
-        /* DOMAIN & CONTENT CARDS: THE KINETIC EFFECT */
-        /* -------------------------------------------------------------------------- */
-        .domain-section { background-color: var(--color-bg-medium); }
-
-        .domain-grid {
-            display: grid; gap: 1.5rem; padding: 2rem 0;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        }
-
-        .domain-card {
-            background-color: var(--color-bg-dark);
-            padding: 2.5rem;
-            border-radius: var(--border-radius-lg);
-            border: 1px solid var(--color-border);
-            transition: all 0.25s ease-out;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Unbeatable Card Hover: 3D Lift */
-        .domain-card:hover {
-            transform: perspective(1000px) rotateX(1deg) translateY(-10px);
-            border-color: var(--color-primary);
-            box-shadow: 0 20px 50px rgba(0, 224, 255, 0.2);
-        }
-        
-        .domain-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 224, 255, 0.05), transparent);
-            transition: left 0.5s ease-out;
-            z-index: 0;
-        }
-        .domain-card:hover::before {
-            left: 100%;
-        }
-
-        .domain-card h3 { color: var(--color-primary); margin-bottom: 0.75rem; z-index: 1; }
-        .domain-card p { color: var(--color-text-muted); font-size: 0.95rem; z-index: 1; }
-
-        /* Content List Styles */
-        .content-section { background-color: var(--color-bg-dark); }
-        .content-list {
-            display: grid; gap: 1.5rem; margin-bottom: 3rem;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-        }
-
-        .content-item {
-            background-color: var(--color-bg-medium);
-            padding: 2rem;
-            border-radius: var(--border-radius-lg);
-            border-left: 4px solid var(--color-secondary);
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
-            min-height: 150px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .content-item:hover {
-            transform: translateX(5px);
-            box-shadow: -5px 0 20px rgba(0, 255, 136, 0.3);
-        }
-
-        .content-tag {
-            display: inline-block; padding: 0.3rem 0.6rem; 
-            background-color: rgba(0, 255, 136, 0.15); color: var(--color-secondary);
-            font-size: 0.8rem; font-weight: 700; border-radius: 4px; margin-bottom: 0.8rem;
-            text-transform: uppercase;
-        }
-        
-        .content-placeholder-text {
-            color: var(--color-text-muted);
-            font-style: italic;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .view-all-button {
-            display: block; width: fit-content; margin: 0 auto;
-            color: var(--color-secondary); padding: 1rem 2.5rem;
-            border: 2px solid var(--color-secondary); border-radius: var(--border-radius-lg);
-            font-weight: 700; transition: all 0.3s;
-        }
-        .view-all-button:hover {
-            background-color: var(--color-secondary); color: var(--color-bg-dark);
-            transform: scale(1.05); box-shadow: 0 0 25px var(--color-secondary);
-        }
-
-        /* -------------------------------------------------------------------------- */
-        /* FOOTER & RESPONSIVENESS */
-        /* -------------------------------------------------------------------------- */
-        .footer { background-color: var(--color-bg-medium); border-top: 1px solid var(--color-border); }
-        
-        @media (max-width: 768px) {
-            .hero-content h1 { font-size: 3.5rem; letter-spacing: -1px; }
-            .subtitle { font-size: 1.3rem; }
-            
-            .nav-links, .contact-buttons { display: none; }
-            .menu-toggle { display: block; }
-            
-            .content-list { grid-template-columns: 1fr; }
-            .domain-grid { grid-template-columns: 1fr; }
-            
-            .footer-grid { grid-template-columns: 1fr; text-align: center; }
-            .footer-col-logo { border-bottom: 1px solid var(--color-border); padding-bottom: 2rem; }
-        }
     </style>
 </head>
-
 <body>
+    <!-- REACT ROOT -->
+    <div id="root"></div>
 
-    <header class="header">
-        <a class="logo" href="#">Raman AI Labs<span class="logo-dot">.</span></a>
-        <nav class="nav-links" id="nav-links">
-            <a href="#domains">Domains</a>
-            <a href="#experiments">Experiments</a>
-            <a href="#insights">Insights</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <div class="contact-buttons" id="contact-buttons">
-            <button class="icon-btn linkedin" aria-label="Connect on LinkedIn" data-link="https://linkedin.com/in/raman_placeholder"></button>
-            <button class="icon-btn email" aria-label="Email for Direct Contact" data-link="mailto:contact@ramanailabs.com"></button>
-            <button class="icon-btn whatsapp" aria-label="Quick Message via WhatsApp" data-link="https://wa.me/+1234567890"></button>
-        </div>
-        <button class="menu-toggle" aria-label="Toggle navigation menu">☰</button>
-    </header>
+    <!-- REACT APPLICATION LOGIC -->
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { motion, AnimatePresence } = window.Motion;
 
-    <main>
-        <section class="hero-section">
-            <div class="hero-visualization"></div> 
-            <div class="hero-content">
-                <h1>**Never Before. Ever After.**</h1>
-                <p class="subtitle">The Absolute Architecture of Intelligence. Pioneering systems designed for timeless, planetary-scale impact. Built by Raman.</p>
-                <a href="#domains" class="cta-button">
-                    Enter The Core System
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12H19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5L19 12L12 19" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-            </div>
-        </section>
+        // --- ICON COMPONENT WRAPPER ---
+        const Icon = ({ name, size = 20, className }) => {
+            const LucideIcons = window.lucide ? window.lucide.icons : {};
+            const IconComponent = LucideIcons[name];
+            return IconComponent ? <IconComponent size={size} className={className} /> : null;
+        };
 
-        <section id="domains" class="domain-section">
-            <h2>The Eight Pillars of Absolute Research</h2>
-            <div class="domain-grid">
-                <div class="domain-card" data-domain="data-ai"><h3>Data & AI: Cognitive Kernels</h3><p>Foundational models and systems engineering for true global intelligence.</p></div>
-                <div class="domain-card" data-domain="quantum"><h3>Quantum & Cryptography</h3><p>Post-quantum resilience and hyper-secure entanglement communication pathways.</p></div>
-                <div class="domain-card" data-domain="cyber-security"><h3>Cyber Security: Adaptive Shield</h3><p>Autonomous defense and zero-trust verification architecture at the planetary layer.</p></div>
-                <div class="domain-card" data-domain="world-tech"><h3>World Tech: Meta-Infrastructure</h3><p>Decentralized global operating systems for sovereign nations and future cities.</p></div>
-                <div class="domain-card" data-domain="biotech"><h3>Biotechnology & Biomedical</h3><p>Accelerated in-silico discovery and precision health longevity frameworks.</p></div>
-                <div class="domain-card" data-domain="agri-env"><h3>Agriculture & Environment</h3><p>Climate-resilient resource management and closed-loop ecological systems.</p></div>
-                <div class="domain-card" data-domain="fine-arts"><h3>Creative & Content Synthesis</h3><p>Generative artistry and verifiable digital provenance for future creation.</p></div>
-                <div class="domain-card" data-domain="governance"><h3>Ethical Systems & Policy</h3><p>Auditable, transparent governance models for all autonomous intelligent agents.</p></div>
-            </div>
-        </section>
+        // --- CONTENT MANAGEMENT SYSTEM (CMS) ---
+        const LAB_DATA = {
+            experiments: [
+                { id: 1, title: "Neural Architecture Search", tag: "AI/ML", desc: "Automating network design using reinforcement learning agents." },
+                { id: 2, title: "Bio-Synthetic Rendering", tag: "Lifesciences", desc: "Real-time visualization of protein folding sequences." },
+                { id: 3, title: "Agri-Drone Vision", tag: "Agriculture", desc: "Computer vision models for crop health monitoring." }
+            ],
+            articles: [
+                { id: 1, title: "The Ethics of Predictive Analytics", date: "Dec 2024", readTime: "8 min read" },
+                { id: 2, title: "Scaling React for Enterprise", date: "Nov 2024", readTime: "12 min read" }
+            ],
+            blogs: [
+                { id: 1, title: "Why I chose Obsidian UI", date: "Today" },
+                { id: 2, title: "The Future of Ag-Tech in India", date: "Last Week" }
+            ]
+        };
 
-        <section id="experiments" class="content-section" data-api-endpoint="/api/v1/experiments/edge">
-            <h2>Current System Operations (Experiments)</h2>
-            <div class="content-list" id="experiment-list">
-                <article class="content-item"><span class="content-tag">Awaiting Data</span><h3>System Initialization Complete</h3><p class="content-placeholder-text">New content loads instantly here upon Raman's approval in the Admin Portal.</p></article>
-                <article class="content-item"><span class="content-tag">Awaiting Data</span><h3>Deployment Protocol Active</h3><p class="content-placeholder-text">New content loads instantly here upon Raman's approval in the Admin Portal.</p></article>
-            </div>
-            <a href="/experiments" class="view-all-button">Access All Systems &rarr;</a>
-        </section>
+        const PILLARS = [
+            { id: 'data', title: 'Data', sub: 'Analytics & ML', icon: 'Database', color: 'text-blue-400' },
+            { id: 'tech', title: 'Tech', sub: 'Engineering', icon: 'Cpu', color: 'text-indigo-400' },
+            { id: 'life', title: 'Lifesciences', sub: 'Bio & Agri', icon: 'Dna', color: 'text-emerald-400' },
+            { id: 'arts', title: 'Fine Arts', sub: 'Design & Craft', icon: 'Palette', color: 'text-rose-400' }
+        ];
 
-        <section id="insights" class="content-section" data-api-endpoint="/api/v1/insights/edge">
-            <h2>Core System Insights</h2>
-            <div class="content-list" id="blog-list">
-                <article class="content-item"><span class="content-tag">Awaiting Data</span><h3>Insight Feed Online</h3><p class="content-placeholder-text">New insights appear here automatically from the Admin Portal.</p></article>
-                <article class="content-item"><span class="content-tag">Awaiting Data</span><h3>Data Stream Initialized</h3><p class="content-placeholder-text">New insights appear here automatically from the Admin Portal.</p></article>
-            </div>
-            <a href="/insights" class="view-all-button">Read All Insights &rarr;</a>
-        </section>
+        // --- COMPONENTS ---
 
-    </main>
+        const Navbar = () => (
+            <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
+                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+                    <div className="flex items-center gap-3 group cursor-pointer">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-oceanLight to-blue-700 flex items-center justify-center shadow-[0_0_15px_rgba(0,180,216,0.2)]">
+                            <span className="font-bold text-white text-xl">R</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="font-bold text-white leading-none">Raman AI Labs</span>
+                            <span className="text-[10px] tracking-widest text-oceanLight font-mono mt-1">EST. 2025</span>
+                        </div>
+                    </div>
+                    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+                        <a href="#domains" className="hover:text-white transition-colors">Domains</a>
+                        <a href="#lab" className="hover:text-white transition-colors">Laboratory</a>
+                        <a href="#contact" className="px-5 py-2 rounded-full border border-white/10 hover:bg-white/5 hover:border-oceanLight/50 hover:text-white transition-all">
+                            Connect
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        );
 
-    <footer id="contact" class="footer">
-        <div class="footer-grid">
-            <div class="footer-col-logo">
-                <a class="logo" href="#">Raman AI Labs<span class="logo-dot">.</span></a>
-                <p>The absolute apex of research and system design. Never compromised. Ever after.</p>
-            </div>
-            <div class="footer-col">
-                <h4>System Links</h4>
-                <a href="#domains">Domains</a>
-                <a href="#experiments">Operations</a>
-                <a href="#insights">Diagnostics</a>
-                <a href="/admin" class="admin-login-link" target="_blank">Access Terminal (Raman Only)</a> 
-            </div>
-            <div class="footer-col">
-                <h4>Communication</h4>
-                <a href="https://linkedin.com/in/raman_placeholder" target="_blank">LinkedIn Protocol</a>
-                <a href="mailto:contact@ramanailabs.com">Direct Email Channel</a>
-                <a href="https://wa.me/+1234567890" target="_blank">WhatsApp Relay</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Raman AI Labs. Architecture Version 7.0. | **Never Before. Ever After.**</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const navLinks = document.getElementById('nav-links');
-            const contactButtons = document.getElementById('contact-buttons');
-            const header = document.querySelector('.header');
-
-            // 1. Mobile Menu Toggle
-            menuToggle.addEventListener('click', () => {
-                const isMenuOpen = navLinks.classList.toggle('active');
-                contactButtons.classList.toggle('active');
-                menuToggle.textContent = isMenuOpen ? '✕' : '☰';
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = isMenuOpen ? 'flex' : 'none';
-                    contactButtons.style.display = isMenuOpen ? 'flex' : 'none';
-                }
-            });
-
-            // 2. Dynamic Contact Linking
-            document.querySelectorAll('.icon-btn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const url = btn.getAttribute('data-link');
-                    if (url) {
-                        window.open(url, '_blank');
-                    }
-                });
-            });
-
-            // 3. System Data Fetch Simulation (The core logic for Goal 2/7)
-            const fetchSystemData = (sectionId) => {
-                const section = document.getElementById(sectionId);
-                const apiEndpoint = section.getAttribute('data-api-endpoint');
-                // *** This is the critical security and performance integration point. ***
-                console.log(`[SYSTEM DIAGNOSTIC]: Attempting secure Edge fetch for ${sectionId} from ${apiEndpoint}.`);
+        const Hero = () => (
+            <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-glow opacity-40 pointer-events-none" />
                 
-                // In production, this call would look like:
-                /* fetch(apiEndpoint) 
-                    .then(response => {
-                        if (response.ok) return response.json();
-                        throw new Error('Secure data fetch failed.');
-                    })
-                    .then(data => {
-                        // Renders content dynamically (e.g., using React/Vue/VanillaJS template)
-                        // Example: section.querySelector('.content-list').innerHTML = renderContent(data);
-                        console.log(`[SYSTEM DIAGNOSTIC]: ${data.length} items loaded successfully from Edge Cache.`);
-                    })
-                    .catch(error => console.error(`[SECURITY ALERT]: Content delivery failure.`, error));
-                */
-            };
-            
-            // Execute the fetch simulation on load
-            fetchSystemData('experiments');
-            fetchSystemData('insights');
+                <motion.div 
+                    initial={{ opacity: 0, y: 30 }} 
+                    animate={{ opacity: 1, y: 0 }} 
+                    transition={{ duration: 0.8 }}
+                    className="relative z-10 text-center max-w-4xl mx-auto"
+                >
+                    <div className="flex justify-center mb-8">
+                        <div className="px-4 py-1.5 rounded-full border border-oceanLight/20 bg-oceanLight/5 text-oceanLight text-xs font-mono flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-oceanLight animate-pulse"></span>
+                            SYSTEM ONLINE • INDIA
+                        </div>
+                    </div>
+                    <h1 className="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
+                        Architecting <br/>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-600">
+                            Intelligence.
+                        </span>
+                    </h1>
+                    <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">
+                        A convergence of Data Science, Full-Stack Engineering, Lifesciences, and Digital Artistry.
+                    </p>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                        <a href="#contact" className="w-full md:w-auto px-8 py-4 bg-oceanLight text-black font-bold rounded-xl hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,180,216,0.3)]">
+                            Collaborate
+                        </a>
+                        <a href="#lab" className="w-full md:w-auto px-8 py-4 glass-panel text-white font-medium rounded-xl hover:bg-white/10 transition-all">
+                            View Research
+                        </a>
+                    </div>
+                </motion.div>
+            </section>
+        );
 
-        });
+        const Domains = () => (
+            <section id="domains" className="py-24 px-6 border-t border-white/5 bg-[#080808]">
+                <div className="max-w-7xl mx-auto">
+                    <h2 className="text-3xl font-bold mb-12">Core Architecture</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {PILLARS.map((p, i) => (
+                            <motion.div 
+                                key={p.id}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ delay: i * 0.1 }}
+                                className="glass-panel p-8 rounded-2xl hover:border-oceanLight/30 transition-all group"
+                            >
+                                <div className={`mb-6 p-4 w-fit rounded-xl bg-white/5 ${p.color}`}>
+                                    <Icon name={p.icon} size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold mb-2">{p.title}</h3>
+                                <p className="text-sm text-gray-500">{p.sub}</p>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+        );
+
+        const Lab = () => {
+            const [tab, setTab] = useState('experiments');
+            return (
+                <section id="lab" className="py-24 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                            <div>
+                                <h2 className="text-3xl font-bold mb-2 flex items-center gap-3">
+                                    <Icon name="FlaskConical" className="text-oceanLight" />
+                                    The Laboratory
+                                </h2>
+                                <p className="text-gray-500">Active R&D and Documentation.</p>
+                            </div>
+                            <div className="flex bg-white/5 p-1 rounded-lg">
+                                {['experiments', 'articles', 'blogs'].map(t => (
+                                    <button 
+                                        key={t}
+                                        onClick={() => setTab(t)}
+                                        className={`px-4 py-2 text-sm font-medium rounded-md capitalize transition-all ${tab === t ? 'bg-white/10 text-white' : 'text-gray-500'}`}
+                                    >
+                                        {t}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {tab === 'experiments' && LAB_DATA.experiments.map(item => (
+                                <div key={item.id} className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all group cursor-pointer border-transparent hover:border-oceanLight/20">
+                                    <div className="flex justify-between items-start mb-4">
+                                        <span className="text-xs font-mono text-oceanLight border border-oceanLight/20 px-2 py-1 rounded bg-oceanLight/5">{item.tag}</span>
+                                        <Icon name="ArrowUpRight" className="text-gray-600 group-hover:text-white" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                                    <p className="text-gray-400 text-sm">{item.desc}</p>
+                                </div>
+                            ))}
+                            {tab === 'articles' && LAB_DATA.articles.map(item => (
+                                <div key={item.id} className="glass-panel p-8 rounded-2xl border-l-4 border-l-transparent hover:border-l-oceanLight transition-all">
+                                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                                    <p className="text-xs text-gray-500 font-mono">{item.date} • {item.readTime}</p>
+                                </div>
+                            ))}
+                             {tab === 'blogs' && LAB_DATA.blogs.map(item => (
+                                <div key={item.id} className="p-8 rounded-2xl border border-white/10 hover:border-white/30 transition-all">
+                                    <h3 className="text-lg font-medium italic text-gray-300">"{item.title}"</h3>
+                                    <p className="text-xs text-oceanLight font-mono mt-4">{item.date}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        const Footer = () => (
+            <footer id="contact" className="py-24 px-6 border-t border-white/10 relative overflow-hidden bg-gradient-to-b from-obsidian to-black">
+                <div className="max-w-4xl mx-auto text-center relative z-10">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's collaborate.</h2>
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
+                        <a href="https://wa.me/9110343178" className="w-full md:w-auto px-6 py-3 bg-[#25D366] text-black font-bold rounded-lg hover:opacity-90 flex items-center justify-center gap-2">
+                            <Icon name="MessageCircle" size={18} /> WhatsApp
+                        </a>
+                        <a href="mailto:nikhilraman1203@gmail.com" className="w-full md:w-auto px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 flex items-center justify-center gap-2">
+                            <Icon name="Mail" size={18} /> Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" className="w-full md:w-auto px-6 py-3 bg-[#0077B5] text-white font-bold rounded-lg hover:opacity-90 flex items-center justify-center gap-2">
+                            <Icon name="Linkedin" size={18} /> LinkedIn
+                        </a>
+                    </div>
+                    <p className="text-xs text-gray-600 font-mono">© 2025 Raman AI Labs. All Systems Nominal.</p>
+                </div>
+            </footer>
+        );
+
+        const App = () => (
+            <div className="antialiased pb-10">
+                <Navbar />
+                <Hero />
+                <Domains />
+                <Lab />
+                <Footer />
+            </div>
+        );
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
 </body>
 </html>
