@@ -3,154 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Precision Interface</title>
+    <title>Raman AI Labs | Professional</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#0A0C10',
-                        oceanic: '#48CAE4',
-                        tealAccent: '#00B4D8',
-                    },
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
-        body { background-color: #0A0C10; color: white; overflow-x: hidden; }
+        :root { --oceanic: #48CAE4; }
+        body { background-color: #0A0C10; color: white; margin: 0; overflow-x: hidden; font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* EXACT BACKGROUND SPHERES FROM IMAGE */
-        .glow-sphere-top {
-            position: fixed; top: -150px; left: 15%; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(72, 202, 228, 0.12) 0%, transparent 75%);
-            filter: blur(80px); z-index: 0; pointer-events: none;
+        /* Fixed Blur/Black Screen Issue */
+        .glow-bg {
+            position: fixed; border-radius: 50%; z-index: -1; pointer-events: none;
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.08) 0%, transparent 70%);
         }
 
-        .glow-sphere-bottom {
-            position: fixed; bottom: -200px; right: 20%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0, 180, 216, 0.1) 0%, transparent 75%);
-            filter: blur(100px); z-index: 0; pointer-events: none;
-        }
-
-        /* FLOATING SIDEBAR PANEL STYLING */
-        .sidebar-panel {
-            background: rgba(17, 20, 24, 0.85);
-            backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .sidebar-glass {
+            background: rgba(15, 18, 24, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
-            width: 300px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        .sidebar-link {
-            display: flex; align-items: center; gap: 15px;
-            padding: 14px 24px; font-size: 14px;
-            color: #9CA3AF; transition: all 0.3s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        .project-entry {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
         }
+        .project-entry:hover { border-color: var(--oceanic); transform: translateY(-5px); }
 
-        .sidebar-link:hover { background: rgba(255, 255, 255, 0.04); color: white; }
-        .sidebar-link i { color: #48CAE4; font-size: 16px; }
-
-        /* HEADER NAV ACTIVE STATE */
-        .nav-active { color: white; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-        .nav-inactive { color: #6B7280; }
-        
-        /* CONTENT BOXES */
-        .project-card {
-            border: 1px dashed rgba(255, 255, 255, 0.15);
-            border-radius: 16px; height: 220px;
-            background: rgba(255, 255, 255, 0.01);
-            transition: border-color 0.3s;
-        }
-        .project-card:hover { border-color: #48CAE4; }
-
-        /* BUTTONS */
-        .btn-ocean { background: #48CAE4; color: #0A0C10; font-weight: 700; border-radius: 99px; }
-        .btn-outline { border: 1px solid #374151; color: #D1D5DB; border-radius: 99px; }
+        /* Hidden Admin Controls */
+        #adminPanel { display: none; }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="antialiased">
 
-    <div class="glow-sphere-top"></div>
-    <div class="glow-sphere-bottom"></div>
+    <div class="glow-bg" style="top: -10%; left: 10%; width: 40vw; height: 40vw;"></div>
+    <div class="glow-bg" style="bottom: -10%; right: 10%; width: 50vw; height: 50vw;"></div>
 
-    <header class="relative z-20 px-10 py-10 flex justify-between items-center max-w-7xl mx-auto">
+    <header class="relative z-50 max-w-7xl mx-auto px-8 py-10 flex justify-between items-center">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-gradient-to-br from-[#0077B6] to-[#48CAE4] rounded-lg flex items-center justify-center shadow-lg shadow-oceanic/20">
+            <div class="w-10 h-10 bg-gradient-to-br from-[#0077B6] to-[#48CAE4] rounded-lg flex items-center justify-center">
                 <span class="font-bold text-xl text-black">R</span>
             </div>
-            <h1 class="text-xl font-bold tracking-tight">Raman <span class="text-gray-500 font-normal">AI|</span>Labs</h1>
+            <span class="text-xl font-bold">Raman <span class="text-gray-500 font-normal">AI|</span>Labs</span>
         </div>
 
         <nav class="hidden lg:flex items-center gap-10 text-sm">
-            <a href="#" class="nav-active">
-                <i class="fa-solid fa-circle-chevron-right text-oceanic"></i> Projects
-            </a>
-            <a href="#" class="nav-inactive hover:text-white">Articles</a>
-            <a href="#" class="nav-inactive hover:text-white">Articles</a>
+            <div class="text-oceanic font-semibold flex items-center gap-2">
+                <i class="fa-solid fa-circle-chevron-right text-[10px]"></i> Projects
+            </div>
+            <a href="#" class="text-gray-500 hover:text-white transition">Articles</a>
+            <a href="#" class="text-gray-500 hover:text-white transition">Articles</a>
             <a href="#" class="text-oceanic font-bold">Blogs</a>
-            <a href="#" class="nav-inactive hover:text-white">Blogs</a>
+            <a href="#" class="text-gray-500 hover:text-white transition">Blogs</a>
             <button class="bg-[#1B4332] text-white px-6 py-2 rounded-full text-xs font-bold ml-4">Connect Me</button>
         </nav>
     </header>
 
-    <main class="relative z-10 px-10 pt-16 max-w-7xl mx-auto flex flex-col lg:flex-row gap-16">
+    <main class="relative z-10 max-w-7xl mx-auto px-8 pt-10 flex flex-col lg:flex-row gap-12">
         
-        <div class="lg:w-2/3">
-            <h2 class="text-5xl lg:text-6xl font-semibold leading-[1.15] mb-12 text-gray-100 max-w-3xl">
+        <div class="lg:w-3/5">
+            <h1 class="text-5xl lg:text-7xl font-semibold leading-tight mb-10 text-gray-100">
                 Explore the deep oceanic depths of artificial intelligence across domains.
-            </h2>
+            </h1>
             
-            <div class="flex gap-4 mb-24">
-                <button class="btn-ocean px-8 py-3 text-sm hover:scale-105 transition-transform">Admin Toggle</button>
-                <button class="btn-outline px-8 py-3 text-sm hover:bg-white/5 transition-colors">Connect Me</button>
+            <div class="flex gap-4 mb-16">
+                <button onclick="accessAdmin()" class="bg-oceanic text-black px-8 py-3 rounded-full font-bold text-sm hover:scale-105 transition">Admin Toggle</button>
+                <button class="border border-gray-600 text-gray-300 px-8 py-3 rounded-full font-bold text-sm">Connect Me</button>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="project-card"></div>
-                <div class="project-card"></div>
-                <div class="project-card"></div>
+            <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="h-40 border border-dashed border-white/10 rounded-2xl flex items-center justify-center text-gray-600 text-xs italic">
+                    No active projects published.
+                </div>
             </div>
         </div>
 
-        <div class="lg:w-1/3 flex justify-center lg:justify-end items-start pt-10">
-            <div class="sidebar-panel overflow-hidden">
-                <div class="p-6 flex items-center gap-3 border-b border-white/5 bg-white/[0.02]">
+        <div class="lg:w-2/5 flex justify-end items-start">
+            <div class="sidebar-glass w-full max-w-[320px] overflow-hidden">
+                <div class="p-6 border-b border-white/5 flex items-center gap-3">
                     <div class="w-6 h-6 bg-oceanic rounded flex items-center justify-center text-[10px] text-black font-extrabold">R</div>
-                    <span class="font-bold text-xs tracking-widest text-gray-200 uppercase">Raman <span class="text-gray-500">AI|</span>Labs</span>
+                    <span class="text-xs font-bold uppercase tracking-widest">Raman <span class="text-gray-500">AI|</span>Labs</span>
                 </div>
-                
                 <div class="py-2">
-                    <div class="sidebar-link text-oceanic font-bold bg-white/[0.03]">
-                        <i class="fa-regular fa-comments"></i> Chatbots
-                    </div>
-                    <div class="sidebar-link">
-                        <i class="fa-solid fa-bolt"></i> Chatbots
-                    </div>
-                    <div class="sidebar-link">
-                        <i class="fa-regular fa-paper-plane"></i> LLM-Assistants
-                    </div>
-                    <div class="sidebar-link">
-                        <i class="fa-brands fa-facebook-f"></i> Hover:bg-blue-600
-                    </div>
-                    <div class="sidebar-link">
-                        <i class="fa-brands fa-linkedin-in"></i> Hover:bg-blue-600
-                    </div>
-                    <div class="sidebar-link">
-                        <i class="fa-solid fa-link"></i> LinkedIn
-                    </div>
-                    <a href="mailto:nikhilraman1203@gmail.com" class="flex items-center gap-3 px-6 py-5 bg-oceanic/10 text-oceanic font-bold text-sm border-t border-white/5 hover:bg-oceanic/20 transition-all">
+                    <div class="px-6 py-4 flex items-center gap-4 text-oceanic font-bold bg-white/[0.03]"><i class="fa-regular fa-comment-dots"></i> Chatbots</div>
+                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-solid fa-bolt-lightning text-oceanic"></i> Chatbots</div>
+                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-regular fa-paper-plane text-oceanic"></i> LLM-Assistants</div>
+                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-brands fa-linkedin-in text-oceanic"></i> LinkedIn</div>
+                    <a href="mailto:nikhilraman1203@gmail.com" class="px-6 py-5 flex items-center gap-4 bg-oceanic/10 text-oceanic font-bold text-sm border-t border-white/5 uppercase tracking-tighter">
                         <i class="fa-solid fa-anchor"></i> Connect Me
                     </a>
                 </div>
@@ -158,9 +99,53 @@
         </div>
     </main>
 
-    <div class="fixed bottom-[-30px] left-10 opacity-[0.02] pointer-events-none select-none z-0">
-        <h3 class="text-[200px] font-black tracking-tighter uppercase leading-none">RAMAN</h3>
+    <div id="adminPanel" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-6">
+        <div class="bg-[#111] border border-white/10 p-8 rounded-3xl w-full max-w-md">
+            <h3 class="text-xl font-bold mb-6 text-oceanic">Publish New Entry</h3>
+            <input type="text" id="projTitle" placeholder="Project Title" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg mb-4 text-white">
+            <textarea id="projDesc" placeholder="Brief Description" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg mb-6 text-white h-24"></textarea>
+            <div class="flex gap-3">
+                <button onclick="addProject()" class="flex-1 bg-oceanic text-black font-bold py-3 rounded-xl">Publish</button>
+                <button onclick="document.getElementById('adminPanel').style.display='none'" class="flex-1 bg-white/10 py-3 rounded-xl">Cancel</button>
+            </div>
+        </div>
     </div>
 
+    <script>
+        const SECRET_CODE = "never before ever after"; // Your private code
+
+        function accessAdmin() {
+            const entry = prompt("Enter Administration Code:");
+            if (entry === SECRET_CODE) {
+                document.getElementById('adminPanel').style.display = 'flex';
+            } else {
+                alert("Unauthorized Access Attempt.");
+            }
+        }
+
+        function addProject() {
+            const title = document.getElementById('projTitle').value;
+            const desc = document.getElementById('projDesc').value;
+            
+            if(!title || !desc) return alert("Fill all fields");
+
+            const grid = document.getElementById('projectGrid');
+            // Remove the "No projects" placeholder on first add
+            if(grid.innerHTML.includes("italic")) grid.innerHTML = "";
+
+            const card = `
+                <div class="project-entry p-6 rounded-2xl">
+                    <div class="text-oceanic mb-3 text-lg font-bold"># ${title}</div>
+                    <p class="text-gray-400 text-sm leading-relaxed">${desc}</p>
+                </div>
+            `;
+            
+            grid.innerHTML += card;
+            document.getElementById('adminPanel').style.display = 'none';
+            // Clear inputs
+            document.getElementById('projTitle').value = "";
+            document.getElementById('projDesc').value = "";
+        }
+    </script>
 </body>
 </html>
