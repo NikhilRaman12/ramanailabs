@@ -1,44 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Digital Ecosystem</title>
+    <title>Raman AI Labs | Future Intelligence</title>
     
-    <!-- SYSTEM FONTS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <!-- GLOBAL CDN STACK (Reliable & Fast) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     
-    <!-- LUCIDE ICONS (Fixed Import) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- DESIGN SYSTEM CONFIG -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
                     colors: {
-                        obsidian: '#050505',
-                        charcoal: '#0F0F0F',
-                        ocean: '#0077B6',
-                        oceanLight: '#00B4D8',
+                        obsidian: '#020202',
+                        oceanic: '#00B4D8',
+                        deepBlue: '#0077B6',
                         glass: 'rgba(255, 255, 255, 0.03)'
                     },
-                    backgroundImage: {
-                        'glow': 'radial-gradient(circle at center, rgba(0, 180, 216, 0.15) 0%, rgba(5, 5, 5, 0) 70%)',
-                        'card-gradient': 'linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)'
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
                     },
                     animation: {
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'blob': 'blob 10s infinite',
+                        'fade-in': 'fadeIn 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -46,246 +49,256 @@
     </script>
 
     <style>
-        body { 
-            background-color: #050505; 
-            color: #ffffff; 
-            overflow-x: hidden; 
-            -webkit-font-smoothing: antialiased;
+        body { background-color: #020202; overflow-x: hidden; }
+        
+        .texture-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none; z-index: 1; opacity: 0.4;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        /* Glassmorphism Engine */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        .glass-nav {
+            background: rgba(2, 2, 2, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
-
-        /* Scrollbar aesthetics */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #262626; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00B4D8; }
-
-        /* Smooth Anchor Scrolling */
-        html { scroll-behavior: smooth; }
+        
+        .empty-state {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.01);
+        }
     </style>
 </head>
-<body>
-    <!-- REACT ROOT -->
-    <div id="root"></div>
+<body class="text-white antialiased">
 
-    <!-- REACT APPLICATION LOGIC -->
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        const { motion, AnimatePresence } = window.Motion;
+    <div class="texture-overlay"></div>
+    <div class="fixed inset-0 pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-deepBlue opacity-20 blur-[120px] rounded-full animate-blob"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[400px] h-[400px] bg-oceanic opacity-10 blur-[100px] rounded-full animate-blob animation-delay-2000"></div>
+    </div>
 
-        // --- ICON COMPONENT WRAPPER ---
-        const Icon = ({ name, size = 20, className }) => {
-            const LucideIcons = window.lucide ? window.lucide.icons : {};
-            const IconComponent = LucideIcons[name];
-            return IconComponent ? <IconComponent size={size} className={className} /> : null;
-        };
-
-        // --- CONTENT MANAGEMENT SYSTEM (CMS) ---
-        const LAB_DATA = {
-            experiments: [
-                { id: 1, title: "Neural Architecture Search", tag: "AI/ML", desc: "Automating network design using reinforcement learning agents." },
-                { id: 2, title: "Bio-Synthetic Rendering", tag: "Lifesciences", desc: "Real-time visualization of protein folding sequences." },
-                { id: 3, title: "Agri-Drone Vision", tag: "Agriculture", desc: "Computer vision models for crop health monitoring." }
-            ],
-            articles: [
-                { id: 1, title: "The Ethics of Predictive Analytics", date: "Dec 2024", readTime: "8 min read" },
-                { id: 2, title: "Scaling React for Enterprise", date: "Nov 2024", readTime: "12 min read" }
-            ],
-            blogs: [
-                { id: 1, title: "Why I chose Obsidian UI", date: "Today" },
-                { id: 2, title: "The Future of Ag-Tech in India", date: "Last Week" }
-            ]
-        };
-
-        const PILLARS = [
-            { id: 'data', title: 'Data', sub: 'Analytics & ML', icon: 'Database', color: 'text-blue-400' },
-            { id: 'tech', title: 'Tech', sub: 'Engineering', icon: 'Cpu', color: 'text-indigo-400' },
-            { id: 'life', title: 'Lifesciences', sub: 'Bio & Agri', icon: 'Dna', color: 'text-emerald-400' },
-            { id: 'arts', title: 'Fine Arts', sub: 'Design & Craft', icon: 'Palette', color: 'text-rose-400' }
-        ];
-
-        // --- COMPONENTS ---
-
-        const Navbar = () => (
-            <nav className="fixed top-0 w-full z-50 glass-panel border-b border-white/5">
-                <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-                    <div className="flex items-center gap-3 group cursor-pointer">
-                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-oceanLight to-blue-700 flex items-center justify-center shadow-[0_0_15px_rgba(0,180,216,0.2)]">
-                            <span className="font-bold text-white text-xl">R</span>
-                        </div>
-                        <div className="flex flex-col">
-                            <span className="font-bold text-white leading-none">Raman AI Labs</span>
-                            <span className="text-[10px] tracking-widest text-oceanLight font-mono mt-1">EST. 2025</span>
-                        </div>
-                    </div>
-                    <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
-                        <a href="#domains" className="hover:text-white transition-colors">Domains</a>
-                        <a href="#lab" className="hover:text-white transition-colors">Laboratory</a>
-                        <a href="#contact" className="px-5 py-2 rounded-full border border-white/10 hover:bg-white/5 hover:border-oceanLight/50 hover:text-white transition-all">
-                            Connect
-                        </a>
-                    </div>
+    <nav class="fixed top-0 w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 group cursor-pointer">
+                <div class="w-10 h-10 bg-gradient-to-br from-deepBlue to-oceanic rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(0,180,216,0.3)] group-hover:shadow-[0_0_25px_rgba(0,180,216,0.5)] transition-all">
+                    <span class="font-display font-bold text-xl text-black">R</span>
                 </div>
-            </nav>
-        );
-
-        const Hero = () => (
-            <section className="relative min-h-screen flex items-center justify-center pt-20 px-6">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-glow opacity-40 pointer-events-none" />
-                
-                <motion.div 
-                    initial={{ opacity: 0, y: 30 }} 
-                    animate={{ opacity: 1, y: 0 }} 
-                    transition={{ duration: 0.8 }}
-                    className="relative z-10 text-center max-w-4xl mx-auto"
-                >
-                    <div className="flex justify-center mb-8">
-                        <div className="px-4 py-1.5 rounded-full border border-oceanLight/20 bg-oceanLight/5 text-oceanLight text-xs font-mono flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-oceanLight animate-pulse"></span>
-                            SYSTEM ONLINE • INDIA
-                        </div>
-                    </div>
-                    <h1 className="text-5xl md:text-8xl font-bold tracking-tight mb-8 leading-[1.1]">
-                        Architecting <br/>
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-gray-600">
-                            Intelligence.
-                        </span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-10">
-                        A convergence of Data Science, Full-Stack Engineering, Lifesciences, and Digital Artistry.
-                    </p>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-                        <a href="#contact" className="w-full md:w-auto px-8 py-4 bg-oceanLight text-black font-bold rounded-xl hover:bg-white hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,180,216,0.3)]">
-                            Collaborate
-                        </a>
-                        <a href="#lab" className="w-full md:w-auto px-8 py-4 glass-panel text-white font-medium rounded-xl hover:bg-white/10 transition-all">
-                            View Research
-                        </a>
-                    </div>
-                </motion.div>
-            </section>
-        );
-
-        const Domains = () => (
-            <section id="domains" className="py-24 px-6 border-t border-white/5 bg-[#080808]">
-                <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-12">Core Architecture</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {PILLARS.map((p, i) => (
-                            <motion.div 
-                                key={p.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                transition={{ delay: i * 0.1 }}
-                                className="glass-panel p-8 rounded-2xl hover:border-oceanLight/30 transition-all group"
-                            >
-                                <div className={`mb-6 p-4 w-fit rounded-xl bg-white/5 ${p.color}`}>
-                                    <Icon name={p.icon} size={24} />
-                                </div>
-                                <h3 className="text-xl font-bold mb-2">{p.title}</h3>
-                                <p className="text-sm text-gray-500">{p.sub}</p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-        );
-
-        const Lab = () => {
-            const [tab, setTab] = useState('experiments');
-            return (
-                <section id="lab" className="py-24 px-6">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                            <div>
-                                <h2 className="text-3xl font-bold mb-2 flex items-center gap-3">
-                                    <Icon name="FlaskConical" className="text-oceanLight" />
-                                    The Laboratory
-                                </h2>
-                                <p className="text-gray-500">Active R&D and Documentation.</p>
-                            </div>
-                            <div className="flex bg-white/5 p-1 rounded-lg">
-                                {['experiments', 'articles', 'blogs'].map(t => (
-                                    <button 
-                                        key={t}
-                                        onClick={() => setTab(t)}
-                                        className={`px-4 py-2 text-sm font-medium rounded-md capitalize transition-all ${tab === t ? 'bg-white/10 text-white' : 'text-gray-500'}`}
-                                    >
-                                        {t}
-                                    </button>
-                                ))}
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {tab === 'experiments' && LAB_DATA.experiments.map(item => (
-                                <div key={item.id} className="glass-panel p-8 rounded-2xl hover:bg-white/5 transition-all group cursor-pointer border-transparent hover:border-oceanLight/20">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <span className="text-xs font-mono text-oceanLight border border-oceanLight/20 px-2 py-1 rounded bg-oceanLight/5">{item.tag}</span>
-                                        <Icon name="ArrowUpRight" className="text-gray-600 group-hover:text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                                    <p className="text-gray-400 text-sm">{item.desc}</p>
-                                </div>
-                            ))}
-                            {tab === 'articles' && LAB_DATA.articles.map(item => (
-                                <div key={item.id} className="glass-panel p-8 rounded-2xl border-l-4 border-l-transparent hover:border-l-oceanLight transition-all">
-                                    <h3 className="text-xl font-bold mb-2">{item.title}</h3>
-                                    <p className="text-xs text-gray-500 font-mono">{item.date} • {item.readTime}</p>
-                                </div>
-                            ))}
-                             {tab === 'blogs' && LAB_DATA.blogs.map(item => (
-                                <div key={item.id} className="p-8 rounded-2xl border border-white/10 hover:border-white/30 transition-all">
-                                    <h3 className="text-lg font-medium italic text-gray-300">"{item.title}"</h3>
-                                    <p className="text-xs text-oceanLight font-mono mt-4">{item.date}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            );
-        };
-
-        const Footer = () => (
-            <footer id="contact" className="py-24 px-6 border-t border-white/10 relative overflow-hidden bg-gradient-to-b from-obsidian to-black">
-                <div className="max-w-4xl mx-auto text-center relative z-10">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-8">Let's collaborate.</h2>
-                    <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-16">
-                        <a href="https://wa.me/9110343178" className="w-full md:w-auto px-6 py-3 bg-[#25D366] text-black font-bold rounded-lg hover:opacity-90 flex items-center justify-center gap-2">
-                            <Icon name="MessageCircle" size={18} /> WhatsApp
-                        </a>
-                        <a href="mailto:nikhilraman1203@gmail.com" className="w-full md:w-auto px-6 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 flex items-center justify-center gap-2">
-                            <Icon name="Mail" size={18} /> Email Me
-                        </a>
-                        <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" className="w-full md:w-auto px-6 py-3 bg-[#0077B5] text-white font-bold rounded-lg hover:opacity-90 flex items-center justify-center gap-2">
-                            <Icon name="Linkedin" size={18} /> LinkedIn
-                        </a>
-                    </div>
-                    <p className="text-xs text-gray-600 font-mono">© 2025 Raman AI Labs. All Systems Nominal.</p>
-                </div>
-            </footer>
-        );
-
-        const App = () => (
-            <div className="antialiased pb-10">
-                <Navbar />
-                <Hero />
-                <Domains />
-                <Lab />
-                <Footer />
+                <span class="font-display font-bold text-lg tracking-wider uppercase">Raman<span class="text-oceanic">AI</span>Labs</span>
             </div>
-        );
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-400">
+                <a href="#experiments" class="hover:text-oceanic transition-colors">Experiments</a>
+                <a href="#articles" class="hover:text-oceanic transition-colors">Articles</a>
+                <a href="#blogs" class="hover:text-oceanic transition-colors">Blogs</a>
+                <button id="adminToggle" onclick="toggleAdmin()" class="px-4 py-2 border border-oceanic/30 rounded-full hover:bg-oceanic/10 text-oceanic transition-all text-xs tracking-widest uppercase">
+                    Admin Access
+                </button>
+            </div>
+
+            <button class="md:hidden text-white" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div id="mobileMenu" class="fixed inset-0 z-40 bg-obsidian transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8 md:hidden">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+        <a href="#experiments" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold">Experiments</a>
+        <a href="#articles" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold">Articles</a>
+        <a href="#blogs" onclick="toggleMobileMenu()" class="text-2xl font-display font-bold">Blogs</a>
+    </div>
+
+    <section class="relative pt-44 pb-20 px-6 z-10 min-h-[90vh] flex flex-col justify-center">
+        <div class="max-w-7xl mx-auto w-full">
+            <div class="animate-fade-in opacity-0" style="animation-delay: 0.1s;">
+                <span class="inline-block py-1 px-3 rounded-full bg-oceanic/10 border border-oceanic/20 text-oceanic text-xs font-bold tracking-widest uppercase mb-6">
+                    Generation 2.0 • Beta
+                </span>
+                <h1 class="text-6xl md:text-8xl font-display font-bold tracking-tight mb-8 leading-[1.1]">
+                    Architecting <br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-600">Future Intelligence.</span>
+                </h1>
+                <p class="max-w-2xl text-lg text-gray-400 leading-relaxed mb-12 font-light">
+                    The intersection of Data, Tech, Lifesciences, and Fine Arts. 
+                    Raman AI Labs bridges the gap between hypothetical concepts and realistic global technology.
+                </p>
+                
+                <div class="flex gap-4">
+                    <a href="#collaborate" class="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-oceanic hover:scale-105 transition-all">
+                        Connect Now
+                    </a>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-24 animate-fade-in opacity-0" style="animation-delay: 0.4s;">
+                <div onclick="changeDomain('Data')" class="domain-card glass-card p-8 rounded-2xl cursor-pointer hover:border-oceanic/50 transition-all group active-domain border-oceanic">
+                    <i class="fa-solid fa-database text-oceanic text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Data</h3>
+                    <p class="text-sm text-gray-500">Analytics, ML, AI Arch.</p>
+                </div>
+                <div onclick="changeDomain('Tech')" class="domain-card glass-card p-8 rounded-2xl cursor-pointer hover:border-oceanic/50 transition-all group">
+                    <i class="fa-solid fa-microchip text-oceanic text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Tech</h3>
+                    <p class="text-sm text-gray-500">World Tech & Software.</p>
+                </div>
+                <div onclick="changeDomain('Lifesciences')" class="domain-card glass-card p-8 rounded-2xl cursor-pointer hover:border-oceanic/50 transition-all group">
+                    <i class="fa-solid fa-dna text-oceanic text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Lifesciences</h3>
+                    <p class="text-sm text-gray-500">Bio, Agri & Medical.</p>
+                </div>
+                <div onclick="changeDomain('Fine Arts')" class="domain-card glass-card p-8 rounded-2xl cursor-pointer hover:border-oceanic/50 transition-all group">
+                    <i class="fa-solid fa-paintbrush text-oceanic text-2xl mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Fine Arts</h3>
+                    <p class="text-sm text-gray-500">Design, Content & Crafts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiments" class="py-20 px-6 z-10 relative border-t border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-4xl font-display font-bold mb-2">The Laboratory</h2>
+                    <p class="text-gray-500">Live experiments in <span id="currentDomain" class="text-oceanic font-bold">Data</span>.</p>
+                </div>
+                <button id="addExperimentBtn" class="hidden bg-oceanic text-black px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> Add New Entry
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="contentGrid">
+                </div>
+            
+            <div id="emptyState" class="empty-state rounded-2xl p-12 text-center hidden">
+                <i class="fa-solid fa-flask text-gray-700 text-4xl mb-4"></i>
+                <h3 class="text-xl font-bold text-gray-400">No Active Experiments</h3>
+                <p class="text-gray-600 mt-2">Raman has not published public data for this domain yet.</p>
+                <p class="text-oceanic text-xs mt-4 tracking-widest uppercase hidden admin-only-msg">[ADMIN MODE: Use 'Add New Entry' above]</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="collaborate" class="py-24 px-6 relative z-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-12 mb-20">
+                <div class="text-center md:text-left">
+                    <h2 class="text-5xl font-display font-bold mb-4">Let's Connect &<br /><span class="text-oceanic">Collaborate.</span></h2>
+                    <p class="text-gray-500 text-lg">Open for high-stakes research and projects.</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="https://wa.me/9110343178" target="_blank" class="glass-card px-8 py-5 rounded-2xl hover:bg-oceanic/10 hover:border-oceanic/50 transition-all flex items-center gap-4 group">
+                        <i class="fa-brands fa-whatsapp text-3xl text-oceanic"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest group-hover:text-oceanic">WhatsApp</div>
+                            <div class="font-bold">+91 9110343178</div>
+                        </div>
+                    </a>
+                    
+                    <a href="mailto:nikhilraman1203@gmail.com" class="glass-card px-8 py-5 rounded-2xl hover:bg-oceanic/10 hover:border-oceanic/50 transition-all flex items-center gap-4 group">
+                        <i class="fa-regular fa-envelope text-3xl text-oceanic"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest group-hover:text-oceanic">Email</div>
+                            <div class="font-bold">nikhilraman1203@gmail.com</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" target="_blank" class="glass-card px-8 py-5 rounded-2xl hover:bg-oceanic/10 hover:border-oceanic/50 transition-all flex items-center gap-4 group">
+                        <i class="fa-brands fa-linkedin text-3xl text-oceanic"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] text-gray-500 uppercase tracking-widest group-hover:text-oceanic">LinkedIn</div>
+                            <div class="font-bold">Raman Profile</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 tracking-widest uppercase">
+                <p>&copy; 2025 Raman AI Labs. All Rights Reserved.</p>
+                <p>Designed for Excellence</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // EMPTY CONTENT STRUCTURE (Waiting for Raman's Data)
+        const domainContent = {
+            'Data': [],
+            'Tech': [],
+            'Lifesciences': [],
+            'Fine Arts': []
+        };
+
+        renderContent('Data');
+
+        function changeDomain(domain) {
+            document.getElementById('currentDomain').innerText = domain;
+            const cards = document.querySelectorAll('.domain-card');
+            cards.forEach(card => {
+                card.classList.remove('border-oceanic');
+                if(card.innerText.includes(domain)) {
+                    card.classList.add('border-oceanic');
+                }
+            });
+            renderContent(domain);
+        }
+
+        function renderContent(domain) {
+            const grid = document.getElementById('contentGrid');
+            const emptyState = document.getElementById('emptyState');
+            const data = domainContent[domain];
+            
+            grid.innerHTML = ''; 
+            
+            if (data.length === 0) {
+                emptyState.classList.remove('hidden');
+                grid.classList.add('hidden');
+            } else {
+                emptyState.classList.add('hidden');
+                grid.classList.remove('hidden');
+                
+                data.forEach((item, index) => {
+                    // Logic to render cards when data exists
+                });
+            }
+            checkAdminUI();
+        }
+
+        let isAdmin = false;
+        function toggleAdmin() {
+            isAdmin = !isAdmin;
+            const btn = document.getElementById('adminToggle');
+            btn.innerText = isAdmin ? 'Logout (Raman)' : 'Admin Access';
+            btn.classList.toggle('bg-oceanic', isAdmin);
+            btn.classList.toggle('text-black', isAdmin);
+            
+            checkAdminUI();
+        }
+
+        function checkAdminUI() {
+            const addBtn = document.getElementById('addExperimentBtn');
+            const adminMsg = document.querySelector('.admin-only-msg');
+            
+            if (isAdmin) {
+                addBtn.classList.remove('hidden');
+                if(adminMsg) adminMsg.classList.remove('hidden');
+            } else {
+                addBtn.classList.add('hidden');
+                if(adminMsg) adminMsg.classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('translate-x-full');
+        }
     </script>
 </body>
 </html>
