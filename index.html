@@ -1,80 +1,93 @@
-<div class="glow-top"></div>
-<div class="glow-bottom"></div>
 
-<header class="relative z-20 px-10 py-8 flex justify-between items-center max-w-7xl mx-auto">
-    <div class="flex items-center gap-3">
-        <div class="w-10 h-10 bg-gradient-to-br from-[#0077B6] to-[#48CAE4] rounded-lg flex items-center justify-center shadow-lg shadow-oceanic/20">
-            <span class="font-bold text-xl text-black">R</span>
-        </div>
-        <h1 class="text-xl font-extrabold tracking-tight">Raman <span class="text-gray-400 font-normal">AI|</span>Labs</h1>
-    </div>
-
-    <nav class="hidden md:flex items-center gap-12">
-        <a href="#" class="nav-item flex items-center gap-2 nav-active">
-            <i class="fa-solid fa-circle-chevron-right text-[10px]"></i> Projects
-        </a>
-        <a href="#" class="nav-item">Articles</a>
-        <a href="#" class="nav-item">Articles</a> <a href="#" class="nav-item text-oceanic">Blogs</a>
-        <a href="#" class="nav-item">Blogs</a>
-        <button class="bg-[#2D6A4F] text-white px-5 py-2 rounded-full text-xs font-bold ml-4">Connect Me</button>
-    </nav>
-</header>
-
-<main class="relative z-10 px-10 pt-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-20">
-    
-    <div class="md:w-3/5">
-        <h2 class="text-5xl md:text-6xl font-semibold leading-tight mb-10 text-gray-100">
-            Explore the deep oceanic depths of artificial intelligence across domains.
-        </h2>
-        
-        <div class="flex gap-4">
-            <button class="px-6 py-2 bg-[#48CAE4] text-[#0A0C10] rounded-full font-bold text-sm">Admin Toggle</button>
-            <button class="px-6 py-2 border border-gray-600 text-gray-300 rounded-full font-bold text-sm">Connect Me</button>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
-            <div class="content-placeholder"></div>
-            <div class="content-placeholder"></div>
-            <div class="content-placeholder"></div>
-        </div>
-    </div>
-
-    <div class="md:w-2/5 flex justify-end items-start pt-10">
-        <div class="connect-panel w-72 rounded-2xl overflow-hidden animate-fade-in-up">
-            <div class="p-5 flex items-center gap-3 border-b border-white/5">
-                <div class="w-6 h-6 bg-oceanic rounded flex items-center justify-center text-[10px] text-black font-bold">R</div>
-                <span class="font-bold text-sm">Raman <span class="text-gray-400 font-normal">AI|</span>Labs</span>
-            </div>
-            
-            <div class="py-2">
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-oceanic text-sm font-medium">
-                    <i class="fa-regular fa-comment-dots"></i> Chatbots
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
-                    <i class="fa-solid fa-cloud-bolt text-oceanic"></i> Chatbots
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
-                    <i class="fa-solid fa-envelope-open-text text-oceanic"></i> LLM-Assistants
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
-                    <i class="fa-brands fa-facebook-f text-oceanic"></i> Hover:bg-blue-600
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
-                    <i class="fa-brands fa-linkedin-in text-oceanic"></i> Hover:bg-blue-600
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
-                    <i class="fa-solid fa-link text-oceanic"></i> LinkedIn
-                </a>
-                <a href="#" class="flex items-center gap-4 px-5 py-3 bg-oceanic/10 text-oceanic text-sm font-bold">
-                    <i class="fa-solid fa-anchor"></i> Connect Me
-                </a>
-            </div>
-        </div>
-    </div>
-</main>
-
-<div class="fixed bottom-10 left-10 opacity-20 z-0">
-    <h3 class="text-9xl font-bold tracking-tighter select-none">RAMAN</h3>
-</div>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raman AI Labs | Global Research Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              obsidian: '#0A0C10',
+              oceanic: '#48CAE4',
+              tealAccent: '#00B4D8',
+            },
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #0A0C10;
+        color: white;
+        margin: 0;
+        overflow-x: hidden;
+      }
+      /* Large Oceanic Orbs from Reference */
+      .orb-top {
+        position: fixed; top: -15%; left: -5%; width: 50vw; height: 50vw;
+        background: radial-gradient(circle, rgba(72, 202, 228, 0.15) 0%, rgba(10, 12, 16, 0) 70%);
+        border-radius: 50%; filter: blur(100px); z-index: 0;
+      }
+      .orb-bottom {
+        position: fixed; bottom: -20%; right: -10%; width: 60vw; height: 60vw;
+        background: radial-gradient(circle, rgba(0, 180, 216, 0.12) 0%, rgba(10, 12, 16, 0) 70%);
+        border-radius: 50%; filter: blur(120px); z-index: 0;
+      }
+      /* Glassmorphism Panel */
+      .connect-panel {
+        background: rgba(18, 22, 29, 0.7);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6);
+      }
+      .nav-item {
+        color: #9CA3AF;
+        transition: all 0.3s ease;
+        font-size: 0.95rem;
+      }
+      .nav-item:hover { color: white; }
+      .nav-active { color: #48CAE4; font-weight: 600; }
+      
+      .content-placeholder {
+        border: 1px dashed rgba(255, 255, 255, 0.15);
+        height: 380px;
+        border-radius: 12px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .content-placeholder:hover {
+        border-color: rgba(72, 202, 228, 0.4);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      /* Grainy overlay for texture */
+      .grainy {
+        position: fixed; inset: 0; opacity: 0.03; pointer-events: none; z-index: 50;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/",
+        "react": "https://esm.sh/react@^19.2.3",
+        "lucide-react": "https://esm.sh/lucide-react@^0.562.0"
+      }
+    }
+    </script>
+  </head>
+  <body class="font-sans antialiased overflow-x-hidden">
+    <div class="grainy"></div>
+    <div class="orb-top"></div>
+    <div class="orb-bottom"></div>
+    <div id="root"></div>
+  </body>
 </html>
