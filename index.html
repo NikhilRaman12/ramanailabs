@@ -3,149 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Professional</title>
+    <title>Raman AI Labs | Explore the Oceanic Depth</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        :root { --oceanic: #48CAE4; }
-        body { background-color: #0A0C10; color: white; margin: 0; overflow-x: hidden; font-family: 'Plus Jakarta Sans', sans-serif; }
+        :root { --oceanic: #48CAE4; --deep-bg: #0A0C10; }
         
-        /* Fixed Blur/Black Screen Issue */
-        .glow-bg {
+        body { 
+            background-color: var(--deep-bg); 
+            color: white; 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+            touch-action: manipulation; /* Optimizes for touch sensation */
+        }
+
+        /* PLANETARY ORBS - Optimized for GitHub Pages Preview */
+        .orb {
             position: fixed; border-radius: 50%; z-index: -1; pointer-events: none;
-            background: radial-gradient(circle, rgba(72, 202, 228, 0.08) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.12) 0%, transparent 70%);
         }
 
-        .sidebar-glass {
+        /* TOUCH SENSATION ENGINE */
+        .touch-active {
+            transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), filter 0.1s;
+        }
+        .touch-active:active {
+            transform: scale(0.96);
+            filter: brightness(1.2) saturate(1.2);
+        }
+
+        /* SIDEBAR - Exact Image Match */
+        .sidebar-container {
             background: rgba(15, 18, 24, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .project-entry {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.02);
-            transition: all 0.3s ease;
+        .sidebar-item {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 20px; font-size: 14px;
+            color: #9CA3AF; cursor: pointer;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
-        .project-entry:hover { border-color: var(--oceanic); transform: translateY(-5px); }
+        .sidebar-item:hover { color: white; background: rgba(255, 255, 255, 0.02); }
+        .sidebar-item i { color: var(--oceanic); width: 18px; text-align: center; }
 
-        /* Hidden Admin Controls */
-        #adminPanel { display: none; }
+        /* DASHED CONTENT SLOTS */
+        .content-slot {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            border-radius: 16px; height: 180px;
+            background: rgba(255, 255, 255, 0.01);
+        }
+
+        /* CAPTION GRADIENT */
+        .caption-gradient {
+            background: linear-gradient(to right, #ffffff 60%, var(--oceanic));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
-<body class="antialiased">
+<body class="p-6 md:p-12">
 
-    <div class="glow-bg" style="top: -10%; left: 10%; width: 40vw; height: 40vw;"></div>
-    <div class="glow-bg" style="bottom: -10%; right: 10%; width: 50vw; height: 50vw;"></div>
+    <div class="orb" style="top: -15%; left: 10%; width: 35vw; height: 35vw;"></div>
+    <div class="orb" style="bottom: -15%; right: 15%; width: 45vw; height: 45vw;"></div>
 
-    <header class="relative z-50 max-w-7xl mx-auto px-8 py-10 flex justify-between items-center">
+    <header class="relative z-50 max-w-7xl mx-auto flex items-center justify-between mb-20">
         <div class="flex items-center gap-3">
             <div class="w-10 h-10 bg-gradient-to-br from-[#0077B6] to-[#48CAE4] rounded-lg flex items-center justify-center">
                 <span class="font-bold text-xl text-black">R</span>
             </div>
-            <span class="text-xl font-bold">Raman <span class="text-gray-500 font-normal">AI|</span>Labs</span>
+            <span class="text-xl font-bold tracking-tighter">Raman <span class="text-gray-500 font-normal">AI|</span>Labs</span>
         </div>
 
-        <nav class="hidden lg:flex items-center gap-10 text-sm">
-            <div class="text-oceanic font-semibold flex items-center gap-2">
-                <i class="fa-solid fa-circle-chevron-right text-[10px]"></i> Projects
+        <nav class="hidden lg:flex items-center gap-10 text-sm font-medium">
+            <div class="text-white flex items-center gap-2 touch-active cursor-pointer">
+                <i class="fa-solid fa-circle-chevron-right text-[10px] text-oceanic"></i> Projects
             </div>
-            <a href="#" class="text-gray-500 hover:text-white transition">Articles</a>
-            <a href="#" class="text-gray-500 hover:text-white transition">Articles</a>
-            <a href="#" class="text-oceanic font-bold">Blogs</a>
-            <a href="#" class="text-gray-500 hover:text-white transition">Blogs</a>
-            <button class="bg-[#1B4332] text-white px-6 py-2 rounded-full text-xs font-bold ml-4">Connect Me</button>
+            <div class="text-gray-500 touch-active cursor-pointer">Articles</div>
+            <div class="text-gray-500 touch-active cursor-pointer">Articles</div>
+            <div class="text-oceanic font-bold touch-active cursor-pointer">Blogs</div>
+            <div class="text-gray-500 touch-active cursor-pointer">Blogs</div>
+            <button class="bg-[#00B4D8] text-black px-6 py-2 rounded-full text-xs font-bold ml-4 touch-active shadow-lg shadow-oceanic/20">Connect Me</button>
         </nav>
     </header>
 
-    <main class="relative z-10 max-w-7xl mx-auto px-8 pt-10 flex flex-col lg:flex-row gap-12">
+    <main class="relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
         
         <div class="lg:w-3/5">
-            <h1 class="text-5xl lg:text-7xl font-semibold leading-tight mb-10 text-gray-100">
-                Explore the deep oceanic depths of artificial intelligence across domains.
+            <h1 class="text-5xl lg:text-7xl font-semibold leading-[1.1] mb-12">
+                <span class="caption-gradient">Explore the deep oceanic depths of artificial intelligence <br> never before ever after</span>
             </h1>
             
-            <div class="flex gap-4 mb-16">
-                <button onclick="accessAdmin()" class="bg-oceanic text-black px-8 py-3 rounded-full font-bold text-sm hover:scale-105 transition">Admin Toggle</button>
-                <button class="border border-gray-600 text-gray-300 px-8 py-3 rounded-full font-bold text-sm">Connect Me</button>
+            <div class="flex gap-4 mb-24">
+                <button onclick="adminAccess()" class="bg-oceanic text-black px-10 py-3.5 rounded-full font-bold text-sm touch-active">Admin Toggle</button>
+                <button class="border border-gray-600 text-gray-300 px-10 py-3.5 rounded-full font-bold text-sm touch-active">Connect Me</button>
             </div>
 
-            <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="h-40 border border-dashed border-white/10 rounded-2xl flex items-center justify-center text-gray-600 text-xs italic">
-                    No active projects published.
-                </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="content-slot"></div>
+                <div class="content-slot"></div>
+                <div class="content-slot"></div>
             </div>
         </div>
 
-        <div class="lg:w-2/5 flex justify-end items-start">
-            <div class="sidebar-glass w-full max-w-[320px] overflow-hidden">
-                <div class="p-6 border-b border-white/5 flex items-center gap-3">
+        <div class="lg:w-2/5 flex justify-end">
+            <div class="sidebar-container w-full max-w-[320px] overflow-hidden">
+                <div class="p-6 border-b border-white/5 flex items-center gap-3 bg-white/[0.02]">
                     <div class="w-6 h-6 bg-oceanic rounded flex items-center justify-center text-[10px] text-black font-extrabold">R</div>
-                    <span class="text-xs font-bold uppercase tracking-widest">Raman <span class="text-gray-500">AI|</span>Labs</span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-200">Raman <span class="text-gray-500 font-normal">AI|</span>Labs</span>
                 </div>
+                
                 <div class="py-2">
-                    <div class="px-6 py-4 flex items-center gap-4 text-oceanic font-bold bg-white/[0.03]"><i class="fa-regular fa-comment-dots"></i> Chatbots</div>
-                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-solid fa-bolt-lightning text-oceanic"></i> Chatbots</div>
-                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-regular fa-paper-plane text-oceanic"></i> LLM-Assistants</div>
-                    <div class="px-6 py-4 flex items-center gap-4 text-gray-400"><i class="fa-brands fa-linkedin-in text-oceanic"></i> LinkedIn</div>
-                    <a href="mailto:nikhilraman1203@gmail.com" class="px-6 py-5 flex items-center gap-4 bg-oceanic/10 text-oceanic font-bold text-sm border-t border-white/5 uppercase tracking-tighter">
+                    <div class="sidebar-item text-oceanic font-bold bg-white/[0.03] touch-active">
+                        <i class="fa-regular fa-comments"></i> Chatbots
+                    </div>
+                    <div class="sidebar-item touch-active">
+                        <i class="fa-solid fa-bolt-lightning"></i> Chatbots
+                    </div>
+                    <div class="sidebar-item touch-active">
+                        <i class="fa-regular fa-paper-plane"></i> LLM-Assistants
+                    </div>
+                    <div class="sidebar-item touch-active">
+                        <i class="fa-brands fa-facebook-f"></i> Hover:bg-blue-600
+                    </div>
+                    <div class="sidebar-item touch-active">
+                        <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+                    </div>
+                    <div class="sidebar-item touch-active">
+                        <i class="fa-solid fa-link"></i> LinkedIn
+                    </div>
+                    <div class="px-6 py-6 flex items-center gap-4 bg-oceanic/10 text-oceanic font-bold text-sm border-t border-white/5 touch-active cursor-pointer">
                         <i class="fa-solid fa-anchor"></i> Connect Me
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <div id="adminPanel" class="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-6">
-        <div class="bg-[#111] border border-white/10 p-8 rounded-3xl w-full max-w-md">
-            <h3 class="text-xl font-bold mb-6 text-oceanic">Publish New Entry</h3>
-            <input type="text" id="projTitle" placeholder="Project Title" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg mb-4 text-white">
-            <textarea id="projDesc" placeholder="Brief Description" class="w-full bg-white/5 border border-white/10 p-3 rounded-lg mb-6 text-white h-24"></textarea>
-            <div class="flex gap-3">
-                <button onclick="addProject()" class="flex-1 bg-oceanic text-black font-bold py-3 rounded-xl">Publish</button>
-                <button onclick="document.getElementById('adminPanel').style.display='none'" class="flex-1 bg-white/10 py-3 rounded-xl">Cancel</button>
-            </div>
-        </div>
+    <div class="fixed bottom-[-40px] left-10 opacity-[0.02] select-none z-[-2]">
+        <h2 class="text-[200px] font-black leading-none uppercase">RAMAN</h2>
     </div>
 
     <script>
-        const SECRET_CODE = "never before ever after"; // Your private code
-
-        function accessAdmin() {
-            const entry = prompt("Enter Administration Code:");
-            if (entry === SECRET_CODE) {
-                document.getElementById('adminPanel').style.display = 'flex';
+        // TOUCH SENSATION FEEDBACK
+        function adminAccess() {
+            const code = prompt("Enter Administration Code:");
+            if(code === "never before ever after") {
+                alert("Access Granted. Initializing Raman AI Labs...");
             } else {
-                alert("Unauthorized Access Attempt.");
+                alert("Unauthorized Access.");
             }
         }
 
-        function addProject() {
-            const title = document.getElementById('projTitle').value;
-            const desc = document.getElementById('projDesc').value;
-            
-            if(!title || !desc) return alert("Fill all fields");
-
-            const grid = document.getElementById('projectGrid');
-            // Remove the "No projects" placeholder on first add
-            if(grid.innerHTML.includes("italic")) grid.innerHTML = "";
-
-            const card = `
-                <div class="project-entry p-6 rounded-2xl">
-                    <div class="text-oceanic mb-3 text-lg font-bold"># ${title}</div>
-                    <p class="text-gray-400 text-sm leading-relaxed">${desc}</p>
-                </div>
-            `;
-            
-            grid.innerHTML += card;
-            document.getElementById('adminPanel').style.display = 'none';
-            // Clear inputs
-            document.getElementById('projTitle').value = "";
-            document.getElementById('projDesc').value = "";
-        }
+        // Ensuring touch feedback on mobile
+        document.querySelectorAll('.touch-active').forEach(el => {
+            el.addEventListener('touchstart', function() {
+                if (window.navigator.vibrate) window.navigator.vibrate(5);
+            });
+        });
     </script>
 </body>
 </html>
