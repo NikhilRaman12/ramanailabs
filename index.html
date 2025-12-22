@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Raman AI Labs | Excellence Never Before Ever After</title>
+    <title>Raman AI Labs | Excellence</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -16,6 +16,7 @@
             --border: rgba(255, 255, 255, 0.08);
         }
 
+        /* Essential Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
@@ -23,116 +24,119 @@
             color: #fff;
             font-family: 'Plus Jakarta Sans', sans-serif;
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.5;
+            min-height: 100vh;
         }
 
-        /* EXACT PLANETARY ORBS FROM IMAGE */
+        /* High-Performance Background Orbs */
         .orb {
             position: fixed; border-radius: 50%; z-index: -1; pointer-events: none;
-            background: radial-gradient(circle, rgba(72, 202, 228, 0.15) 0%, transparent 70%);
-            filter: blur(50px);
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.1) 0%, transparent 70%);
         }
 
-        /* UNBEATABLE LOGO & NAV */
+        /* Responsive Navigation */
         header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 40px 8%; position: relative; z-index: 100;
+            display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;
+            padding: 30px 6%; position: relative; z-index: 100; gap: 20px;
         }
 
-        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-area { display: flex; align-items: center; gap: 10px; }
         .logo-box {
-            width: 42px; height: 42px; 
+            width: 38px; height: 38px; 
             background: linear-gradient(135deg, #0077B6, #48CAE4);
-            border-radius: 10px; display: flex; align-items: center; 
-            justify-content: center; font-weight: 800; color: #000; font-size: 22px;
+            border-radius: 8px; display: flex; align-items: center; 
+            justify-content: center; font-weight: 800; color: #000; font-size: 20px;
         }
 
-        nav { display: flex; align-items: center; gap: 35px; }
+        nav { display: flex; align-items: center; gap: 20px; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; }
+        nav::-webkit-scrollbar { display: none; } /* Hide mobile scrollbar for clean look */
+
         nav a { 
-            text-decoration: none; color: #666; font-size: 14px; 
-            font-weight: 500; transition: 0.3s; display: flex; align-items: center; gap: 8px;
+            text-decoration: none; color: #666; font-size: 13px; 
+            white-space: nowrap; transition: 0.3s;
         }
-        nav a.active { color: #fff; }
-        nav a.active i { color: var(--oceanic); font-size: 10px; }
+        nav a.active { color: #fff; display: flex; align-items: center; gap: 6px; }
+        nav a.active i { color: var(--oceanic); font-size: 8px; }
         
-        .btn-connect-nav {
-            background: #1B4332; color: #fff; padding: 10px 24px;
-            border-radius: 50px; font-weight: 700; font-size: 12px; border: none;
-            cursor: pointer; transition: 0.2s;
-        }
-
-        /* MAIN LAYOUT */
+        /* Layout Grid */
         main {
-            display: grid; grid-template-columns: 1.5fr 1fr;
-            padding: 0 8%; gap: 60px; align-items: start; margin-top: 40px;
+            display: flex; flex-direction: column;
+            padding: 0 6% 100px 6%; gap: 40px; margin-top: 20px;
         }
 
+        /* Text Scaling for Mobile vs Laptop */
         .hero-text {
-            font-size: 64px; font-weight: 700; line-height: 1.1;
-            letter-spacing: -2px; margin-bottom: 40px; color: #f0f0f0;
+            font-size: clamp(32px, 8vw, 68px); /* Fluid typography */
+            font-weight: 700; line-height: 1.1;
+            letter-spacing: -1.5px; margin-bottom: 30px;
         }
         .hero-text span { color: var(--oceanic); }
 
-        .btn-group { display: flex; gap: 15px; margin-bottom: 80px; }
+        .btn-group { display: flex; gap: 12px; margin-bottom: 50px; }
         .btn-main {
-            padding: 14px 35px; border-radius: 50px; border: none;
-            font-weight: 700; cursor: pointer; font-size: 14px; transition: 0.2s;
+            padding: 12px 28px; border-radius: 50px; border: none;
+            font-weight: 700; cursor: pointer; font-size: 13px;
         }
         .btn-primary { background: var(--oceanic); color: #000; }
         .btn-secondary { background: transparent; border: 1px solid #333; color: #999; }
 
-        /* DASHED BOXES */
-        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        /* Dashed Grid Adjustments */
+        .grid-container { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+            gap: 15px; 
+        }
         .dashed-box {
-            border: 1px dashed rgba(255,255,255,0.1); border-radius: 20px;
-            height: 180px; background: rgba(255,255,255,0.01);
+            border: 1px dashed rgba(255,255,255,0.1); border-radius: 18px;
+            height: 160px; background: rgba(255,255,255,0.01);
         }
 
-        /* THE FLOATING RESEARCH PANEL */
+        /* Floating Sidebar: Desktop vs Mobile */
         .research-panel {
-            background: rgba(15, 18, 22, 0.95);
+            background: rgba(15, 18, 22, 0.98);
             border: 1px solid var(--border);
             border-radius: 24px; overflow: hidden;
-            box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+            width: 100%; max-width: 340px;
         }
         .panel-header {
-            padding: 24px; border-bottom: 1px solid var(--border);
+            padding: 20px; border-bottom: 1px solid var(--border);
             display: flex; align-items: center; gap: 10px;
-            font-size: 12px; font-weight: 800; letter-spacing: 1px; color: #888;
+            font-size: 11px; font-weight: 800; color: #888;
         }
         .panel-link {
-            padding: 18px 24px; display: flex; align-items: center; gap: 15px;
-            color: #999; text-decoration: none; font-size: 14px; transition: 0.2s;
+            padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+            color: #999; text-decoration: none; font-size: 14px;
             border-bottom: 1px solid rgba(255,255,255,0.02);
         }
-        .panel-link:hover, .panel-link.active { background: rgba(255,255,255,0.03); color: var(--oceanic); }
-        .panel-link i { width: 20px; text-align: center; }
+        .panel-link.active { color: var(--oceanic); }
 
-        /* TOUCH ENGINE */
-        .touch-point { transition: transform 0.1s cubic-bezier(0,0,0.2,1); cursor: pointer; }
-        .touch-point:active { transform: scale(0.94); filter: brightness(1.2); }
+        /* Touch Sensation Engine */
+        .touch-point { transition: transform 0.1s ease; cursor: pointer; }
+        .touch-point:active { transform: scale(0.95); filter: brightness(1.2); }
 
-        /* GIANT BACKGROUND BRANDING */
-        .bg-branding {
-            position: fixed; bottom: -50px; left: 5%; font-size: 200px;
-            font-weight: 900; opacity: 0.02; z-index: -2; pointer-events: none;
+        /* Laptop Layout Overrides */
+        @media (min-width: 1024px) {
+            main { flex-direction: row; align-items: flex-start; }
+            .content-section { flex: 1.4; }
+            .sidebar-section { flex: 1; display: flex; justify-content: flex-end; }
         }
 
-        @media (max-width: 1024px) {
-            main { grid-template-columns: 1fr; }
-            .hero-text { font-size: 48px; }
+        /* Branding background text */
+        .bg-branding {
+            position: fixed; bottom: -20px; left: 5%; font-size: 15vw;
+            font-weight: 900; opacity: 0.02; z-index: -2; pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <div class="orb" style="top: -10%; left: 10%; width: 40vw; height: 40vw;"></div>
-    <div class="orb" style="bottom: -10%; right: 10%; width: 50vw; height: 50vw;"></div>
+    <div class="orb" style="top: -5%; left: 5%; width: 50vw; height: 50vw;"></div>
+    <div class="orb" style="bottom: -10%; right: 5%; width: 60vw; height: 60vw;"></div>
 
     <header>
         <div class="logo-area">
             <div class="logo-box">R</div>
-            <div style="font-weight: 800; font-size: 20px;">Raman <span style="color: #555; font-weight: 400;">AI|</span>Labs</div>
+            <div style="font-weight: 800; font-size: 18px;">Raman <span style="color: #444; font-weight: 400;">AI|</span>Labs</div>
         </div>
         <nav>
             <a href="#" class="active touch-point"><i class="fa-solid fa-circle-chevron-right"></i> Projects</a>
@@ -140,87 +144,81 @@
             <a href="#" class="touch-point">Articles</a>
             <a href="#" style="color: var(--oceanic); font-weight: 700;" class="touch-point">Blogs</a>
             <a href="#" class="touch-point">Blogs</a>
-            <button class="btn-connect-nav touch-point">Connect Me</button>
+            <button class="bg-[#1B4332] text-white px-5 py-2 rounded-full text-[11px] font-bold touch-point border-none">Connect Me</button>
         </nav>
     </header>
 
     <main>
-        <section>
+        <div class="content-section">
             <h1 class="hero-text">
                 Explore the deep oceanic depths of artificial intelligence <br>
                 <span>never before ever after.</span>
             </h1>
 
             <div class="btn-group">
-                <button class="btn-main btn-primary touch-point" onclick="adminPortal()">Admin Toggle</button>
+                <button class="btn-main btn-primary touch-point" onclick="authAdmin()">Admin Toggle</button>
                 <button class="btn-main btn-secondary touch-point">Connect Me</button>
             </div>
 
-            <div class="grid-container" id="projectContainer">
+            <div class="grid-container" id="projectGrid">
                 <div class="dashed-box"></div>
                 <div class="dashed-box"></div>
                 <div class="dashed-box"></div>
             </div>
-        </section>
+        </div>
 
-        <aside>
+        <div class="sidebar-section">
             <div class="research-panel">
                 <div class="panel-header">
-                    <div style="width: 18px; height: 18px; background: var(--oceanic); border-radius: 4px; color: #000; display: flex; align-items: center; justify-content: center; font-size: 10px;">R</div>
+                    <div style="width: 16px; height: 16px; background: var(--oceanic); border-radius: 4px; color: #000; display: flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 900;">R</div>
                     RAMAN AI LABS
                 </div>
                 <div class="panel-body">
                     <a href="#" class="panel-link active touch-point"><i class="fa-solid fa-microscope"></i> Neural Research</a>
                     <a href="#" class="panel-link touch-point"><i class="fa-solid fa-dna"></i> Bio-Intelligence</a>
                     <a href="#" class="panel-link touch-point"><i class="fa-solid fa-terminal"></i> Autonomous Systems</a>
-                    <a href="https://linkedin.com" class="panel-link touch-point"><i class="fa-brands fa-linkedin"></i> LinkedIn Official</a>
-                    <a href="mailto:nikhilraman1203@gmail.com" class="panel-link touch-point" style="background: rgba(72, 202, 228, 0.1); color: var(--oceanic); font-weight: 700;">
+                    <a href="https://linkedin.com" class="panel-link touch-point"><i class="fa-brands fa-linkedin-in"></i> LinkedIn Official</a>
+                    <a href="mailto:nikhilraman1203@gmail.com" class="panel-link touch-point" style="background: rgba(72, 202, 228, 0.08); color: var(--oceanic); font-weight: 700;">
                         <i class="fa-solid fa-anchor"></i> Connect Me
                     </a>
                 </div>
             </div>
-        </aside>
+        </div>
     </main>
 
     <div class="bg-branding">RAMAN</div>
 
     <script>
-        // BACKEND LOGIC: Admin Sovereign Access
-        const AUTH_CODE = "never before ever after";
-
-        function adminPortal() {
-            const input = prompt("Verify Identity (Research Code):");
-            if(input === AUTH_CODE) {
-                const title = prompt("Entry Title:");
-                const content = prompt("Short Brief:");
-                if(title && content) {
-                    addResearchEntry(title, content);
-                }
-            } else {
-                alert("Access Denied. Identity Not Recognized.");
+        // Haptic Feedback for Touch
+        function triggerTouch() {
+            if (window.navigator && window.navigator.vibrate) {
+                window.navigator.vibrate(10);
             }
         }
 
-        function addResearchEntry(title, content) {
-            const container = document.getElementById('projectContainer');
-            // Remove dashed boxes if adding real content
-            if(container.querySelector('.dashed-box')) container.innerHTML = "";
-            
-            const card = document.createElement('div');
-            card.style.cssText = "background: rgba(255,255,255,0.03); border: 1px solid var(--border); padding: 25px; border-radius: 20px;";
-            card.innerHTML = `
-                <h3 style="color: var(--oceanic); margin-bottom: 10px; font-size: 16px;">${title}</h3>
-                <p style="color: #777; font-size: 13px;">${content}</p>
-            `;
-            container.appendChild(card);
-        }
-
-        // Tactile Vibration for touch-friendly sensation
-        document.querySelectorAll('.touch-point').forEach(el => {
-            el.addEventListener('click', () => {
-                if(navigator.vibrate) navigator.vibrate(15);
-            });
+        document.querySelectorAll('.touch-point').forEach(btn => {
+            btn.addEventListener('click', triggerTouch);
         });
+
+        // Backend Admin Logic
+        function authAdmin() {
+            const pass = prompt("Verify Identity (Research Code):");
+            if(pass === "never before ever after") {
+                const title = prompt("Entry Title:");
+                const content = prompt("Brief Insight:");
+                if(title && content) {
+                    const grid = document.getElementById('projectGrid');
+                    if(grid.querySelector('.dashed-box')) grid.innerHTML = "";
+                    
+                    const entry = document.createElement('div');
+                    entry.style.cssText = "background: var(--glass); border: 1px solid var(--border); padding: 20px; border-radius: 18px;";
+                    entry.innerHTML = `<h3 style='color:var(--oceanic);font-size:15px;margin-bottom:8px'># ${title}</h3><p style='color:#666;font-size:12px'>${content}</p>`;
+                    grid.appendChild(entry);
+                }
+            } else {
+                alert("Unauthorized Entry Attempt.");
+            }
+        }
     </script>
 </body>
 </html>
