@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raman AI Labs | Excellence Redefined</title>
+    <title>Raman AI Labs</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -14,13 +14,12 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#020202',
-                        oceanic: '#00B4D8',
-                        deepBlue: '#0077B6',
+                        obsidian: '#0A0C10',
+                        oceanic: '#48CAE4',
+                        tealAccent: '#00B4D8',
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
@@ -28,136 +27,140 @@
     </script>
 
     <style>
-        body { background-color: #020202; color: white; overflow-x: hidden; }
+        body { background-color: #0A0C10; color: white; }
         
-        /* THE PLANETIC ROCK OVERLAY (Jupiter/Saturn Textures) */
-        .planetic-surface {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.07'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 1; opacity: 0.5;
+        /* BACKGROUND GLOWS (As seen in image) */
+        .glow-top {
+            position: fixed; top: -100px; left: 10%; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(72, 202, 228, 0.1) 0%, transparent 70%);
+            filter: blur(60px); z-index: 0;
         }
 
-        .oceanic-glow {
-            position: fixed; top: -10%; right: -10%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%);
+        .glow-bottom {
+            position: fixed; bottom: -150px; right: 15%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
             filter: blur(80px); z-index: 0;
         }
 
-        /* LOGO STYLING */
-        .logo-box {
-            background: linear-gradient(135deg, #0077B6 0%, #00B4D8 100%);
-            box-shadow: 0 0 20px rgba(0, 180, 216, 0.4);
-            border: 1px solid rgba(255,255,255,0.2);
+        /* THE FLOATING "CONNECT ME" PANEL */
+        .connect-panel {
+            background: rgba(15, 18, 24, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
         }
 
-        /* HIDDEN MENU ANIMATION */
-        .dropdown-animate {
-            transform-origin: top right;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .nav-item {
+            color: #9CA3AF;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .glass-ui {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        .nav-item:hover { color: white; }
+        .nav-active { color: #48CAE4; font-weight: 600; }
+
+        /* BUTTON STYLING */
+        .btn-primary {
+            background-color: #00B4D8;
+            color: #0A0C10;
+            font-weight: 700;
+            transition: all 0.3s ease;
         }
 
-        .nav-link:hover { color: #00B4D8; text-shadow: 0 0 10px rgba(0, 180, 216, 0.5); }
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        /* GRID PLACEHOLDERS */
+        .content-placeholder {
+            border: 1px dashed rgba(255, 255, 255, 0.1);
+            height: 250px;
+            border-radius: 12px;
+        }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased overflow-x-hidden">
 
-    <div class="planetic-surface"></div>
-    <div class="oceanic-glow"></div>
+    <div class="glow-top"></div>
+    <div class="glow-bottom"></div>
 
-    <nav class="fixed top-0 w-full z-50 py-6 px-10 flex justify-between items-center backdrop-blur-lg border-b border-white/5">
-        <div class="flex items-center gap-4">
-            <div class="w-12 h-12 logo-box rounded-xl flex items-center justify-center">
-                <span class="font-display font-extrabold text-2xl text-black">R</span>
+    <header class="relative z-20 px-10 py-8 flex justify-between items-center max-w-7xl mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-[#0077B6] to-[#48CAE4] rounded-lg flex items-center justify-center shadow-lg shadow-oceanic/20">
+                <span class="font-bold text-xl text-black">R</span>
             </div>
-            <h1 class="font-display font-bold text-xl tracking-tighter uppercase">Raman <span class="text-oceanic">AI</span> Labs</h1>
+            <h1 class="text-xl font-extrabold tracking-tight">Raman <span class="text-gray-400 font-normal">AI|</span>Labs</h1>
         </div>
 
-        <div class="hidden md:flex items-center gap-10">
-            <a href="#projects" class="nav-link text-sm font-semibold uppercase tracking-widest transition-all">Projects</a>
-            <a href="#articles" class="nav-link text-sm font-semibold uppercase tracking-widest transition-all">Articles</a>
-            <a href="#blogs" class="nav-link text-sm font-semibold uppercase tracking-widest transition-all">Blogs</a>
-            
-            <div class="relative group">
-                <button class="bg-oceanic text-black px-6 py-2 rounded-lg font-bold hover:scale-105 transition-transform flex items-center gap-2">
-                    Services <i class="fa-solid fa-chevron-down text-xs"></i>
-                </button>
-                
-                <div class="absolute right-0 mt-4 w-64 glass-ui rounded-2xl p-4 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 dropdown-animate pointer-events-none group-hover:pointer-events-auto">
-                    <ul class="space-y-3">
-                        <li class="p-3 hover:bg-white/5 rounded-xl cursor-pointer flex items-center gap-3">
-                            <i class="fa-solid fa-robot text-oceanic"></i> Chatbots
-                        </li>
-                        <li class="p-3 hover:bg-white/5 rounded-xl cursor-pointer flex items-center gap-3">
-                            <i class="fa-solid fa-brain text-oceanic"></i> LLM-Assistants
-                        </li>
-                        <li class="p-3 hover:bg-white/5 rounded-xl cursor-pointer flex items-center gap-3">
-                            <i class="fa-solid fa-user-gear text-oceanic"></i> AI-Agents
-                        </li>
-                        <hr class="border-white/10 my-2">
-                        <li class="p-3 hover:bg-oceanic/20 rounded-xl cursor-pointer flex items-center gap-3 text-oceanic font-bold" onclick="location.href='#connect'">
-                            <i class="fa-solid fa-link"></i> Connect Me
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
+        <nav class="hidden md:flex items-center gap-12">
+            <a href="#" class="nav-item flex items-center gap-2 nav-active">
+                <i class="fa-solid fa-circle-chevron-right text-[10px]"></i> Projects
+            </a>
+            <a href="#" class="nav-item">Articles</a>
+            <a href="#" class="nav-item">Articles</a> <a href="#" class="nav-item text-oceanic">Blogs</a>
+            <a href="#" class="nav-item">Blogs</a>
+            <button class="bg-[#2D6A4F] text-white px-5 py-2 rounded-full text-xs font-bold ml-4">Connect Me</button>
+        </nav>
+    </header>
 
-    <main class="relative z-10 pt-52 pb-32 px-10 max-w-7xl mx-auto min-h-screen flex flex-col justify-center">
-        <div class="max-w-3xl">
-            <h2 class="text-6xl md:text-8xl font-display font-extrabold leading-[1.1] mb-8">
-                Explore the deep <span class="text-oceanic">oceanic depths</span> of artificial intelligence.
+    <main class="relative z-10 px-10 pt-20 max-w-7xl mx-auto flex flex-col md:flex-row gap-20">
+        
+        <div class="md:w-3/5">
+            <h2 class="text-5xl md:text-6xl font-semibold leading-tight mb-10 text-gray-100">
+                Explore the deep oceanic depths of artificial intelligence across domains.
             </h2>
-            <div class="flex gap-6">
-                <a href="#connect" class="px-10 py-4 border border-oceanic text-oceanic rounded-full font-bold hover:bg-oceanic hover:text-black transition-all">Connect Me</a>
-                <button class="px-10 py-4 bg-white/5 hover:bg-white/10 rounded-full font-bold transition-all">Research Portal</button>
+            
+            <div class="flex gap-4">
+                <button class="px-6 py-2 bg-[#48CAE4] text-[#0A0C10] rounded-full font-bold text-sm">Admin Toggle</button>
+                <button class="px-6 py-2 border border-gray-600 text-gray-300 rounded-full font-bold text-sm">Connect Me</button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+                <div class="content-placeholder"></div>
+                <div class="content-placeholder"></div>
+                <div class="content-placeholder"></div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-32">
-            <div id="projects" class="glass-ui p-10 rounded-[40px] hover:border-oceanic/40 transition-all group">
-                <div class="text-oceanic mb-6 text-4xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-flask"></i></div>
-                <h3 class="text-2xl font-bold mb-4">Projects</h3>
-                <p class="text-gray-500 leading-relaxed">Advanced deployments in neural synthesis and autonomous logic.</p>
-            </div>
-
-            <div id="articles" class="glass-ui p-10 rounded-[40px] hover:border-oceanic/40 transition-all group">
-                <div class="text-oceanic mb-6 text-4xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-book-open"></i></div>
-                <h3 class="text-2xl font-bold mb-4">Articles</h3>
-                <p class="text-gray-500 leading-relaxed">High-level technical whitepapers and intelligence documentation.</p>
-            </div>
-
-            <div id="blogs" class="glass-ui p-10 rounded-[40px] hover:border-oceanic/40 transition-all group">
-                <div class="text-oceanic mb-6 text-4xl group-hover:scale-110 transition-transform"><i class="fa-solid fa-feather"></i></div>
-                <h3 class="text-2xl font-bold mb-4">Blogs</h3>
-                <p class="text-gray-500 leading-relaxed">Daily insights into the evolving landscape of global technology.</p>
+        <div class="md:w-2/5 flex justify-end items-start pt-10">
+            <div class="connect-panel w-72 rounded-2xl overflow-hidden animate-fade-in-up">
+                <div class="p-5 flex items-center gap-3 border-b border-white/5">
+                    <div class="w-6 h-6 bg-oceanic rounded flex items-center justify-center text-[10px] text-black font-bold">R</div>
+                    <span class="font-bold text-sm">Raman <span class="text-gray-400 font-normal">AI|</span>Labs</span>
+                </div>
+                
+                <div class="py-2">
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-oceanic text-sm font-medium">
+                        <i class="fa-regular fa-comment-dots"></i> Chatbots
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
+                        <i class="fa-solid fa-cloud-bolt text-oceanic"></i> Chatbots
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
+                        <i class="fa-solid fa-envelope-open-text text-oceanic"></i> LLM-Assistants
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
+                        <i class="fa-brands fa-facebook-f text-oceanic"></i> Hover:bg-blue-600
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
+                        <i class="fa-brands fa-linkedin-in text-oceanic"></i> Hover:bg-blue-600
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 hover:bg-white/5 text-gray-400 text-sm">
+                        <i class="fa-solid fa-link text-oceanic"></i> LinkedIn
+                    </a>
+                    <a href="#" class="flex items-center gap-4 px-5 py-3 bg-oceanic/10 text-oceanic text-sm font-bold">
+                        <i class="fa-solid fa-anchor"></i> Connect Me
+                    </a>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer id="connect" class="relative z-10 py-24 px-10 border-t border-white/5 bg-black/40 backdrop-blur-xl">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
-            <div>
-                <h2 class="text-4xl font-display font-bold mb-2">Let's Collaborate.</h2>
-                <p class="text-gray-500">Secure. Professional. Unbeatable.</p>
-            </div>
-            
-            <div class="flex gap-6">
-                <a href="mailto:nikhilraman1203@gmail.com" class="w-14 h-14 glass-ui rounded-full flex items-center justify-center text-xl hover:text-oceanic transition-all"><i class="fa-regular fa-envelope"></i></a>
-                <a href="https://wa.me/9110343178" class="w-14 h-14 glass-ui rounded-full flex items-center justify-center text-xl hover:text-oceanic transition-all"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.linkedin.com/in/nikhil-raman-k-448589201/" class="w-14 h-14 glass-ui rounded-full flex items-center justify-center text-xl hover:text-oceanic transition-all"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
-        </div>
-        <div class="mt-20 text-center text-xs text-gray-700 uppercase tracking-[0.4em]">
-            © 2025 Raman AI Labs • The Only One
-        </div>
-    </footer>
+    <div class="fixed bottom-10 left-10 opacity-20 z-0">
+        <h3 class="text-9xl font-bold tracking-tighter select-none">RAMAN</h3>
+    </div>
 
 </body>
 </html>
